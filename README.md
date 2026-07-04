@@ -1,20 +1,18 @@
-# MS Club - Mini Hackathon 2025
+# MS Club - Mini Hackathon 2026
 
 ## Quick Links
-  - [Figma Design](#figma-design)
   - [How to contribute](#how-to-contribute)
   - [I really want to contribute but where do I start?](#i-really-want-to-contribute-but-where-do-i-start)
   - [Recommended VS Code Extensions](#recommended-vs-code-extensions)
 
 ## [Figma Design](#figma-design)
 
-- [Mini Hackathon 2025 UI](https://www.figma.com/design/xcYqVzv6jpcN0JRdWPG8BM/Mini-Hackathon-25?node-id=396-28&t=GOpO2ojHllEdHDSw-1)
 
 ## [How to contribute](#how-to)
 
 1. Clone the project to your own machine.
 
-`git clone https://github.com/ms-club-sliit/minihackathon-2025.git`
+`git clone https://github.com/ms-club-sliit/minihackathon-2026.git`
 
 2. Checkout to the development branch.
 
