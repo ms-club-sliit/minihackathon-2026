@@ -6,9 +6,9 @@ const Timer = dynamic(() => import('./timer'), {
 });
 
 const AWARENESS_TITLE =
-  process.env.EVENT_TITLE || 'Awareness Session';
+  process.env.NEXT_PUBLIC_EVENT_TITLE || 'Awareness Session';
 const TARGET_DATE =
-  process.env.EVENT_TARGET_DATE || '2025-10-01T17:00:00';
+  process.env.NEXT_PUBLIC_EVENT_TARGET_DATE || '2025-10-01T17:00:00';
 
 export default function CountdownTimer() {
   return (

@@ -7,7 +7,6 @@ import Step3 from './step3';
 import Step4 from './step4';
 import Step5 from './step5';
 import Step6 from './step6';
-import TeamTicket from '@/components/TeamTicket';
 import TicketPopup from '@/components/TicketPopup';
 import EmailTemplate from '../EmailTemplate/EmailTemplate';
 import { supabase } from '@/app/supabase';
