@@ -91,7 +91,7 @@ const registerTeam = async (teamData) => {
 
     // Check if team exists
     const { data: existingTeams } = await supabase
-      .from('team_name_2025')
+      .from('team_name_2026')
       .select('team_name')
       .eq('team_name', documentID);
 
@@ -102,7 +102,7 @@ const registerTeam = async (teamData) => {
 
     // Insert new team
     const { data, error } = await supabase
-      .from('team_name_2025')
+      .from('team_name_2026')
       .insert([{ id: documentID, ...model }])
       .select();
 
@@ -119,10 +119,10 @@ const registerTeam = async (teamData) => {
 const checkTeamExists = async (teamName) => {
   try {
     const { data } = await supabase
-      .from('team_name_2025')
+      .from('team_name_2026')
       .select('team_name')
       .eq('team_name', teamName);
-    
+
     return data && data.length > 0;
   } catch (error) {
     console.error('Error checking team existence:', error);

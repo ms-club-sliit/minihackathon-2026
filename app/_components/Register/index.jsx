@@ -282,7 +282,7 @@ const Register = () => {
       const dataURL = await popupRef.current.renderTicket();
 
       let fileName = generateFileName();
-      const filePath = `ticket-images-2025/${fileName}`;
+      const filePath = `ticket-images-2026/${fileName}`;
       const blob = dataURItoBlob(dataURL);
 
       const { data, error } = await supabase.storage
