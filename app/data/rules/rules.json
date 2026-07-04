@@ -1,0 +1,419 @@
+[
+  {
+    "title": "DEFINITIONS",
+    "content": "In these rules, \"MS Club of SLIIT\", \"We\", \"Our\" and \"Us\" refers to the competition sponsor, and \"You\" and \"Yourself\" refers to an eligible entrant."
+  },
+  {
+    "title": "OVERVIEW",
+    "content": "The Mini hackathon is a skill-based competition open to 1st year, 2nd year and 3rd year 1st semester, students of the Sri Lanka Institute of Information technology following an undergraduate degree program. Mini hackathon competition seeks to honor the most innovative, accessible, ground-breaking, and appealing software built to change the world and empower youth."
+  },
+  {
+    "title": "ENTRY PERIOD",
+    "content": "The entry period for the competition starts at 00.01 Colombo Local Time(GMT+5.30) on 01st September 2025 and ends on 30th September 2025 (\"Entry period\"). Following the entry, selected teams will advance to the preceding rounds.",
+    "table": {
+      "head": ["Round", "Mode", "Start Date", "End Date"],
+      "body": [
+        ["Round 1", "Virtual", "02nd September 2025", "30th September 2025"],  
+        ["Round 2", "Virtual", "05th October 2025", "10th October 2025"],
+        ["Round 3", "Physical", "12th October 2025", "12th October 2025"]
+      ]
+    },
+    "note": "Note: Above dates can be changed based on the situation."
+  },
+  {
+    "title": "ELIGIBILITY",
+    "content": "You are eligible to enter if you meet the following requirements below at the time of entry. For purposes of this Competition, \"time of entry\" is defined as the most recent date you have submitted an entry into a specific round.",
+    "list": [
+      "You are at least 16 years of age as of 02nd September 2025 and are actively enrolled as a student following an undergraduate degree program at Sri Lanka Institute of Information Technology.",
+      "You have not used paid employee's assistance in creating the mini hackathon entry deliverables.",
+      "You are not actively enrolled in any administration role of this competition.",
+      "You have not utilized any other competitors IPs without their permission.",
+      "You have not used any stolen/unauthorized resources in creating the deliverables for the competition."
+    ],
+    "content2": "If you have previously competed in Minihackathon competition, you are eligible to enter but any preceding entry submitted must be substantially new, unique and different from the previous entry."
+  },
+  {
+    "title": "TEAM FORMATION",
+    "content": "Three (3) members or four (4) members may submit a single entry as a team. It is recommended that each team carries members from diverse disciplines.",
+    "list": [
+      "The formation of teams between undergraduates following different degree programs or different faculties is allowed.",
+      "Each competitor may only belong to one team",
+      "Each Team is solely responsible for its own cooperation and teamwork. In no event will the Sponsor officiate in any dispute regarding the conduct or cooperation of any Team or its members.",
+      "Only one member is required to register their team."
+    ]
+  },
+  {
+    "title": "HOW TO ENTER",
+    "content": "To enter round 1 of the competition, visit http:/minihackathon.msclubsliit.org and register as instructed.",
+    "list": [
+      "You may only submit one (1) entry per round and only the first submission is counted while preceding submissions are discarded.",
+      "We will disqualify any incomplete or illegible entries that we receive. We are not responsible for entries that we do not receive for any reason, or for entries that we receive but are not decipherable for any reason."
+    ],
+    "content2": "If at any time during the Competition, you become ineligible after you've submitted an entry, you should proactively remove yourself and your team from any communication media including Whatsapp groups and teams channel."
+  },
+  {
+  "title": "COMPETITION ROUND DETAILS",
+  "content": "Below is the overview of the specifications under each round of the competition.",
+  "rounds": [
+    {
+      "title": "Round 1 (Virtual)",
+      "content": [
+        "The MiniHackathon competition gives students a chance to pitch their technology project and provide a project plan to be screened and evaluated by a panel of judges. In round 1 there are following competition categories to compete as,"
+      ],
+      "categories": [
+        {
+          "name": "Generative AI for Education",
+          "category": "Artificial Intelligence",
+          "content": [
+            "Adaptive learning systems that personalize content delivery.",
+            "Automated creation of study materials and assessments.",
+            "Tools to simplify complex concepts into understandable formats."
+          ]
+        },
+        {
+          "name": "AI in Healthcare",
+          "category": "Artificial Intelligence",
+          "content": [
+            "Data-driven disease prediction and prevention methods.",
+            "Automated interpretation of medical data and imaging.",
+            "Intelligent systems to enhance clinical decision-making."
+          ]
+        },
+        {
+          "name": "AI in Finance & Cybersecurity",
+          "category": "Artificial Intelligence",
+          "content": [
+            "Advanced fraud detection and anomaly identification.",
+            "Risk analysis and predictive modeling for financial services.",
+            "AI-driven cybersecurity monitoring and threat response."
+          ]
+        },
+        {
+          "name": "AI in Creative Industries",
+          "category": "Artificial Intelligence",
+          "content": [
+            "AI-assisted design, music, and media production.",
+            "Generative storytelling and content personalization.",
+            "Hybrid creativity blending human and machine input."
+          ]
+        },
+        {
+          "name": "Responsible & Ethical AI",
+          "category": "Artificial Intelligence",
+          "content": [
+            "Bias detection and fairness auditing in AI systems.",
+            "Explainability and transparency in AI decision-making.",
+            "Privacy-preserving AI approaches."
+          ]
+        },
+        {
+          "name": "AI for Climate & Sustainability",
+          "category": "Artificial Intelligence",
+          "content": [
+            "Predictive modeling for carbon emissions and energy use.",
+            "Optimization of renewable energy systems.",
+            "AI-based monitoring of environmental impact."
+          ]
+        },
+        {
+          "name": "Next-Gen IoT for Smart Cities",
+          "category": "IoT, Edge & Smart Systems",
+          "content": [
+            "Sensor networks for urban mobility and safety.",
+            "Smart infrastructure for waste, water, and energy.",
+            "Connected systems for improved city management."
+          ]
+        },
+        {
+          "name": "Industrial IoT & Edge Computing",
+          "category": "IoT, Edge & Smart Systems",
+          "content": [
+            "Predictive maintenance and monitoring in industries.",
+            "Edge processing for real-time decision-making.",
+            "Connectivity for supply chain and logistics systems."
+          ]
+        },
+        {
+          "name": "IoT for Healthcare & Well-being",
+          "category": "IoT, Edge & Smart Systems",
+          "content": [
+            "Wearable technologies for continuous monitoring.",
+            "Data collection for health and fitness insights.",
+            "Connected devices supporting telehealth."
+          ]
+        },
+        {
+          "name": "Blockchain for Governance & Transparency",
+          "category": "Blockchain & Web3",
+          "content": [
+            "Distributed ledgers for secure and transparent record-keeping.",
+            "Supply chain verification and traceability.",
+            "Decentralized identity management."
+          ]
+        },
+        {
+          "name": "Decentralized Finance & Digital Assets",
+          "category": "Blockchain & Web3",
+          "content": [
+            "Tokenization of assets and peer-to-peer transactions.",
+            "Decentralized financial platforms for inclusion.",
+            "Cross-border payment and remittance solutions."
+          ]
+        },
+        {
+          "name": "Green Tech & Circular Economy",
+          "category": "Sustainability & Green Tech",
+          "content": [
+            "Systems for sustainable product life cycles.",
+            "Solutions for recycling, reuse, and eco-tracking.",
+            "Methods to encourage responsible consumption."
+          ]
+        },
+        {
+          "name": "Renewable Energy & Climate Resilience",
+          "category": "Sustainability & Green Tech",
+          "content": [
+            "Off-grid and decentralized renewable solutions.",
+            "Forecasting and optimization of energy demand.",
+            "Tools for climate risk assessment and resilience."
+          ]
+        },
+        {
+          "name": "Agritech & Food Security",
+          "category": "Sustainability & Green Tech",
+          "content": [
+            "Precision farming and smart irrigation approaches.",
+            "Crop monitoring and yield prediction.",
+            "Technology for efficient food distribution chains."
+          ]
+        },
+        {
+          "name": "Future of Work & Human Augmentation",
+          "category": "Society, Work & Accessibility",
+          "content": [
+            "Digital collaboration platforms and immersive workspaces.",
+            "Tools for gig economy participation and reskilling.",
+            "Human-AI co-working and productivity enhancements."
+          ]
+        },
+        {
+          "name": "Inclusive Tourism & Culture Tech",
+          "category": "Society, Work & Accessibility",
+          "content": [
+            "Accessibility in travel and tourism.",
+            "Immersive cultural and educational experiences.",
+            "Sustainable practices in tourism ecosystems."
+          ]
+        },
+        {
+          "name": "Disaster Preparedness & Resilience",
+          "category": "Society, Work & Accessibility",
+          "content": [
+            "Early warning and alerting systems.",
+            "Technology for disaster monitoring and response.",
+            "Coordination tools for recovery and resource management."
+          ]
+        },
+        {
+          "name": "AR/VR & Metaverse Innovations",
+          "category": "Emerging Tech Additions",
+          "content": [
+            "Immersive learning and training environments.",
+            "Virtual experiences in healthcare, retail, or entertainment.",
+            "Blended physical-digital experiences."
+          ]
+        },
+        {
+          "name": "Biotech & Digital Health",
+          "category": "Emerging Tech Additions",
+          "content": [
+            "Personalized medicine and preventive health approaches.",
+            "Biosensors for health data monitoring.",
+            "Genomic and bioinformatics-driven insights."
+          ]
+        },
+        {
+          "name": "Human-Computer Interaction & Brain-Computer Interfaces (BCI)",
+          "category": "Emerging Tech Additions",
+          "content": [
+            "New ways of interacting with machines using gestures, voice, or brain signals.",
+            "Accessibility tools for differently abled users.",
+            "Exploration of intuitive and immersive human-tech experiences."
+          ]
+        }
+      ],
+      "list": [
+        "Project Proposal: This should be a Microsoft word document or a PDF document no longer than 10 pages(Excluding the report format such as table of content and figure panels) which explains your project and what is the solution that your team is trying to tackle, who your project is for and how you will you bring your project to the market from a technological standpoint.",
+        "Presentation Video: 3 min presentation (a demo video if required) presenting your solution.( PowerPoint or Google Slides can use for presentation slides ).",
+        "Software (optional): Usable software if there is any.",
+        "Software Instructions (optional): Instruction on how to use the software if there is one.",
+        "Prototype (optional): Adobe XD or Figma prototype created demonstrating the software.",
+        "Participants are required to select one topic from the list of 20 provided below for the Round 01. In the project proposal clearly mention the topic that you have choosen."
+      ],
+      "advancement": {
+        "title": "Round 1 Advancement:",
+        "content": "All the submissions will be evaluated by Microsoft gold ambassadors and will be marked according to the criteria provided.",
+        "note": "Top 16 teams spanning across all criteria with the highest cumulative mark will be advancing to the next round."
+      }
+    },
+    {
+      "title": "Round 2 (Virtual)",
+      "content": [
+        "All teams advancing to the second round will be invited to do live presentations. A mentor will be assigned to each team to help with their proceedings and fine tune their solution. The round 2 competitors must have the following material."
+      ],
+      "list": [
+        "Project Proposal: This should be a Microsoft word document or a PDF document no longer than 10 pages(Excluding the report format such as table of content and figure panels) which explains your project and what is the solution that your team is trying to tackle, who your project is for and how you will you bring your project to the market from a technological standpoint.",
+        "Live Presentation: 10 min presentation of your project to be presented in front of a panel. The team should explain your project and the material required can be prepared prior to the presentation. Following the presentation the teams are required to face a Question round (1 min).",
+        "Prototype: Adobe XD or Figma prototype created demonstrating the software.",
+        "Software (optional): Usable software if there is any.",
+        "Software Instructions (optional): Instruction on how to use the software if there is one."
+      ],
+      "advancement": {
+        "title": "Round 2 Advancement:",
+        "content": "All the submissions will be evaluated by an expert judge panel and will be marked according to the criteria provided.",
+        "note": "Top 10 teams spanning across all criteria with the highest cumulative mark will be advancing to the next round."
+      }
+    },
+    {
+      "title": "Round 3 (Physical)",
+      "content": [
+        "All teams advancing to round 3 will be invited to take part in the physical event at Sri Lanka Institute of Information Technology Campus , Malabe. The teams advancing will be presenting in front of an expert panel of judges. The criterions will be different in the final round.",
+        "The contestants cannot prepare any prior material and are required to provide the solution for a topic that is given at the day of the competition. The categories will be chosen randomly and the solutions must be innovative. After the topics are selected, the contestants will be given 5h to come up with an innovative solution and create the material required to present in front of an expert panel of judges."
+      ],
+      "list": [
+        "Live Presentation: 10 min presentation of your solutions for the provided problem to be presented in front of the panel. The team should explain their solution, the commercialization aspect and how important the solution is and how it differs from the existing solutions. Following the presentation the teams are required to face a Question round (1 min).",
+        "Prototype: Adobe XD or Figma prototype created demonstrating the software."
+      ],
+      "content2": "Winners will be selected based on the cumulative score provided by the expert panel of judges."
+    }
+  ]
+}
+,
+  {
+    "title": "PRIZES",
+    "content": "All teams that advance to the final round will be provided with, Printed Certificates and Swags!",
+    "prizes": [
+      {
+        "place": "3rd place",
+        "description": "The team that is placed 3rd at the Minihackathon 2025 competition will be provided with,",
+        "reward": " Cash Prize: 15,000 LKR"
+      },
+      {
+        "place": "2nd place",
+        "description": "The team that is placed 2nd at the Minihackathon 2025 competition will be provided with,",
+        "reward": " Cash Prize: 20,000 LKR"
+      },
+      {
+        "place": "1st place",
+        "description": "The team that is placed 1st at the Minihackathon 2025 competition will be provided with,",
+        "reward": " Cash Prize: 30,000 LKR"
+      }
+    ]
+  },
+  {
+    "title": "Content and technical requirements",
+    "rounds": [
+      {
+        "title": "Presentation Video",
+        "content": [
+          "The Presentation Video is a video recording of your Live Presentation and must abide by the same requirements as the Live Presentation except that there will be no questions from the judges. In addition:"
+        ],
+        "list": [
+          "The video should be no longer than 3 minutes.",
+          "You can use MS Powerpoint or Google Slides for presentation purposes.",
+          "If you are utilizing a webcam for any demonstrations, make sure to do it under proper lighting conditions.",
+          "The video should be uploaded to Microsoft streams using the SLIIT email address and the publicly accessible URL should be provided (Any submission that does not meet this criteria has the risk of being not considered).",
+          "The video must be your own creation. You may utilize the assistance of an expert for only the video editing and exporting part. But the content of the video must be original including the voices."
+        ]
+      },
+      {
+        "title": "Project Proposal",
+        "content": [
+          "This is a Microsoft Word or PDF document no longer than ten pages which explains your project and your team: Who your team is; what your project does; who your project is for; what platform features your project uses; and how you will bring your project to market. It is the written equivalent of the Live Presentation in terms of the material it covers. Your Project Proposal must meet the following criteria:"
+        ],
+        "list": [
+          "Document must be your own work.",
+          "Document must be in the English language.",
+          "Document must not be larger than 100MB.",
+          "The provided format must be DOC, DOCX or PDF."
+        ]
+      },
+      {
+        "title": "Live Presentation",
+        "content": [
+          "The Live Presentation is a three-minute PowerPoint overview of your team and project accompanied by a live demonstration of the prototype. This presentation should explain your project and your team: Who your team is; what your project does; who your project is for; and how you will bring your project to market. The Live Presentation must meet the following criteria:"
+        ],
+        "list": [
+          "In a semi virtual setting you are required to be present 10 minutes prior to the allocated time slot in the waiting room. Organizing team will brief you about the proceedings. Make sure to check the link provided is correct with the organizing team.",
+          "In a physical setting, the organizing team will try their best to provide the necessary hardware for the demonstrations, but you are responsible for checking the compatibility prior to the presentation. Therefore be at the premises early and utilize the assistance provided by the organizers.",
+          "Presentation must clearly address the judging criteria outlined.",
+          "The accompanying PowerPoint or Google Slides must be in the English language and you must.",
+          "Conduct your presentation in English. If a translator is needed, you are responsible for procuring one.",
+          "Any or all of your team members may participate in the presentation, but all are not required to participate. It's permissible for a single team member to deliver the entire presentation."
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Other Conditions",
+    "content": "By entering the competition you hereby agree:",
+    "list": [
+      "To abide the official rules.",
+      "That the decision of the organizing committee and the panel of judges is final.(We try to be as transparent as possible with the results).",
+      "To not engage in any form of harassment towards the fellow participants or the organizing committee."
+    ]
+  },
+  {
+    "title": "Marking Criteria",
+    "content": "The marking criteria for the competition is as follows.",
+    "nestedTable": {
+      "head": ["Criteria", "Description"],
+      "body": [
+        {
+          "criteria": "Technology",
+          "description": [
+            "The effective utilization of innovative technologies where appropriate",
+            "Proficiency in software design and proof that it could be implemented using the currently existing technologies",
+            "Were there significant platform features the project could benefit and could have utilized",
+            "Innovation in user experience"
+          ]
+        },
+        {
+          "criteria": "Innovation",
+          "description": [
+            "Does the project create new category of products or services?",
+            "Does the project clearly and meaningfully innovate beyond existing products?",
+            "Does this address the provided issue at hand?"
+          ]
+        },
+        {
+          "criteria": "Concept",
+          "description": [
+            "Does this have a clear targeted audience?",
+            "Opportunity and the lack of a solution in the domain is clearly identified",
+            "Projects purpose is easily understood"
+          ]
+        },
+        {
+          "criteria": "Feasibility",
+          "description": [
+            "Does the proposed solution feasible?",
+            "Does the team have a credible plan for getting their project to market in terms of business model?"
+          ]
+        },
+        {
+          "criteria": "Presentation",
+          "description": [
+            "Is the presentation properly structured and demonstrates the solution thoroughly?"
+          ]
+        },
+        {
+          "criteria": "Prototyping",
+          "description": [
+            "Does the prototype thoroughly demonstrate the proposed solution and addresses the given criteria? ( This is for Round 2 and Final Round )"
+          ]
+        }
+      ]
+    }
+  }
+]

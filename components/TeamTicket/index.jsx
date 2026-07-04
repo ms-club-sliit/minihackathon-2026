@@ -1,0 +1,185 @@
+import React, { useCallback, useRef } from "react";
+import { toPng } from "html-to-image";
+import { useEffect } from "react";
+import { forwardRef } from "react";
+import { useImperativeHandle } from "react";
+import { useDisplaySize, usePerspectiveOnMouseMoveEffect } from "../../hooks";
+
+/**
+ *
+ * @param {{
+ * 		headerImage: "",
+ * 		ticketNo: "",
+ * 		team: "",
+ * 		studentItNo: "",
+ * 		title: "",
+ * 		subTitle: "",
+ * 		date: "",
+ * 		url: "",
+ *      onRender: "",
+ * 		onClickSave: "",
+ * 		save: ""
+ * }} props
+ * @property url - The url is required to generate the QR code
+ * @example 	
+	* <Ticketa
+				headerImage={logo}
+				title="Mini Hackathon 2022"
+				subTitle="Awareness Session 📣"
+				date={new Date()}
+				ticketNo="334535"
+				studentItNo="IT19104218"
+				studentNames={["Rusiru Abhisheak"]}
+				url={SessionInfo.awarenessSessionLink}
+			/>
+ */
+const TeamTicket = (props, this_ref) => {
+	const isDebugModeOn = false;
+	const ref = useRef(null);
+	const htmlRef = useRef(null);
+	const { onRender } = props;
+
+	const size = useDisplaySize();
+
+	usePerspectiveOnMouseMoveEffect(ref);
+
+	useImperativeHandle(this_ref, () => ({
+		renderTicket: () => {
+			if (ref.current === null) {
+				return;
+			}
+
+			ref.current.style.transform = "none";
+			return toPng(htmlRef.current, { cacheBust: true });
+		},
+	}));
+
+	useEffect(() => {
+		if (onRender && ref.current) {
+			ref.current.style.transform = "none";
+			toPng(ref.current, { cacheBust: true })
+				.then((dataUrl) => {
+					ref.current.style.transform = "none";
+					onRender(dataUrl);
+				})
+				.catch((err) => {
+					console.error(err);
+				});
+		}
+	}, [ref, isDebugModeOn, onRender]);
+
+	const getMembers = useCallback(() => {
+		if (!props.team) return [];
+
+		let members = [];
+		for (let i = 1; i <= 4; i++) {
+			let member = props.team[`member0${i}`];
+
+			if (member) members.push({ image: member.imgUrl, name: member.name });
+		}
+
+		return members;
+	}, [props.team]);
+
+	const getCurrentDateString = () => {
+		const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+		return new Intl.DateTimeFormat('en-US', options).format(new Date());
+	};
+
+	const getCurrentTimeString = () => {
+		const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+		return new Intl.DateTimeFormat('en-US', options).format(new Date());
+	};
+
+	return (
+		<div>
+			<svg width={size === 0 ? 390 : 727} viewBox="0 0 727 400" ref={ref}>
+				<foreignObject
+					width={727}
+					height={400}
+					xmlns="http://www.w3.org/2000/svg"
+				>
+					<div
+						ref={htmlRef}
+						className="flex flex-row w-full h-full border-black border-[4px] rounded-[30px] ticket-team-bg bg-white"
+					>
+						<div className="h-full flex-grow pl-[54px] py-[51px]">
+							<div className="flex flex-row h-full justify-center items-center">
+								<div className="h-full max-w-[275px] mr-[30px]">
+									<div className="flex flex-row items-center mb-[30px]">
+										<div className="ticket-team-name line-clamp-2">
+											{props.team && props.team.team_name}
+										</div>
+									</div>
+
+									{getMembers()
+										.filter(member => member.name) // Filter out members with an empty or undefined name
+										.map((member, index) => (
+											<div
+												key={index}
+												className="flex flex-row items-center mb-[14px]"
+											>
+												<div className="w-[40px] h-[40px] flex justify-center items-center flex-shrink-0 rounded-full bg-black mr-[8px] overflow-hidden">
+													<div className="text-white text-xl font-bold">
+														{member.name?.[0].toUpperCase()}
+													</div>
+												</div>
+												<div className="ticket-team-member line-clamp-2">
+													{member.name}
+												</div>
+											</div>
+										))}
+								</div>
+								<div className="flex-grow"></div>
+								{/* Fixed center section with better spacing and layout */}
+								<div className="flex flex-col justify-center items-center min-w-[220px] max-w-[280px] px-4">
+									<img
+										width={190}
+										src="/images/2025-images/logo-main-2025.png"
+										alt="Mini hackathon logo"
+										className="mb-[12px]"
+									/>
+									<div className="ticket-team-round mb-[25px] text-center">1st Round</div>
+									
+									{/* Fixed date/time layout with proper spacing */}
+									<div className="w-full text-center mb-[20px]">
+										<div className="ticket-team-date mb-[8px] leading-tight">
+											{getCurrentDateString()}
+										</div>
+										<div className="ticket-team-time leading-tight">
+											{getCurrentTimeString()}
+										</div>
+									</div>
+									
+									<div className="w-full flex flex-col items-center">
+										<div className="team-hosted-by whitespace-nowrap text-sm mb-2 text-center">
+											Hosted by
+										</div>
+										<div className="flex justify-center items-center gap-2">
+											<img
+												src="/assets/ms_club_logo.png"
+												alt="MS Club logo"
+												className="h-[35px] object-contain"
+											/>
+											<img
+												src="/assets/fcsc_logo.webp"
+												alt="FCSC logo"
+												className="h-[35px] object-contain"
+											/>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className="team-dashed-line h-full"></div>
+						<div className="w-[101px] team-number flex justify-center items-center">
+							#{String(props.ticketNo).padStart(4, "0")}
+						</div>
+					</div>
+				</foreignObject>
+			</svg>
+		</div>
+	);
+};
+
+export default forwardRef(TeamTicket);

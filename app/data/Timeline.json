@@ -1,0 +1,50 @@
+[
+  {
+    "index": 1,
+    "date": "02nd of September",
+    "title": "Registration Open",
+    "position": "right",
+    "description": "Being aware of the competition will help you create a remarkable project adhering to the rules and guidelines of the competition. The best way to do so is by attending the awareness session.",
+    "color": "#EF4444"
+  },
+  {
+    "index": 2,
+    "date": "02nd of September - 7.00pm",
+    "title": "Awareness Session",
+    "position": "left",
+    "description": "Join us for the awareness session to learn more about the competition and how to prepare for it.",
+    "color": "#EF4444"
+  },
+  {
+    "index": 3,
+    "date": "02nd of September",
+    "title": "Team Registration Open",
+    "position": "right",
+    "description": "Registrations for Round One are now open! Get your team registered on time by submitting an entry. Each team must consist of 3 to 4 members. Remember, a strong team is the key to winning championships.",
+    "color": "#F59E0B"
+  },
+  {
+    "index": 4,
+    "date": "30th of September - 10.00 AM",
+    "title": "Registration Closes",
+    "position": "left",
+    "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
+    "color": "#3B82F6"
+  },
+  {
+    "index": 5,
+    "date": "10th of October",
+    "title": "Round 2 - Live Presentation",
+    "position": "right",
+    "description": "Teams that qualify for Round 2 will present their projects to the judges in a live format.",
+    "color": "#10B981"
+  },
+  {
+    "index": 6,
+    "date": "12th of October",
+    "title": "Final Round",
+    "position": "left",
+    "description": "All teams advancing to round 3 are invited to the physical event at the Sri Lanka Institute of Information Technology Campus, Malabe, to present the project in front of an expert panel. Winners will be selected accordingly.",
+    "color": "#374151"
+  }
+]

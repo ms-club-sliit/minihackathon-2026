@@ -1,0 +1,253 @@
+.countdownTimer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-image: url("/images/ctbg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Styles for the Vertical Timeline */
+
+@media (min-width: 744px) and (max-width: 1170px) {
+  .vertical-timeline.custom {
+    width: 70%;
+  }
+}
+
+.vertical-timeline::before {
+  width: 1px;
+  border: 15px solid;
+  border-color: #e2e2e2;
+  padding: 5px;
+  background: var(--line-color);
+  border-radius: 50px 50px 50px 50px;
+}
+
+.vertical-timeline-element-icon {
+  margin-left: 20px;
+}
+
+@media only screen and (min-width: 1170px) {
+  .vertical-timeline--two-columns .vertical-timeline-element-icon.custom-icon {
+    margin-left: -15px;
+  }
+}
+
+@media only screen and (max-width: 1170px) {
+  .vertical-timeline-element-content {
+    margin-left: 80px !important;
+  }
+}
+
+@media (min-width: 744px) and (max-width: 1170px) {
+  .vertical-timeline-element-content {
+    width: 374px !important;
+  }
+}
+
+.custom-gradient {
+  background: linear-gradient(
+    175deg,
+    rgba(255, 255, 255, 0.7) -0.23%,   /* more white */
+    rgba(239, 74, 35, 0.3) 48.5%,      /* EF4A23 orange with transparency */
+    rgba(255, 255, 255, 0.05) 97.24%   /* subtle white overlay */
+  );
+}
+
+
+/* End Of Styles for the Vertical Timeline */
+
+/* newly added */
+.gradient-45 {
+  background: 
+    linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.7) 0%,  /* more white at the start */
+      rgba(255, 255, 255, 0.7) 100%
+    ),
+    linear-gradient(
+      45deg,
+      #F49A85 0%,    /* light orange */
+      #EF4A23 40%,   /* dark orange */
+      #87BAF6 70%,   /* light blue */
+      #457EC1 100%   /* dark blue */
+    );
+}
+
+/* newly added */
+.gradient-120 {
+  background: 
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.7) 0%,  /* semi-transparent white overlay */
+      rgba(255, 255, 255, 0.7) 100%
+    ),
+    linear-gradient(120deg, #F49A85 0%, #EF4A23 50%, #87BAF6 75%, #457EC1 100%);
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: normal;
+	font-weight: 400;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYREGULAR.woff")
+			format("woff");
+}
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: italic;
+	font-weight: 100;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYULTRALIGHTITALIC.woff")
+			format("woff");
+}
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: italic;
+	font-weight: 200;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYTHINITALIC.woff")
+			format("woff");
+}
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: italic;
+	font-weight: 300;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYLIGHTITALIC.woff")
+			format("woff");
+}
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: normal;
+	font-weight: 500;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYMEDIUM.woff")
+			format("woff");
+}
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: italic;
+	font-weight: 600;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYSEMIBOLDITALIC.woff")
+			format("woff");
+}
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: normal;
+	font-weight: 700;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYBOLD.woff")
+			format("woff");
+}
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: italic;
+	font-weight: 800;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYHEAVYITALIC.woff")
+			format("woff");
+}
+@font-face {
+	font-family: "SF Pro Display";
+	font-style: italic;
+	font-weight: 900;
+	src: local("SF Pro Display"),
+		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYBLACKITALIC.woff")
+			format("woff");
+}
+
+html,body, #root {
+	margin: 0;
+	width:100%;
+}
+
+.background-shade-1 {
+	background: rgb(0, 0, 0);
+	background: linear-gradient(
+		155deg,
+		rgba(0, 0, 0, 1) 35%,
+		rgba(122, 122, 122, 1) 83%
+	);
+}
+
+.ticket-team-name {
+	font-family: SF Pro Display;
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 38px;
+	letter-spacing: -0.02em;
+}
+
+.ticket-team-member {
+	font-family: SF Pro Display;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+}
+
+.ticket-team-bg {
+	background-image: url("../public/assets/teamcard/bg.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.ticket-team-round {
+	font-family: SF Pro Display;
+	color: #969696;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 29px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+
+.ticket-team-date {
+	font-family: SF Pro Display;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 29px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+
+.ticket-team-time {
+	font-family: SF Pro Display;
+	color: #969696;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 29px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+
+.team-hosted-by {
+	font-family: SF Pro Display;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 24px;
+	letter-spacing: -0.02em;
+	text-align: center;
+}
+
+.team-dashed-line {
+	border: 2px dashed rgba(0, 0, 0, 0.19);
+}
+
+.team-number {
+	font-family: SF Pro Display;
+	font-size: 36px;
+	font-weight: 800;
+	writing-mode: vertical-lr;
+	text-orientation: mixed;
+	transform: rotate(-180deg);
+}
