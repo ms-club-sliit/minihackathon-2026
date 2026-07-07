@@ -13,7 +13,7 @@ const MSLogs = [
   {
     src: '/images/2026-logo/logo-main-2026.png',
     alt: 'MS Club Of SLIIT',
-    link: 'https://msclubsliit.org',
+    link: '/',
     width: 90,
     height: 135,
   }
