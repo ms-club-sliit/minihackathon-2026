@@ -6,7 +6,7 @@
   - [Recommended VS Code Extensions](#recommended-vs-code-extensions)
 
 ## [Figma Design](#figma-design)
-
+[Preview Design](https://www.figma.com/design/gidQb96IhP2dLw4pzXIMKU/MiniHackathon-26?node-id=0-1&p=f&t=712yV5GFsA4y91UG-0)
 
 ## [How to contribute](#how-to)
 
