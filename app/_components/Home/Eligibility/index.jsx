@@ -25,19 +25,19 @@ export default function Eligibility () {
         </p>
         <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 md:gap-8 w-full justify-center items-center">
           <div
-            className="bg-[#2E47FF] text-white text-base xs:text-sm sm:text-lg md:text-xl font-extrabold px-4 xs:px-6 sm:px-8 py-3 sm:py-4 rounded-2xl min-w-[220px] xs:min-w-[260px] sm:min-w-[280px] md:min-w-[320px] text-center hover:cursor-pointer"
+            className="bg-[#2E47FF] text-white text-base xs:text-sm sm:text-md md:text-lg font-extrabold px-6 sm:px-2 py-3 sm:py-3 rounded-2xl min-w-[180px] xs:min-w-[220px] sm:min-w-[240px] md:min-w-[260px] text-center hover:cursor-pointer"
             style={{fontFamily: 'inherit'}}
           >
             All First Year Students
           </div>
           <div
-            className="bg-[#2E47FF] text-white text-base xs:text-sm sm:text-lg md:text-xl font-extrabold px-4 xs:px-6 sm:px-8 py-3 sm:py-4 rounded-2xl min-w-[220px] xs:min-w-[260px] sm:min-w-[280px] md:min-w-[320px] text-center hover:cursor-pointer"
+            className="bg-[#2E47FF] text-white text-base xs:text-sm sm:text-md md:text-lg font-extrabold px-6 sm:px-2 py-3 sm:py-3 rounded-2xl min-w-[180px] xs:min-w-[220px] sm:min-w-[260px] md:min-w-[280px] text-center hover:cursor-pointer"
             style={{fontFamily: 'inherit'}}
           >
             All Second Year Students
           </div>
           <div
-            className="bg-[#2E47FF] text-white text-base xs:text-sm sm:text-lg md:text-xl font-extrabold px-4 xs:px-6 sm:px-8 py-3 sm:py-4 rounded-2xl min-w-[240px] xs:min-w-[300px] sm:min-w-[320px] md:min-w-[370px] text-center hover:cursor-pointer"
+            className="bg-[#2E47FF] text-white text-base xs:text-sm sm:text-md md:text-lg font-extrabold px-6 sm:px-2 py-3 sm:py-3 rounded-2xl min-w-[240px] xs:min-w-[300px] sm:min-w-[320px] md:min-w-[360px] text-center hover:cursor-pointer"
             style={{fontFamily: 'inherit'}}
           >
             All 3rd Year 1st Semester Students
