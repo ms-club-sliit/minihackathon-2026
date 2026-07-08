@@ -76,58 +76,9 @@ const stepItems = [
 ];
 
 async function sendEmail(to, subject, body, retryCount = 0) {
-  const maxRetries = 3;
-
-  try {
-    let response = await fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email: to, subject: subject, body: body }),
-    });
-
-    if (response.ok) {
-      return await response.json();
-    }
-
-    // Handle rate limiting specifically
-    if (response.status === 429) {
-      if (retryCount < maxRetries) {
-        const data = await response.json();
-        const retryAfter = data.retryAfter || 5000; // Default to 5 seconds
-
-        console.log(
-          `Rate limit hit for ${to}, retrying in ${retryAfter}ms (attempt ${
-            retryCount + 1
-          }/${maxRetries})`
-        );
-
-        // Wait before retrying
-        await new Promise(resolve => setTimeout(resolve, retryAfter));
-        return sendEmail(to, subject, body, retryCount + 1);
-      } else {
-        throw new Error(`Rate limit exceeded after ${maxRetries} retries`);
-      }
-    }
-
-    console.error('Email sending failed:', await response.text());
-    throw new Error(`Email sending failed with code ${response.status}`);
-  } catch (error) {
-    if (
-      retryCount < maxRetries &&
-      (error.message.includes('fetch') || error.message.includes('network'))
-    ) {
-      console.log(
-        `Network error for ${to}, retrying in 2 seconds (attempt ${
-          retryCount + 1
-        }/${maxRetries})`
-      );
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      return sendEmail(to, subject, body, retryCount + 1);
-    }
-    throw error;
-  }
+  console.log("Mocking email sending for frontend preview...", to);
+  await new Promise(resolve => setTimeout(resolve, 500));
+  return { success: true };
 }
 
 const Register = () => {
@@ -268,48 +219,10 @@ const Register = () => {
   };
 
   const saveTicketToSupabase = async popupRef => {
-    // Check if we already saved this ticket
-    if (saveTicketToSupabase.lastSavedTicket) {
-      console.log(
-        'Reusing existing ticket URL:',
-        saveTicketToSupabase.lastSavedTicket
-      );
-      return saveTicketToSupabase.lastSavedTicket;
-    }
-
-    try {
-      // Use renderTicket method through the popup ref instead of onRender
-      const dataURL = await popupRef.current.renderTicket();
-
-      let fileName = generateFileName();
-      const filePath = `ticket-images-2026/${fileName}`;
-      const blob = dataURItoBlob(dataURL);
-
-      const { data, error } = await supabase.storage
-        .from('uploads')
-        .upload(filePath, blob, {
-          cacheControl: '3600',
-          upsert: true,
-          contentType: 'image/jpeg',
-        });
-
-      if (error) {
-        console.error('Upload error:', error);
-        throw error;
-      }
-
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from('uploads').getPublicUrl(filePath);
-
-      // Save the URL for reuse
-      saveTicketToSupabase.lastSavedTicket = publicUrl;
-      console.log('Uploaded successfully to:', publicUrl);
-      return publicUrl;
-    } catch (error) {
-      console.error('Error uploading ticket:', error);
-      throw error;
-    }
+    console.log("Mocking Supabase image upload for frontend preview...");
+    // Just extract the image dataURL and return it instead of uploading
+    const dataURL = await popupRef.current.renderTicket();
+    return dataURL; 
   };
 
   const saveTicket = async image_string => {
@@ -476,7 +389,7 @@ const Register = () => {
   }, []);
 
   function generateTicketID() {
-    const prefix = 'MS25';
+    const prefix = 'MS26';
     const randomComponent = Math.floor(Math.random() * 1000000); // Random number between 0 and 999999
     const paddedNumber = randomComponent.toString().padStart(5, '0'); // Ensure it is always 5 digits
     return `${prefix}${paddedNumber}`;

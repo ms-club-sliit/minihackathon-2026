@@ -52,68 +52,19 @@ const handleUpload = async (
 };
 
 const registerTeam = async (teamData) => {
+  console.log("Mocking registration success for frontend preview...");
+  // Simulate network delay
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
-  try {
-
-    console.log(teamData)
-
-    // Pre Process stage
-    let preProcess = teamData;
-
-    Object.keys(preProcess).forEach(step => {
-      if (preProcess[step].hasOwnProperty('img')) {
-        delete preProcess[step].img;
-      }
-
-      Object.keys(preProcess[step]).forEach(key => {
-        if (preProcess[step][key] === undefined) {
-          preProcess[step][key] = null;
-        }
-      });
-
-    });
-
-
-    //
-    let model = {
-      team_name: preProcess.step1.teamname || "",
-      team_drive_link: preProcess.step1.link,
-      created_at: new Date().toISOString(),
-      member01: { ...preProcess.step2 },
-      member02: { ...preProcess.step3 },
-      member03: { ...preProcess.step4 },
-      member04: { ...preProcess.step5 },
-    };
-
-    console.log(model);
-
-    let documentID = model.team_name.trim();
-
-    // Check if team exists
-    const { data: existingTeams } = await supabase
-      .from('team_name_2026')
-      .select('team_name')
-      .eq('team_name', documentID);
-
-    if (existingTeams && existingTeams.length > 0) {
-      console.log("Given team name already exists!");
-      throw new Error("Given team name already exists!");
-    }
-
-    // Insert new team
-    const { data, error } = await supabase
-      .from('team_name_2026')
-      .insert([{ id: documentID, ...model }])
-      .select();
-
-    if (error) throw error;
-    console.log("Team registered successfully!");
-
-    return data;
-  } catch (error) {
-    console.error("Error saving data: ", error);
-    new Error("Team registration failed");
-  }
+  // Return full team data including all members
+  return [{
+    id: teamData.step1.teamname || "TestTeam",
+    team_name: teamData.step1.teamname || "TestTeam",
+    member01: { ...teamData.step2 },
+    member02: { ...teamData.step3 },
+    member03: { ...teamData.step4 },
+    member04: { ...teamData.step5 },
+  }];
 };
 
 const checkTeamExists = async (teamName) => {
