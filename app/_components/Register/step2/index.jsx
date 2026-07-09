@@ -70,6 +70,9 @@ const Step2 = (props) => {
   return (
     <div className="p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
+        <h2 className="step-title text-center font-bold text-gray-900 text-xl sm:text-2xl mb-8 tracking-tight">
+          Member 1 (Leader) Details
+        </h2>
         <Form
           size="large"
           name="basic"
@@ -82,63 +85,64 @@ const Step2 = (props) => {
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
+          requiredMark={false}
         >
-          <Row gutter={16}>
-            <Col xs={24} sm={12}>
+          <Row gutter={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Member Name"
+                label={<span className="text-xs font-bold text-gray-700 tracking-wider">MEMBER NAME <span className="text-red-500 font-bold">*</span></span>}
                 name="name"
                 rules={[{ required: true, validator: validateName }]}
               >
-                <Input />
+                <Input className="custom-input" placeholder="Full Name" />
               </Form.Item>
             </Col>
 
-            <Col xs={24} sm={12}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Member's Contact"
+                label={<span className="text-xs font-bold text-gray-700 tracking-wider">MEMBER'S CONTACT <span className="text-red-500 font-bold">*</span></span>}
                 name="contact"
                 rules={[{ required: true, validator: validateContact }]}
                 onInput={(e) => {
                   e.target.value = e.target.value.replace(/\D/g, "");
                 }}
               >
-                <Input />
+                <Input className="custom-input" placeholder="Phone Number" />
               </Form.Item>
             </Col>
           </Row>
 
-          <Row gutter={16}>
-            <Col xs={24} sm={12}>
+          <Row gutter={24}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="Member's Email"
+                label={<span className="text-xs font-bold text-gray-700 tracking-wider">MEMBER'S EMAIL <span className="text-red-500 font-bold">*</span></span>}
                 name="email"
                 rules={[{ required: true, validator: validateEmail }]}
               >
-                <Input />
+                <Input className="custom-input" placeholder="Email Address" />
               </Form.Item>
             </Col>
 
-            <Col xs={24} sm={12}>
+            <Col xs={24} md={12}>
               <Form.Item
-                label="SLIIT ID"
+                label={<span className="text-xs font-bold text-gray-700 tracking-wider">SLIIT ID <span className="text-red-500 font-bold">*</span></span>}
                 name="uniId"
                 rules={[{ required: true, validator: validateUniId }]}
               >
-                <Input />
+                <Input className="custom-input" placeholder="e.g. IT2104820" />
               </Form.Item>
             </Col>
           </Row>
 
-          <Row gutter={16}>
-            <Col xs={24} sm={12}>
+          <Row gutter={24}>
+            <Col xs={24} md={12}>
               <Form.Item
                 name="faculty"
-                label="SLIIT Faculty"
+                label={<span className="text-xs font-bold text-gray-700 tracking-wider">SLIIT FACULTY <span className="text-red-500 font-bold">*</span></span>}
                 hasFeedback
                 rules={[{ required: true, message: "Please select your Faculty!" }]}
               >
-                <Select placeholder="Please select a faculty">
+                <Select placeholder="Select Faculty" className="custom-select">
                   <Option value="Faculty of Computing">Faculty of Computing</Option>
                   <Option value="Faculty of Engineering">Faculty of Engineering</Option>
                   <Option value="Faculty of Business">Faculty of Business</Option>
@@ -146,14 +150,14 @@ const Step2 = (props) => {
               </Form.Item>
             </Col>
 
-            <Col xs={24} sm={12}>
+            <Col xs={24} md={12}>
               <Form.Item
                 name="academicYear"
-                label="Academic Year"
+                label={<span className="text-xs font-bold text-gray-700 tracking-wider">ACADEMIC YEAR <span className="text-red-500 font-bold">*</span></span>}
                 hasFeedback
                 rules={[{ required: true, message: "Please select your current academic year!" }]}
               >
-                <Select placeholder="Please select an academic year">
+                <Select placeholder="Select Year/Semester" className="custom-select">
                   <Option value="Year 01 Semester 01">Year 01 Semester 01</Option>
                   <Option value="Year 01 Semester 02">Year 01 Semester 02</Option>
                   <Option value="Year 02 Semester 01">Year 02 Semester 01</Option>
@@ -168,54 +172,53 @@ const Step2 = (props) => {
             <Col xs={24}>
               <Form.Item label="Upload Image">
                 <Form.Item
-                  name="dragger"
-                  valuePropName="fileList"
-                  getValueFromEvent={normFile}
-                  noStyle
-                  rules={[{ validator: validateFileUpload }]}
-                >
-                  <Upload.Dragger
-                    name="files"
-                    maxCount={1}
-                    customRequest={uploadHandleWrapper}
-                    fileList={fileList}
-                    onChange={({ fileList }) => setFileList(fileList)}
-                  >
-                    <p className="ant-upload-drag-icon">
-                      <InboxOutlined />
-                    </p>
-                    <p className="ant-upload-text">
-                      Click or drag file to this area to upload profile image
-                    </p>
-                  </Upload.Dragger>
-                </Form.Item>
-              </Form.Item>
-            </Col>
-          </Row> */}
+                   name="dragger"
+                   valuePropName="fileList"
+                   getValueFromEvent={normFile}
+                   noStyle
+                   rules={[{ validator: validateFileUpload }]}
+                 >
+                   <Upload.Dragger
+                     name="files"
+                     maxCount={1}
+                     customRequest={uploadHandleWrapper}
+                     fileList={fileList}
+                     onChange={({ fileList }) => setFileList(fileList)}
+                   >
+                     <p className="ant-upload-drag-icon">
+                       <InboxOutlined />
+                     </p>
+                     <p className="ant-upload-text">
+                       Click or drag file to this area to upload profile image
+                     </p>
+                   </Upload.Dragger>
+                 </Form.Item>
+               </Form.Item>
+             </Col>
+           </Row> */}
 
-          <Form.Item>
-            <Space direction="vertical" size="middle" className="w-full">
-              <Row gutter={16} justify="center">
-                <Col>
-                  <Button
-                    htmlType="button"
-                    onClick={() => props.BackHook()}
-                  >
-                    Previous
-                  </Button>
-                </Col>
-                <Col>
-                  <Button type="primary"
-              htmlType="submit"
-              className="w-full"
-              style={{ backgroundColor: '#000000', borderColor: '#000000' }}
-            >
-              Next
-            </Button>
-          </Col>
-        </Row>
-      </Space>
-          </Form.Item>
+          <div className="flex justify-center gap-4 mt-6">
+            <Form.Item className="mb-0">
+              <Button
+                htmlType="button"
+                onClick={() => props.BackHook()}
+                className="custom-btn rounded-xl font-bold border border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-black h-12 px-12 transition-all duration-300"
+                style={{ minWidth: '150px' }}
+              >
+                PREVIOUS
+              </Button>
+            </Form.Item>
+            <Form.Item className="mb-0">
+              <Button
+                type="primary"
+                htmlType="submit"
+                className="custom-btn rounded-xl font-bold bg-black border-black text-white hover:bg-gray-800 hover:border-gray-800 h-12 px-12 transition-all duration-300"
+                style={{ backgroundColor: '#111111', borderColor: '#111111', minWidth: '150px' }}
+              >
+                NEXT
+              </Button>
+            </Form.Item>
+          </div>
         </Form>
       </div>
     </div>
