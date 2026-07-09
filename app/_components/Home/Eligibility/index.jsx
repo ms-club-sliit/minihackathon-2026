@@ -4,7 +4,7 @@ export default function Eligibility () {
   return (
     <section
       id="eligibility"
-      className="w-full flex justify-center items-center py-8 sm:py-10 md:py-12 px-5 sm:px-10 md:px-20 bg-gradient-to-r from-red-50 to-[#bbf5fd]"
+      className="w-full flex justify-center items-center py-8 sm:py-10 md:py-12 px-5 sm:px-10 md:px-20"
     >
       <div
         className="w-full max-w-7xl bg-[#EFEFEF] backdrop-filter backdrop-blur-lg bg-opacity-10 rounded-[16px] sm:rounded-[24px] md:rounded-[36px] lg:rounded-[48px] 
