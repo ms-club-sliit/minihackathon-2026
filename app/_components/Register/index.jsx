@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
 import { Steps, Spin, Row } from 'antd';
+import { CheckOutlined } from '@ant-design/icons';
 import Step1 from './step1';
 import Step2 from './step2';
 import Step3 from './step3';
@@ -72,7 +73,7 @@ const stepItems = [
   { title: 'Member 2' },
   { title: 'Member 3' },
   { title: 'Member 4 (Optional)' },
-  { title: 'Complete' },
+  { title: 'Complete', icon: <CheckOutlined style={{ fontSize: '14px' }} /> },
 ];
 
 async function sendEmail(to, subject, body, retryCount = 0) {
@@ -599,13 +600,11 @@ const Register = () => {
             />
           )}
           <div className='mx-2 my-2 px-2 lg:mx-20 lg:my-20 lg:px-20'>
-            <h2 className='text-lg sm:text-xl lg:text-2xl my-6 lg:my-10 p-2'>
-              Register Your Team
-            </h2>
-            <div className='mb-6 lg:mb-10 p-2'>
-              <Steps current={current} size='small' items={stepItems} />
-            </div>
-            <div className='my-6 lg:my-10 step-body'>
+            <div className="custom-steps-container bg-gradient-to-br from-[#f0f4ff] via-[#f7f3ff] to-[#fff0f6] rounded-[32px] border border-white/60 shadow-sm p-8 sm:p-12 lg:p-16">
+              <div className='mb-6 lg:mb-10 p-2'>
+                <Steps current={current} size='small' items={stepItems} className="custom-steps" labelPlacement="vertical" />
+              </div>
+              <div className='my-6 lg:my-10 step-body'>
               {showSpinner ? (
                 <div className='flex justify-center items-center h-64'>
                   <Spin size='large' />
@@ -662,6 +661,7 @@ const Register = () => {
               )}
             </div>
           </div>
+        </div>
         </>
       )}
     </main>
