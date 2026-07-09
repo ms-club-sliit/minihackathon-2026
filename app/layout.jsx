@@ -2,6 +2,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import ChatBot from "@/components/Chatbot/Chatbot";
 //
 const poppins = Poppins({
   subsets: ["latin"],
@@ -15,12 +16,16 @@ export const metadata = {
 //
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth scroll-pt-56">
+    <html lang="en" suppressHydrationWarning  className="scroll-smooth scroll-pt-56">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans+Condensed:wght@300;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css"
           rel="stylesheet"
         />
         <link
@@ -36,6 +41,7 @@ export default function RootLayout({ children }) {
         <Header />
         <div>{children}</div>
         <Footer />
+        <ChatBot />
       </body>
     </html>
   );
