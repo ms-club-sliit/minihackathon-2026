@@ -11,7 +11,7 @@ const MSLogs = [
     height: 120,
   },
   {
-    src: '/images/2026-logo/logo-main-2026.png',
+    src: '/images/2026-images/logo-main-2026.png',
     alt: 'MS Club Of SLIIT',
     link: '/',
     width: 90,
