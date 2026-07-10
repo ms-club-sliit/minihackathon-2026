@@ -81,6 +81,11 @@ const TeamTicket = (props, this_ref) => {
 	const TICKET_H = 440;
 	const STUB_W   = 125;
 
+	// ── Configurable ticket values — update these when event details are finalised ──
+	const TICKET_ROUND = "1ST ROUND";
+	const TICKET_DATE  = getCurrentDateString();
+	const TICKET_TIME  = getCurrentTimeString();
+
 	return (
 		<div ref={ref}>
 			<svg
@@ -212,16 +217,16 @@ const TeamTicket = (props, this_ref) => {
 										letterSpacing: "0.5px",
 										background: "#FFFFFF",
 									}}>
-										1ST ROUND
+										{TICKET_ROUND}
 									</div>
 
 									{/* Date & Time */}
 									<div style={{ textAlign: "right" }}>
 										<div style={{ fontSize: "15px", fontWeight: "800", color: "#1A1A2E", letterSpacing: "0.2px", lineHeight: 1.2 }}>
-											{getCurrentDateString()}
+											{TICKET_DATE}
 										</div>
 										<div style={{ fontSize: "13px", fontWeight: "400", color: "#8B7FA8", letterSpacing: "0.2px", lineHeight: 1.4, marginTop: "2px" }}>
-											{getCurrentTimeString()}
+											{TICKET_TIME}
 										</div>
 									</div>
 								</div>

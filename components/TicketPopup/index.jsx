@@ -107,7 +107,6 @@ const TicketPopup = forwardRef(function TicketPopup(
   /* ── Full-page ticket page ── */
   return (
     <div
-      className="gradient-45"
       style={{
         position: 'fixed',
         top: 0,
@@ -122,6 +121,10 @@ const TicketPopup = forwardRef(function TicketPopup(
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        /* ── Glassmorphism: transparent frosted glass over the page ── */
+        background: 'rgba(255, 255, 255, 0.18)',
+        backdropFilter: 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
       }}
     >
       {/* ── Page body ── */}
