@@ -3,66 +3,72 @@
 import { useState, useRef, useEffect } from 'react';
 import chatbotData from './chatbot_data.json';
 
+// Global asset constant for the floating action button icon
 const AIBOT_ICON_URL = '/images/AIBot.png';
 
 export default function ChatBot() {
+  // Inline standard font styling overrides for UI uniformity
   const interFont = { fontFamily: "'Inter', sans-serif" };
   const openSansHebrewCondensed = {
     fontFamily: "'Open Sans Hebrew Condensed', 'Open Sans Condensed', sans-serif",
   };
 
-  // State to handle opening and closing of the chatbot UI window
+  // State visibility toggle controlling whether the main chatbot UI is open or hidden
   const [isOpen, setIsOpen] = useState(false);
 
-  // State tracking the chat history
+  // Array state storing live chat dialogue log history, pre-seeded with a welcome greeting
   const [messages, setMessages] = useState([
     { role: 'bot', text: chatbotData.greeting }
   ]);
 
-  // State capturing the current text value from the input field
+  // Two-way controlled state binding capturing the active keystrokes inside the input text field
   const [input, setInput] = useState('');
 
-  // Reference hook targeting an invisible element at the bottom of the chat to trigger auto-scrolling
+  // Auto-scroller reference node pinned structurally right below the youngest message container
   const chatEndRef = useRef(null);
 
-  // Automatically scroll down smoothly to show the latest messages
+  // Auto-scroll layout lock triggered seamlessly whenever a new response or user entry shifts the stack length
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Optimized keyword matching and scoring function
+  /**
+   * High-Performance Local FAQ Token Scoring Algorithm
+   * Processes input strings client-side matching structural relevance in O(N) constraints.
+   */
   const findBestMatch = (userText) => {
-    // Clean user message by removing punctuation like ?, !, ., , to prevent matching errors
+    // Standardize input matrix by stripping trailing or structural punctuations (? , ! .) to avoid matching failures
     const cleanMsg = userText.toLowerCase().replace(/[?.!,]/g, '').trim();
     
     let bestMatch = null;
     let maxScore = 0;
 
+    // Loop through the static knowledge baseline dictionary
     for (const faq of chatbotData.faqs) {
       let score = 0;
-
-      // Clean the FAQ question similarly for an accurate comparison
+      
+      // Standardize the targeted dictionary key target question signature using the same validation mapping
       const cleanQuestion = faq.question.toLowerCase().replace(/[?.!,]/g, '').trim();
 
-      // 1. Check for strict exact question match after removing punctuation
+      // 1. Exact Structural Match Hook (Highest Priority Rule Assignment)
       if (cleanMsg === cleanQuestion) {
         score += 20; 
       }
 
-      // 2. Cross-inclusion check: Does user query contain the FAQ question or vice versa
+      // 2. Continuous Bi-Directional Cross-Inclusion Verification
       if (cleanQuestion.includes(cleanMsg) || cleanMsg.includes(cleanQuestion)) {
         score += 12;
       }
 
-      // 3. Smart Keyword scoring: Matches clean keywords
+      // 3. Isolated Target Keyword Extraction & Standalone Token Weighting
       faq.keywords.forEach(keyword => {
         const cleanKeyword = keyword.toLowerCase().replace(/[?.!,]/g, '').trim();
         
-        // Exact keyword match gets a major boost
+        // Exact standalone keyword phrase matching condition
         if (cleanMsg === cleanKeyword) {
           score += 15;
         } 
-        // Word boundary or inclusion check
+        // Discrete word boundary regex verification to avoid greedy evaluation errors (e.g., matching "hi" inside "membership")
         else {
           const regex = new RegExp(`\\b${cleanKeyword}\\b`, 'i');
           if (regex.test(cleanMsg)) {
@@ -71,7 +77,7 @@ export default function ChatBot() {
         }
       });
 
-      // --- Contextual Heuristics for Specific Rounds ---
+      // 4. Structural Milestone Stage Routing Helpers (Contextual Fallbacks for Ambiguous Rounds queries)
       const isRound1 = cleanMsg.includes('round 1') || cleanMsg.includes('1st round') || cleanMsg.includes('round one') || cleanMsg.includes('first round');
       const isRound2 = cleanMsg.includes('round 2') || cleanMsg.includes('2nd round') || cleanMsg.includes('round two') || cleanMsg.includes('second round');
       const isRound3 = cleanMsg.includes('round 3') || cleanMsg.includes('3rd round') || cleanMsg.includes('round three') || cleanMsg.includes('third round') || cleanMsg.includes('final round');
@@ -80,20 +86,20 @@ export default function ChatBot() {
       if (isRound2 && faq.id.includes('round2')) score += 6;
       if (isRound3 && faq.id.includes('round3')) score += 6;
 
-      // Direct control for common greetings or gratitude phrases
+      // 5. Intercepting expressions of gratitude or common standard conversational exits
       const isThankYou = cleanMsg.includes('thank you') || cleanMsg.includes('thanks') || cleanMsg.includes('thank u') || cleanMsg.includes('tq') || cleanMsg.includes('ty');
       if (isThankYou && faq.id === 'thanks') {
         score += 10;
       }
 
-      // Track the highest scoring match
+      // Track the absolute top scoring dataset metadata item
       if (score > maxScore) {
         maxScore = score;
         bestMatch = faq;
       }
     }
 
-    // Return the match if it safely crosses our validation threshold
+    // Evaluate final threshold conditions to determine whether to surface an explicit match or fire a fallback
     if (bestMatch && maxScore > 3) {
       return bestMatch.answer;
     }
@@ -101,26 +107,28 @@ export default function ChatBot() {
     return chatbotData.fallback;
   };
 
-  // Helper to handle any user message
+  /**
+   * Dispatches conversation logs and controls typing simulation sequences.
+   */
   const handleUserMessage = (userText) => {
     if (!userText.trim()) return;
 
     const userMessage = userText.trim();
-
-    // 1. Instantly push user input to the chat list
+    
+    // Immediate state commitment logging the fresh payload sent by the user
     setMessages((prev) => [...prev, { role: 'user', text: userMessage }]);
     setInput('');
 
-    // 2. Find the answer immediately from JSON knowledge base
+    // Fetch matching data strings instantly via client execution stack loop
     const botReply = findBestMatch(userMessage);
 
-    // 3. Inject a minor delay to emulate a lifelike typing feedback loop
+    // Artificial interface delay loop added to emulate responsive human-like typing behaviors
     setTimeout(() => {
       setMessages((prev) => [...prev, { role: 'bot', text: botReply }]);
     }, 400);
   };
 
-  // Form submission handler
+  // Explicit form submission listener wrapping keyboard actions or tap clicks
   const handleSendMessage = (e) => {
     e.preventDefault();
     handleUserMessage(input);
@@ -128,26 +136,44 @@ export default function ChatBot() {
 
   return (
     <div className="fixed z-50 bottom-6 right-6 text-slate-900" style={interFont}>
-      {/* Floating Action Button (FAB) */}
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="relative z-50 flex items-center justify-center w-16 h-16 transition-transform duration-200 bg-transparent rounded-full hover:scale-110 drop-shadow-xl"
-          aria-label="Open AI Assistant"
-        >
-          <img
-            src={AIBOT_ICON_URL}
-            alt="AI Assistant"
-            className="object-contain w-16 h-16 animate-spin-y"
-          />
-        </button>
-      )}
+      {/* The Premium Fixed 3D Animation Definition:
+        Restored original Y-Axis spin (turns sideways beautifully), and removed backface visibility hides 
+        so both sides of the asset show cleanly during rotation frames.
+      */}
+      <style>{`
+        @keyframes custom3DSpinY {
+          from { transform: rotateY(0deg); }
+          to { transform: rotateY(360deg); }
+        }
+        .bot-perfect-3d-spin {
+          animation: custom3DSpinY 4s linear infinite;
+          transform-style: preserve-3d;
+        }
+      `}</style>
 
-      {/* Main Chat Interface Window - Styled with Premium Glassmorphism */}
+      {/* Floating Action Button (FAB) Trigger Group:
+        Instead of unmounting via {!isOpen && ...}, we control visibility using CSS opacity and transitions.
+        This fixes the GPU layout splitting bug completely because the element stays rooted safely in the DOM.
+      */}
+      <button
+        onClick={() => setIsOpen(true)}
+        className={`absolute bottom-0 right-0 z-50 flex items-center justify-center w-16 h-16 transition-all duration-300 bg-transparent rounded-full hover:scale-110 active:scale-95 drop-shadow-xl ${
+          isOpen ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 pointer-events-auto scale-100'
+        }`}
+        aria-label="Open AI Assistant"
+      >
+        <img
+          src={AIBOT_ICON_URL}
+          alt="AI Assistant"
+          className="object-contain w-16 h-16 bot-perfect-3d-spin"
+        />
+      </button>
+
+      {/* Main Chat Interface Window - Engineered via High Alpha Opacity Glassmorphic specifications */}
       {isOpen && (
-        <div className="w-80 md:w-[400px] h-[700px] max-h-[85vh] rounded-3xl shadow-[0_8px_32px_0_rgba(31,38,135,0.2)] flex flex-col overflow-hidden border border-white/20 bg-white/10 dark:bg-black/10 backdrop-blur-xl relative z-50">
+        <div className="w-80 md:w-[400px] h-[700px] max-h-[85vh] rounded-3xl shadow-[0_8px_32px_0_rgba(31,38,135,0.2)] flex flex-col overflow-hidden border border-white/20 bg-white/10 dark:bg-black/10 backdrop-blur-xl relative z-40 animate-in fade-in zoom-in-95 duration-200">
 
-          {/* Chat Window Branding Header - Semi-transparent */}
+          {/* Chat Window Branding Header Section */}
           <div className="flex items-center justify-between p-4 border-b border-white/10 bg-white/10 backdrop-blur-md" style={openSansHebrewCondensed}>
             <div className="flex flex-col">
               <img
@@ -156,10 +182,11 @@ export default function ChatBot() {
                 className="object-contain w-auto h-8 mb-1 drop-shadow-sm"
               />
             </div>
+            {/* Smooth glass escape button */}
             <button onClick={() => setIsOpen(false)} className="flex items-center self-start justify-center w-8 h-8 font-bold text-gray-700 transition-all border rounded-full shadow-sm dark:text-gray-300 bg-white/20 hover:bg-white/40 hover:text-black backdrop-blur-md border-white/10">✕</button>
           </div>
 
-          {/* Chat Logs Content Area */}
+          {/* Dynamic Scrollable Chat Log Rendering Window Layer */}
           <div className="flex-1 p-4 space-y-4 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.2) transparent' }}>
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -174,10 +201,11 @@ export default function ChatBot() {
                 </div>
               </div>
             ))}
+            {/* Phantom anchor node targeting scroll locking viewport coordinates */}
             <div ref={chatEndRef} />
           </div>
 
-          {/* Starter Questions - Floating Glass Pills */}
+          {/* Preset Starter Query Suggestions Area - Rendered as individual fluid glass pills */}
           <div
             className="flex px-4 py-3 space-x-2 overflow-x-auto border-t border-white/10 bg-white/5 backdrop-blur-md"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
@@ -194,7 +222,7 @@ export default function ChatBot() {
             ))}
           </div>
 
-          {/* User Entry Submission Form - Integrated Glass Input */}
+          {/* User Input Message Submission Form Area */}
           <form onSubmit={handleSendMessage} className="flex gap-2 p-4 border-t border-white/10 bg-white/10 backdrop-blur-md">
             <input
               type="text"
