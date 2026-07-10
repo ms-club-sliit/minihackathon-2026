@@ -1,12 +1,14 @@
+"use client";
+
 import Header from "@/components/Header/index";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaYoutube,
-  FaLinkedinIn,
-} from "react-icons/fa";
+
+import InstagramIcon from '@iconify-react/selfhst/instagram';
+import FacebookIcon from '@iconify-react/selfhst/facebook';
+import YoutubeIcon from '@iconify-react/selfhst/youtube';
+import GithubDarkIcon from '@iconify-react/selfhst/github-dark';
+import LinkedinIcon from '@iconify-react/selfhst/linkedin';
 import Image from "next/image";
-import { HiArrowRight, HiChevronDown } from "react-icons/hi";
+import { HiArrowRight, HiChevronDoubleDown } from "react-icons/hi";
 
 export default function Hero() {
   const glassPath = `
@@ -86,7 +88,7 @@ export default function Hero() {
           </svg>
 
           {/* ================= CONTENT LAYER ================= */}
-          <div className="relative z-10 grid grid-rows-[auto_1fr_auto] min-h-[640px] p-4 font-sans">
+          <div className="relative z-10 grid grid-rows-[auto_1fr_auto] min-h-[675px] p-4 font-sans">
 
               {/* Integrated Top Navigation Menu */}
               <div className="mr-4">
@@ -102,7 +104,7 @@ export default function Hero() {
                   alt="MS Club Logo"
                   width={90}
                   height={60}
-                  className="h-16 sm:h-20 w-auto object-contain"
+                  className="h-16 sm:h-28 w-auto object-contain"
                 />
                 <span className="text-3xl font-light text-gray-400">✕</span>
                 <Image
@@ -110,36 +112,49 @@ export default function Hero() {
                   alt="Mini Hackathon 26 Logo"
                   width={280}
                   height={70}
-                  className="h-20 sm:h-22 w-auto object-contain"
+                  className="h-20 sm:h-28 w-auto object-contain"
                 />
               </div>
 
               {/* Core Tagline Heading */}
-              <h2 className="mb-6 flex items-center justify-center gap-4 text-4xl sm:text-5xl font-light tracking-tight">
-                <span className="bg-[#3153FF] px-6 py-2 font-medium text-white shadow-sm">
-                  Innovation
-                </span>
-                <span className="text-gray-900 font-normal">
+
+              <div className="relative flex h-16 w-[496px] items-center  mb-[3vh]">
+                {/* Left blue accent */}
+                <div className="flex h-full">
+                  <div className="w-px bg-[#2E47FF]" />
+                  <div className="ml-1 w-[5px] bg-[#2E47FF]" />
+                  <div className="ml-1 w-[10px] bg-[#2E47FF]" />
+                  <div className="ml-1 w-[15px] bg-[#2E47FF]" />
+                  <div className="ml-1 w-[20px] bg-[#2E47FF]" />
+                  <div className="ml-1 w-[206px] bg-[#2E47FF]" />
+                </div>
+
+                {/* Text */}
+                <div className="absolute flex left-[5vw]">
+                <h2 className="inset-0 items-center justify-center text-[58px] leading-[100.8%] tracking-[-0.05em] text-[#FFF8F8] font-slogan">
+                  Innovation &nbsp;
+                </h2>
+                <h2 className="inset-0 items-center justify-center text-[58px] leading-[100.8%] tracking-[-0.05em] text-[#000000] font-slogan">
                   starts here.
-                </span>
-              </h2>
+                </h2>
+                </div>
+              </div>
 
               {/* Sub-Description Paragraph */}
-              <p className="max-w-[780px] text-xl sm:text-2xl leading-relaxed text-gray-700 font-light">
-                Join the SLIIT Inter-university Ideation and showcase your creativity,
-                innovation, and technical skills on a national stage.
+              <p className="max-w-[900px] text-xl sm:text-2xl leading-relaxed text-gray-900 font-normal">
+                Join the SLIIT Inter-university Ideation and showcase your creativity, innovation, and technical skills on a national stage.
               </p>
             </div>
 
             {/* Bottom Controls Row (Perfectly aligns elements directly into the SVG tabs) */}
-            <div className="grid grid-cols-[240px_1fr_240px] items-end px-10 gap-4">
+            <div className="grid grid-cols-[360px_1fr_360px] items-end px-16 gap-2">
               
               {/* Left Tab Button - Scroll For More */}
-              <button className="group flex h-14 items-center justify-center gap-3 rounded-full bg-white/20 hover:bg-white/40 border border-white/40 transition-all duration-300 shadow-sm ml-2 mb-1">
+              <button className="group flex h-14 w-full items-center justify-center gap-3 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.2)] hover:bg-white/40 border border-white/40 transition-all duration-300  ml-2 mb-1">
                 <span className="text-sm font-medium text-gray-800">Scroll For More.</span>
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/60 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-                  <HiChevronDown className="animate-bounce text-lg" />
-                </div>
+                
+                  <HiChevronDoubleDown className="text-l animate-bounce text-lg" />
+                
               </button>
 
               {/* Center Tab Button - Primary CTA */}
@@ -154,15 +169,16 @@ export default function Hero() {
               </div>
 
               {/* Right Tab - Social Networking Panel */}
-              <div className="flex flex-col items-center justify-center h-14 mr-2 mb-1">
+              <div className="flex flex-col items-center justify-center h-14 mr-2 mb-1 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.2)] border-white/40">
                 <p className="text-[11px] font-bold tracking-wider text-gray-600 uppercase mb-1">
                   Follow Us On.
                 </p>
-                <div className="flex items-center gap-3">
-                  <a href="#" className="text-gray-700 hover:text-[#1877F2] transition-colors"><FaFacebookF size={15} /></a>
-                  <a href="#" className="text-gray-700 hover:text-[#E4405F] transition-colors"><FaInstagram size={15} /></a>
-                  <a href="#" className="text-gray-700 hover:text-[#FF0000] transition-colors"><FaYoutube size={15} /></a>
-                  <a href="#" className="text-gray-700 hover:text-[#0A66C2] transition-colors"><FaLinkedinIn size={15} /></a>
+                <div className="flex items-center gap-5">
+                  <a href="#" className="transition-transform duration-300 hover:scale-110"><FacebookIcon height="1.5em"/></a>
+                  <a href="#" className="transition-transform duration-300 hover:scale-110"><InstagramIcon height="1.5em"/></a>
+                  <a href="#" className="transition-transform duration-300 hover:scale-110"><YoutubeIcon height="1.5em"/></a>
+                  <a href="#" className="transition-transform duration-300 hover:scale-110"><LinkedinIcon height="1.5em"/></a>
+                  <a href="#" className="transition-transform duration-300 hover:scale-110"><GithubDarkIcon height="1.5em"/></a>
                 </div>
               </div>
 

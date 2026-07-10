@@ -13,6 +13,14 @@
   background-position: center;
 }
 
+@font-face {
+  font-family: "Open Sans Hebrew Condensed";
+  src: url("/assets/fonts/Open-Sans-Hebrew-Condensed.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Styles for the Vertical Timeline */
 
 @media (min-width: 744px) and (max-width: 1170px) {
@@ -417,4 +425,4 @@ html,body, #root {
   letter-spacing: 0.05em !important;
 }
 
-
+

@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className="relative z-20">
 
-      <div className="relative ml-auto top-[6vh] -left-[1.5vw] flex h-[60px] w-[calc(100%-21vw)] items-center justify-between rounded-[40px] border border-white/20 bg-white/10 px-8 backdrop-blur-3xl shadow-[0_18px_45px_rgba(0,0,0,0.1)]">
+      <div className="relative ml-auto top-[6vh] -left-[1.5vw] flex h-[60px] w-[calc(100%-21vw)] items-center justify-between rounded-[40px] border border-white/20 bg-white/10 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
 
         {/* Left Badge */}
 
