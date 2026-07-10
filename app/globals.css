@@ -417,4 +417,17 @@ html,body, #root {
   letter-spacing: 0.05em !important;
 }
 
+/* Custom Animation for Chatbot Logo */
+@keyframes spinY {
+  from {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+.animate-spin-y {
+  animation: spinY 8s linear infinite;
+}
 
