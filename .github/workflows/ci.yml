@@ -20,8 +20,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: Run Next.js build
+        run: npm run build
+
+      - name: Run ESLint
+        run: npm run lint
