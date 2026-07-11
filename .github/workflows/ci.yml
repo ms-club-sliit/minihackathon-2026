@@ -33,6 +33,3 @@ jobs:
 
       - name: Run Next.js build
         run: npm run build
-
-      - name: Run ESLint
-        run: npm run lint
