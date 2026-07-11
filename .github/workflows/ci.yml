@@ -13,6 +13,9 @@ jobs:
   install:
     runs-on: ubuntu-latest
 
+    env:
+      RESEND_API_KEY: dummy
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
