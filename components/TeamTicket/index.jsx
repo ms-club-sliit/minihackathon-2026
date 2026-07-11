@@ -82,7 +82,7 @@ const TeamTicket = (props, this_ref) => {
 	const STUB_W   = 125;
 
 	// ── Configurable ticket values — update these when event details are finalised ──
-	const TICKET_ROUND = "1ST ROUND";
+	const TICKET_ROUND = process.env.NEXT_PUBLIC_TICKET_ROUND;
 	const TICKET_DATE  = getCurrentDateString();
 	const TICKET_TIME  = getCurrentTimeString();
 
