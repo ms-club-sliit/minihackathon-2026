@@ -36,24 +36,24 @@ export default function Hero() {
   `.trim();
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#EEF5FF] via-[#F4FAFF] to-[#F4FFF5] px-8 py-7">
+    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#EEF5FF] via-[#F4FAFF] to-[#F4FFF5] px-4 md:px-8 py-5 md:py-7">
 
       {/* ================= BACKGROUND BLOBS ================= */}
-      <div className="absolute -left-36 bottom-[-140px] h-[520px] w-[520px] rounded-full bg-violet-600/75 blur-[170px]" />
-      <div className="absolute -right-40 -top-32 h-[560px] w-[560px] rounded-full bg-emerald-500/70 blur-[180px]" />
-      <div className="absolute left-[42%] top-[28%] h-[360px] w-[360px] rounded-full bg-sky-500/65 blur-[150px]" />
-      <div className="absolute left-[12%] top-[18%] h-[250px] w-[250px] rounded-full bg-fuchsia-500/50 blur-[130px]" />
-      <div className="absolute right-[14%] bottom-[8%] h-[260px] w-[260px] rounded-full bg-lime-400/50 blur-[130px]" />
+      <div className="absolute -left-36 bottom-[-140px] h-[300px] w-[300px] md:h-[520px] md:w-[520px] rounded-full bg-violet-600/75 blur-[100px] md:blur-[170px]" />
+      <div className="absolute -right-40 -top-32 h-[350px] w-[350px] md:h-[560px] md:w-[560px] rounded-full bg-emerald-500/70 blur-[110px] md:blur-[180px]" />
+      <div className="absolute left-[42%] top-[28%] h-[200px] w-[200px] md:h-[360px] md:w-[360px] rounded-full bg-sky-500/65 blur-[90px] md:blur-[150px]" />
+      <div className="absolute left-[12%] top-[18%] h-[150px] w-[150px] md:h-[250px] md:w-[250px] rounded-full bg-fuchsia-500/50 blur-[80px] md:blur-[130px]" />
+      <div className="absolute right-[14%] bottom-[8%] h-[160px] w-[160px] md:h-[260px] md:w-[260px] rounded-full bg-lime-400/50 blur-[80px] md:blur-[130px]" />
 
       {/* ================= HERO WRAPPER CARD ================= */}
-      <section className="relative w-[95vw] h-[95vh] filter drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)] mx-auto">
-        
+      <section className="relative w-full md:w-[95vw] min-h-[90vh] md:h-[95vh] filter drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)] mx-auto">
+
         {/* Main Custom Shaped Glass Container */}
-        <div className="relative w-full h-full overflow-hidden ">
-          
-          {/* Unified Fluid SVG Outer Border & Glass Background Mask */}
+        <div className="relative w-full h-full overflow-hidden rounded-[30px] md:rounded-none border border-white/20 md:border-none bg-white/10 md:bg-transparent backdrop-blur-3xl md:backdrop-blur-none p-2 md:p-0">
+
+          {/* Unified Fluid SVG Outer Border & Glass Background Mask (Visible only on Desktop) */}
           <svg
-            className="absolute inset-0 w-full h-full z-0"
+            className="absolute inset-0 w-full h-full z-0 hidden md:block"
             viewBox="0 0 1000 700"
             preserveAspectRatio="none"
           >
@@ -64,8 +64,8 @@ export default function Hero() {
 
               <filter id="glass-shadow" x="-20%" y="-20%" width="140%" height="140%">
                 <feDropShadow dx="5" dy="10" stdDeviation="6" floodColor="#000000" floodOpacity="0.9" />
-          {/* Layer 2: Sharp core shadow for crisp depth */}
-          <feDropShadow dx="2" dy="4" stdDeviation="2" floodColor="#000000" floodOpacity="0.5" />
+                {/* Layer 2: Sharp core shadow for crisp depth */}
+                <feDropShadow dx="2" dy="4" stdDeviation="2" floodColor="#000000" floodOpacity="0.5" />
               </filter>
             </defs>
 
@@ -74,7 +74,6 @@ export default function Hero() {
               d={glassPath}
               fill="rgba(255, 255, 255, 0.1)"
               className="backdrop-blur-3xl"
-              
             />
 
             {/* Precise Border Stroke */}
@@ -88,103 +87,107 @@ export default function Hero() {
           </svg>
 
           {/* ================= CONTENT LAYER ================= */}
-          <div className="relative z-10 grid grid-rows-[auto_1fr_auto] min-h-[675px] p-4 font-sans">
+          <div className="md:w-[80%] md:min-h-full mx-0">
 
-              {/* Integrated Top Navigation Menu */}
-              <div className="mr-4">
-                <Header />
-              </div>
-
-            {/* Center Content Row (Hero Branding) */}
-            <div className="flex flex-col items-center justify-center text-center px-8 my-auto">
-              {/* Core Co-Branding Logos */}
-              <div className="mb-8 flex items-center justify-center gap-6">
-                <Image
-                  src="/images/logos/MSLogo.png"
-                  alt="MS Club Logo"
-                  width={90}
-                  height={60}
-                  className="h-16 sm:h-28 w-auto object-contain"
-                />
-                <span className="text-3xl font-light text-gray-400">✕</span>
-                <Image
-                  src="/images/2026-images/logo-main-2026.png"
-                  alt="Mini Hackathon 26 Logo"
-                  width={280}
-                  height={70}
-                  className="h-20 sm:h-28 w-auto object-contain"
-                />
-              </div>
-
-              {/* Core Tagline Heading */}
-
-              <div className="relative flex h-16 w-[496px] items-center  mb-[3vh]">
-                {/* Left blue accent */}
-                <div className="flex h-full">
-                  <div className="w-px bg-[#2E47FF]" />
-                  <div className="ml-1 w-[5px] bg-[#2E47FF]" />
-                  <div className="ml-1 w-[10px] bg-[#2E47FF]" />
-                  <div className="ml-1 w-[15px] bg-[#2E47FF]" />
-                  <div className="ml-1 w-[20px] bg-[#2E47FF]" />
-                  <div className="ml-1 w-[206px] bg-[#2E47FF]" />
-                </div>
-
-                {/* Text */}
-                <div className="absolute flex left-[5vw]">
-                <h2 className="inset-0 items-center justify-center text-[58px] leading-[100.8%] tracking-[-0.05em] text-[#FFF8F8] font-slogan">
-                  Innovation &nbsp;
-                </h2>
-                <h2 className="inset-0 items-center justify-center text-[58px] leading-[100.8%] tracking-[-0.05em] text-[#000000] font-slogan">
-                  starts here.
-                </h2>
-                </div>
-              </div>
-
-              {/* Sub-Description Paragraph */}
-              <p className="max-w-[900px] text-xl sm:text-2xl leading-relaxed text-gray-900 font-normal">
-                Join the SLIIT Inter-university Ideation and showcase your creativity, innovation, and technical skills on a national stage.
-              </p>
+            {/* Integrated Top Navigation Menu */}
+            <div className="relative w-full md:left-[8%] md:mt-[5.5vh]">
+              <Header />
             </div>
 
-            {/* Bottom Controls Row (Perfectly aligns elements directly into the SVG tabs) */}
-            <div className="grid grid-cols-[360px_1fr_360px] items-end px-16 gap-2">
-              
+            {/* ================= HERO CONTENT LAYER ================= */}
+            <div className="md:absolute flex items-center justify-center w-full md:h-[55vh]">
+              <div className="relative z-10 flex flex-col items-center justify-center min-h-[65vh] md:min-h-[675px] px-4 md:px-5 font-sans">
+
+                {/* Center Content Row (Hero Branding) */}
+                <div className="flex flex-col items-center justify-center text-center px-4 md:px-8 my-auto py-8 md:py-5">
+                  {/* Core Co-Branding Logos */}
+                  <div className="mb-6 md:mb-8 flex items-center justify-center gap-4 md:gap-6">
+                    <Image
+                      src="/images/logos/MSLogo.png"
+                      alt="MS Club Logo"
+                      width={90}
+                      height={60}
+                      className="h-12 sm:h-20 md:h-28 w-auto object-contain"
+                    />
+                    <span className="text-xl sm:text-2xl md:text-3xl font-light text-gray-400">✕</span>
+                    <Image
+                      src="/images/2026-images/logo-main-2026.png"
+                      alt="Mini Hackathon 26 Logo"
+                      width={280}
+                      height={70}
+                      className="h-16 sm:h-20 md:h-28 w-auto object-contain"
+                    />
+                  </div>
+
+                  {/* Core Tagline Heading */}
+                  <div className="relative flex h-12 sm:h-14 md:h-16 w-full max-w-[280px] sm:max-w-[340px] md:max-w-[496px] md:mx-auto items-center justify-center mb-6 md:mb-[3vh]">
+                    {/* Left blue accent */}
+                    <div className="flex h-full absolute left-0 top-0 bottom-0 z-0">
+                      <div className="w-px bg-[#2E47FF]" />
+                      <div className="ml-0.5 md:ml-1 w-[3px] md:w-[5px] bg-[#2E47FF]" />
+                      <div className="ml-0.5 md:ml-1 w-[6px] md:w-[10px] bg-[#2E47FF]" />
+                      <div className="ml-0.5 md:ml-1 w-[9px] md:w-[15px] bg-[#2E47FF]" />
+                      <div className="ml-0.5 md:ml-1 w-[12px] md:w-[20px] bg-[#2E47FF]" />
+                      <div className="ml-0.5 md:ml-1 w-[120px] sm:w-[150px] md:w-[206px] bg-[#2E47FF]" />
+                    </div>
+
+                    {/* Text */}
+                    <div className="absolute flex left-[15vw] md:left-[4vw] md:inset-0 md:justify-center z-10 items-center h-full">
+                      <h2 className="text-3xl sm:text-2xl md:text-5xl leading-none tracking-[-0.05em] text-[#FFF8F8] font-slogan">
+                        Innovation &nbsp;
+                      </h2>
+                      <h2 className="text-3xl sm:text-2xl md:text-5xl leading-none tracking-[-0.05em] text-[#000000] font-slogan">
+                        starts here.
+                      </h2>
+                    </div>
+                  </div>
+
+                  {/* Sub-Description Paragraph */}
+                  <p className="max-w-[900px] text-base sm:text-lg md:text-2xl leading-relaxed text-gray-900 font-normal px-2">
+                    Join the SLIIT Inter-university Ideation and showcase your creativity, innovation, and technical skills on a national stage.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* ================ Bottom Controls Row ================ */}
+            <div className="flex flex-col md:grid md:grid-cols-[25%_1fr_25%] md:bottom-[12%] md:absolute items-center md:items-end px-4 md:px-16 gap-4 md:gap-2 w-full">
+
               {/* Left Tab Button - Scroll For More */}
-              <button className="group flex h-14 w-full items-center justify-center gap-3 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.2)] hover:bg-white/40 border border-white/40 transition-all duration-300  ml-2 mb-1">
-                <span className="text-sm font-medium text-gray-800">Scroll For More.</span>
-                
-                  <HiChevronDoubleDown className="text-l animate-bounce text-lg" />
-                
+              <button className="group flex h-12 md:h-14 w-full max-w-[320px] md:max-w-none items-center justify-center gap-3 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)] hover:bg-white/40 border border-white/40 transition-all duration-300 md:ml-2 md:mb-1">
+                <span className="text-xs md:text-sm font-medium text-gray-800">Scroll For More.</span>
+                <HiChevronDoubleDown className="animate-bounce text-base md:text-lg" />
               </button>
 
               {/* Center Tab Button - Primary CTA */}
-              <div className="flex justify-center pb-1">
-                <button className="group relative w-full max-w-[450px] h-14 overflow-hidden rounded-full bg-gradient-to-r from-[#3552ff] to-[#4f71ff] shadow-[0_12px_30px_rgba(53,82,255,0.35)] hover:shadow-[0_16px_40px_rgba(53,82,255,0.45)] transition-all duration-300 transform hover:-translate-y-0.5">
+              <div className="flex justify-center w-full md:pb-1">
+                <button className="group relative w-full max-w-[320px] md:max-w-[450px] h-12 md:h-14 overflow-hidden rounded-full bg-gradient-to-r from-[#3552ff] to-[#4f71ff] shadow-[0_12px_30px_rgba(53,82,255,0.35)] hover:shadow-[0_16px_40px_rgba(53,82,255,0.45)] transition-all duration-300 transform hover:-translate-y-0.5">
                   <span className="absolute inset-y-0 -left-40 w-32 -skew-x-12 bg-white/20 transition-all duration-700 group-hover:left-[110%]" />
-                  <span className="relative flex items-center justify-center gap-3 text-lg font-semibold text-white">
+                  <span className="relative flex items-center justify-center gap-3 text-sm md:text-lg font-semibold text-white">
                     Get Full Instructions
-                    <HiArrowRight className="text-xl transition-transform duration-300 group-hover:translate-x-1" />
+                    <HiArrowRight className="text-base md:text-xl transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
                 </button>
               </div>
 
               {/* Right Tab - Social Networking Panel */}
-              <div className="flex flex-col items-center justify-center h-14 mr-2 mb-1 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.2)] border-white/40">
-                <p className="text-[11px] font-bold tracking-wider text-gray-600 uppercase mb-1">
+              <div className="flex flex-col items-center justify-center h-12 md:h-14 w-full max-w-[320px] md:max-w-none md:mr-2 md:mb-1 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)] border border-white/40">
+                <p className="text-[9px] md:text-[11px] font-bold tracking-wider text-gray-600 uppercase mb-1">
                   Follow Us On.
                 </p>
-                <div className="flex items-center gap-5">
-                  <a href="#" className="transition-transform duration-300 hover:scale-110"><FacebookIcon height="1.5em"/></a>
-                  <a href="#" className="transition-transform duration-300 hover:scale-110"><InstagramIcon height="1.5em"/></a>
-                  <a href="#" className="transition-transform duration-300 hover:scale-110"><YoutubeIcon height="1.5em"/></a>
-                  <a href="#" className="transition-transform duration-300 hover:scale-110"><LinkedinIcon height="1.5em"/></a>
-                  <a href="#" className="transition-transform duration-300 hover:scale-110"><GithubDarkIcon height="1.5em"/></a>
+                <div className="flex items-center gap-4 md:gap-5">
+                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-600"><FacebookIcon height="1.3em" /></a>
+                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-pink-600"><InstagramIcon height="1.3em" /></a>
+                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-red-600"><YoutubeIcon height="1.3em" /></a>
+                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-700"><LinkedinIcon height="1.3em" /></a>
+                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-black"><GithubDarkIcon height="1.3em" /></a>
                 </div>
               </div>
 
             </div>
-
           </div>
+
+
         </div>
       </section>
     </main>
