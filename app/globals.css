@@ -169,9 +169,20 @@
 			format("woff");
 }
 
-html,body, #root {
+html,body,#root {
 	margin: 0;
 	width:100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("/images/2026-images/background-image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .background-shade-1 {
@@ -417,4 +428,4 @@ html,body, #root {
   letter-spacing: 0.05em !important;
 }
 
-
+
