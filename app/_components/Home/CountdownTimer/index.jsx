@@ -9,10 +9,7 @@ export default function CountdownTimer() {
   return (
     <section className='py-8 sm:py-12 md:py-16 lg:py-24 px-5 sm:px-10 md:px-20'>
       <div className='max-w-7xl mx-auto'>
-        <div
-          className='rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-xl px-4 sm:px-8 md:px-12 py-8 sm:py-10 md:py-12'
-          style={{ fontFamily: 'Inter, sans-serif' }}
-        >
+        <div className='rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 shadow-xl px-4 sm:px-8 md:px-12 py-8 sm:py-10 md:py-12'>
           <div className='text-center mb-6 sm:mb-8 md:mb-10 space-y-1 sm:space-y-2'>
             <h3 className='text-xs sm:text-sm md:text-base text-gray-700 font-medium tracking-wide'>
               {AWARENESS_TITLE}
