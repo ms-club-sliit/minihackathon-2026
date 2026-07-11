@@ -286,7 +286,10 @@
         "apply",
         "how to apply",
         "join the hackathon",
-        "step by step registration"
+        "step by step registration",
+        "registration",
+        "registration and eligibility",
+        "registration & eligibility"
       ],
       "answer": "Here's the complete step-by-step guide to register your team:\n\n📋 Step 1: Form Your Team\nRecruit 2 or 3 other eligible SLIIT undergrads (total team: 3–4 members).\n\n💡 Step 2: Choose a Track\nSelect a unique project idea from one of the 6 competition tracks.\n\n👤 Step 3: Designate a Team Representative\nOne team member should be appointed to handle the registration on behalf of the entire team.\n\n🌐 Step 4: Visit the Official Website\nGo to minihackathon.msclubsliit.org and click 'Register Now'.\n\n📝 Step 5: Fill In the Form\nComplete all required team and individual member details accurately.\n\n✅ Step 6: Submit Before the Deadline\nYour registration must be submitted before 30 September 2025.\n\n⚠️ Remember: Only one registration per team. Only your first submission counts."
     },
@@ -577,7 +580,11 @@
         "available topics",
         "what tracks are available",
         "competition categories",
-        "project theme"
+        "project theme",
+        "tracks and topics",
+        "tracks & topics",
+        "tracks",
+        "track"
       ],
       "answer": "🎯 You must choose your project idea from one of these 6 competition tracks:\n\n1. 🤖 Artificial Intelligence\n2. 📡 IoT, Edge & Smart Systems\n3. ⛓️ Blockchain & Web3\n4. 🌿 Sustainability & Green Tech\n5. 🤝 Society, Work & Accessibility\n6. 🔬 Emerging Tech Additions\n\nEach track has specific sub-topics. Ask me about a specific track to see all its sub-topics and get guidance on what kinds of projects fit each category!"
     },
@@ -1028,7 +1035,13 @@
         "participant agreement",
         "what rules to follow",
         "expected behavior",
-        "ethics"
+        "ethics",
+        "rules and policies",
+        "what are the rules and policies",
+        "rules",
+        "policies",
+        "policy",
+        "rule"
       ],
       "answer": "📜 Code of Conduct:\n\nBy participating in Mini Hackathon 2026, you agree to:\n\n✅ Rules & Compliance:\n• Follow all official Mini Hackathon rules strictly\n• Adhere to all submission and conduct requirements\n\n✅ Decisions:\n• Accept that the organizers' and judges' decisions are FINAL\n• Disputes or appeals against judging decisions are not entertained\n\n✅ Respect & Inclusion:\n• Treat all participants, judges, mentors, and organizers with respect\n• Zero tolerance for any form of harassment, discrimination, or bullying\n• Maintain a positive, inclusive, and collaborative environment\n\n✅ Originality:\n• Submit only original work\n• Do not use paid assistance, stolen IP, or AI-generated work without disclosure\n\nViolation of any conduct rules may result in immediate disqualification."
     },

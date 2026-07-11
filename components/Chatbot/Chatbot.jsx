@@ -38,7 +38,7 @@ export default function ChatBot() {
    */
   const findBestMatch = (userText) => {
     // Standardize input matrix by stripping trailing or structural punctuations (? , ! .) to avoid matching failures
-    const cleanMsg = userText.toLowerCase().replace(/[?.!,]/g, '').trim();
+    const cleanMsg = userText.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
     
     let bestMatch = null;
     let maxScore = 0;
@@ -48,7 +48,7 @@ export default function ChatBot() {
       let score = 0;
       
       // Standardize the targeted dictionary key target question signature using the same validation mapping
-      const cleanQuestion = faq.question.toLowerCase().replace(/[?.!,]/g, '').trim();
+      const cleanQuestion = faq.question.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
 
       // 1. Exact Structural Match Hook (Highest Priority Rule Assignment)
       if (cleanMsg === cleanQuestion) {
@@ -62,7 +62,7 @@ export default function ChatBot() {
 
       // 3. Isolated Target Keyword Extraction & Standalone Token Weighting
       faq.keywords.forEach(keyword => {
-        const cleanKeyword = keyword.toLowerCase().replace(/[?.!,]/g, '').trim();
+        const cleanKeyword = keyword.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
         
         // Exact standalone keyword phrase matching condition
         if (cleanMsg === cleanKeyword) {
@@ -169,32 +169,32 @@ export default function ChatBot() {
         />
       </button>
 
-      {/* Main Chat Interface Window - Engineered via High Alpha Opacity Glassmorphic specifications */}
+      {/* Main Chat Interface Window - Transparent Glassmorphism */}
       {isOpen && (
-        <div className="w-80 md:w-[400px] h-[700px] max-h-[85vh] rounded-3xl shadow-[0_8px_32px_0_rgba(31,38,135,0.2)] flex flex-col overflow-hidden border border-white/20 bg-white/10 dark:bg-black/10 backdrop-blur-xl relative z-40 animate-in fade-in zoom-in-95 duration-200">
+        <div className="w-80 md:w-[400px] h-[700px] max-h-[85vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-white/50 bg-white/10 backdrop-blur-md relative z-40 animate-in fade-in zoom-in-95 duration-200">
 
           {/* Chat Window Branding Header Section */}
-          <div className="flex items-center justify-between p-4 border-b border-white/10 bg-white/10 backdrop-blur-md" style={openSansHebrewCondensed}>
-            <div className="flex flex-col">
-              <img
-                src="/images/2026-images/logo-main-2026.png"
-                alt="MH '26 Bot"
-                className="object-contain w-auto h-8 mb-1 drop-shadow-sm"
-              />
+          <div className="flex items-center justify-between p-4 border-b border-white/20 bg-white/10 backdrop-blur-sm" style={openSansHebrewCondensed}>
+            <div className="flex items-end font-bold leading-none tracking-tighter text-black select-none">
+              <div className="flex flex-col items-start">
+                <span className="text-[14px] -mb-1">mini</span>
+                <span className="text-[22px]">Hackathon</span>
+              </div>
+              <span className="bg-[#7248D2] text-white text-[22px] px-1 ml-0.5 rounded-sm shadow-sm">26</span>
             </div>
             {/* Smooth glass escape button */}
-            <button onClick={() => setIsOpen(false)} className="flex items-center self-start justify-center w-8 h-8 font-bold text-gray-700 transition-all border rounded-full shadow-sm dark:text-gray-300 bg-white/20 hover:bg-white/40 hover:text-black backdrop-blur-md border-white/10">✕</button>
+            <button onClick={() => setIsOpen(false)} className="flex items-center self-start justify-center w-8 h-8 font-bold text-gray-700 transition-all border rounded-full shadow-sm bg-white/20 hover:bg-white/40 hover:text-black backdrop-blur-sm border-white/30">✕</button>
           </div>
 
           {/* Dynamic Scrollable Chat Log Rendering Window Layer */}
-          <div className="flex-1 p-4 space-y-4 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.2) transparent' }}>
+          <div className="flex-1 p-4 space-y-4 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.4) transparent' }}>
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div 
-                  className={`whitespace-pre-wrap max-w-[80%] p-3.5 rounded-2xl text-[13px] leading-relaxed shadow-sm transition-all
+                  className={`whitespace-pre-wrap max-w-[80%] p-3.5 rounded-2xl text-[13px] leading-relaxed transition-all
                   ${msg.role === 'user' 
-                    ? 'bg-[#1d3bf3]/90 text-white rounded-tr-sm shadow-[0_4px_12px_rgba(29,59,243,0.3)]' 
-                    : 'bg-white/15 dark:bg-black/20 backdrop-blur-md text-gray-800 dark:text-slate-100 border border-white/10 rounded-tl-sm'
+                    ? 'bg-[#7248D2] text-white rounded-tr-sm shadow-sm' 
+                    : 'bg-white/20 backdrop-blur-sm text-slate-800 border border-white/40 rounded-tl-sm shadow-[0_4px_12px_rgba(0,0,0,0.08)]'
                   }`}
                 >
                   {msg.text}
@@ -205,35 +205,20 @@ export default function ChatBot() {
             <div ref={chatEndRef} />
           </div>
 
-          {/* Preset Starter Query Suggestions Area - Rendered as individual fluid glass pills */}
-          <div
-            className="flex px-4 py-3 space-x-2 overflow-x-auto border-t border-white/10 bg-white/5 backdrop-blur-md"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {chatbotData.starterQuestions.map((q, idx) => (
-              <button
-                key={idx}
-                type="button"
-                onClick={() => handleUserMessage(q)}
-                className="whitespace-nowrap px-4 py-2 text-xs font-semibold rounded-full border border-white/10 transition-all shrink-0 shadow-sm text-[#1d3bf3] dark:text-blue-400 bg-white/30 dark:bg-black/20 hover:bg-[#1d3bf3] hover:text-white dark:hover:bg-blue-600"
-              >
-                {q}
-              </button>
-            ))}
-          </div>
+
 
           {/* User Input Message Submission Form Area */}
-          <form onSubmit={handleSendMessage} className="flex gap-2 p-4 border-t border-white/10 bg-white/10 backdrop-blur-md">
+          <form onSubmit={handleSendMessage} className="flex gap-2 p-4 border-t border-white/20 bg-white/10 backdrop-blur-sm">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask me anything..."
-              className="flex-1 px-4 py-3 text-sm bg-white/20 dark:bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-[#1d3bf3]/40 dark:focus:ring-blue-500/40 text-gray-800 dark:text-slate-100 transition-all placeholder-gray-500 dark:placeholder-gray-400"
+              className="flex-1 px-4 py-3 text-sm bg-white/20 backdrop-blur-sm border border-white/40 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-[#7248D2]/40 text-slate-800 transition-all placeholder-slate-600"
             />
             <button 
               type="submit" 
-              className="px-5 py-3 font-semibold text-sm text-white transition-all bg-[#1d3bf3]/90 hover:bg-[#1d3bf3] rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+              className="px-5 py-3 font-semibold text-sm text-white transition-all bg-[#7248D2] hover:opacity-90 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 shrink-0"
             >
               Send
             </button>
