@@ -83,8 +83,8 @@ const TeamTicket = (props, this_ref) => {
 
 	// ── Configurable ticket values — update these when event details are finalised ──
 	const TICKET_ROUND = process.env.NEXT_PUBLIC_TICKET_ROUND;
-	const TICKET_DATE  = getCurrentDateString();
-	const TICKET_TIME  = getCurrentTimeString();
+	const TICKET_DATE  = process.env.NEXT_PUBLIC_TICKET_DATE;
+	const TICKET_TIME  = process.env.NEXT_PUBLIC_TICKET_TIME;
 
 	return (
 		<div ref={ref}>
