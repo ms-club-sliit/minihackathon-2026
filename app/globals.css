@@ -169,20 +169,40 @@
 			format("woff");
 }
 
-html,body,#root {
-	margin: 0;
-	width:100%;
+html,
+#root {
+  margin: 0;
+  width: 100%;
 }
 
 body {
   margin: 0;
   width: 100%;
   min-height: 100vh;
-  background-image: url("/images/2026-images/background-image.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(
+    180deg,
+    #b8d4ff 0%,
+    #a8d8e8 12%,
+    #9ee0d0 24%,
+    #a8d4c8 36%,
+    #c0bce0 48%,
+    #d4b0d4 58%,
+    #e0a8c4 68%,
+    #e8b8a8 78%,
+    #f0cc98 88%,
+    #f8e0b0 100%
+  );
   background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .background-shade-1 {
