@@ -24,30 +24,42 @@ export default function Header() {
         {/* Right Column (80%): Navigation Bar */}
         <div className="flex h-[60px] items-center justify-between mr-[-5.5vw] rounded-[40px] border border-white/20 bg-white/10 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
           <div className="flex items-center gap-3">
-            <button className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white">
-              Home
-            </button>
+            <a href="/">
+              <button className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white">
+                Home
+              </button>
+            </a>
 
-            <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-              Eligibility
-            </button>
+            <a href="#Eligibility">
+              <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
+                Eligibility
+              </button>
+            </a>
 
-            <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-              Timeline
-            </button>
+            <a href="#Timeline">
+              <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
+                Timeline
+              </button>
+            </a>
 
-            <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-              Gallery
-            </button>
+            <a href="#Gallery">
+              <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
+                Gallery
+              </button>
+            </a>
 
-            <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-              Rules
-            </button>
+            <a href="/rules">
+              <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
+                Rules
+              </button>
+            </a>
           </div>
 
-          <button className="rounded-full bg-gradient-to-r from-[#3552ff] to-[#4d6eff] px-7 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(53,82,255,0.45)] transition hover:-translate-y-1">
-            Register Now
-          </button>
+          <a href="/register">
+            <button className="rounded-full bg-gradient-to-r from-[#3552ff] to-[#4d6eff] px-7 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(53,82,255,0.45)] transition hover:-translate-y-1">
+              Register Now
+            </button>
+          </a>
 
         </div>
       </div>

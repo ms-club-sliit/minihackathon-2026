@@ -7,7 +7,7 @@ const TARGET_DATE = process.env.EVENT_TARGET_DATE || '2026-08-15T17:00:00';
 
 export default function CountdownTimer() {
   return (
-    <section className='py-8 sm:py-12 md:py-16 lg:py-24 px-5 sm:px-10 md:px-20'>
+    <section className='py-8 sm:py-12 md:py-16 lg:py-24 px-5 sm:px-10 md:px-20 bg-transparent'>
       <div className='max-w-7xl mx-auto'>
         <div
           className='rounded-2xl sm:rounded-3xl bg-white/20 backdrop-blur-xl border border-white/40 px-4 sm:px-8 md:px-12 py-8 sm:py-10 md:py-12'

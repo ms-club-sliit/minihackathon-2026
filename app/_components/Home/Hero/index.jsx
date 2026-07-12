@@ -36,14 +36,7 @@ export default function Hero() {
   `.trim();
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#EEF5FF] via-[#F4FAFF] to-[#F4FFF5] px-4 md:px-8 py-5 md:py-7">
-
-      {/* ================= BACKGROUND BLOBS ================= */}
-      <div className="absolute -left-36 bottom-[-140px] h-[300px] w-[300px] md:h-[520px] md:w-[520px] rounded-full bg-violet-600/75 blur-[100px] md:blur-[170px]" />
-      <div className="absolute -right-40 -top-32 h-[350px] w-[350px] md:h-[560px] md:w-[560px] rounded-full bg-emerald-500/70 blur-[110px] md:blur-[180px]" />
-      <div className="absolute left-[42%] top-[28%] h-[200px] w-[200px] md:h-[360px] md:w-[360px] rounded-full bg-sky-500/65 blur-[90px] md:blur-[150px]" />
-      <div className="absolute left-[12%] top-[18%] h-[150px] w-[150px] md:h-[250px] md:w-[250px] rounded-full bg-fuchsia-500/50 blur-[80px] md:blur-[130px]" />
-      <div className="absolute right-[14%] bottom-[8%] h-[160px] w-[160px] md:h-[260px] md:w-[260px] rounded-full bg-lime-400/50 blur-[80px] md:blur-[130px]" />
+    <main className="relative min-h-screen overflow-hidden bg-transparent">
 
       {/* ================= HERO WRAPPER CARD ================= */}
       <section className="relative w-full md:w-[95vw] min-h-[90vh] md:h-[95vh] filter drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)] mx-auto">
@@ -95,11 +88,11 @@ export default function Hero() {
             </div>
 
             {/* ================= HERO CONTENT LAYER ================= */}
-            <div className="md:absolute flex items-center justify-center w-full md:h-[55vh]">
-              <div className="relative z-10 flex flex-col items-center justify-center min-h-[65vh] md:min-h-[675px] px-4 md:px-5 font-sans">
+            <div className="md:absolute flex items-center justify-center w-full md:min-h-[50vh] min-h-[65vh]">
+              <div className="relative flex flex-col items-center justify-center px-4 md:px-5 font-sans">
 
                 {/* Center Content Row (Hero Branding) */}
-                <div className="flex flex-col items-center justify-center text-center px-4 md:px-8 my-auto py-8 md:py-5">
+                <div className="flex flex-col items-center justify-center text-center px-4 md:px-8 py-8 md:py-5">
                   {/* Core Co-Branding Logos */}
                   <div className="mb-6 md:mb-8 flex items-center justify-center gap-4 md:gap-6">
                     <Image
@@ -176,11 +169,11 @@ export default function Hero() {
                   Follow Us On.
                 </p>
                 <div className="flex items-center gap-4 md:gap-5">
-                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-600"><FacebookIcon height="1.3em" /></a>
-                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-pink-600"><InstagramIcon height="1.3em" /></a>
-                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-red-600"><YoutubeIcon height="1.3em" /></a>
-                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-700"><LinkedinIcon height="1.3em" /></a>
-                  <a href="#" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-black"><GithubDarkIcon height="1.3em" /></a>
+                  <a href="https://www.facebook.com/msclubsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-600" target="_blank" rel="noopener noreferrer"><FacebookIcon height="1.3em" /></a>
+                  <a href="https://www.instagram.com/msclub.sliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-pink-600" target="_blank" rel="noopener noreferrer"><InstagramIcon height="1.3em" /></a>
+                  <a href="https://www.youtube.com/@msclubofsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-red-600" target="_blank" rel="noopener noreferrer"><YoutubeIcon height="1.3em" /></a>
+                  <a href="https://www.linkedin.com/company/msclubsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-700" target="_blank" rel="noopener noreferrer"><LinkedinIcon height="1.3em" /></a>
+                  <a href="https://github.com/ms-club-sliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-black" target="_blank" rel="noopener noreferrer"><GithubDarkIcon height="1.3em" /></a>
                 </div>
               </div>
 
