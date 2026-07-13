@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import TimelineData from "@/app/data/Timeline.json";
+import SectionTitle from "@/components/SectionTitle";
 
 const elementImages = [
   "/assets/1.png",
@@ -136,14 +137,8 @@ export default function Timeline() {
       <DecorativeCorners />
 
       {/* Header */}
-      <div className="mb-20 px-4">
-        <div className="max-w-4xl mx-auto flex items-center gap-4">
-          <span aria-hidden className="h-px bg-gray-300 flex-1" />
-          <h1 className="shrink-0 inline-block bg-gray-800 text-white px-8 py-2 rounded-full text-xl font-semibold">
-            Timeline
-          </h1>
-          <span aria-hidden className="h-px bg-gray-300 flex-1" />
-        </div>
+      <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-12 mb-12 md:mb-16">
+        <SectionTitle title="Time Line" />
       </div>
 
       <div className="relative max-w-4xl mx-auto px-4">
