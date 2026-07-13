@@ -89,7 +89,7 @@ const TeamTicket = (props, this_ref) => {
 	return (
 		<div ref={ref}>
 			<svg
-				width={size === 0 ? 390 : TICKET_W}
+				width={size === 0 ? '100%' : TICKET_W}
 				viewBox={`0 0 ${TICKET_W} ${TICKET_H}`}
 			>
 				<foreignObject width={TICKET_W} height={TICKET_H} xmlns="http://www.w3.org/2000/svg">

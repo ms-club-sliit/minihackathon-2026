@@ -40,7 +40,15 @@ const TicketPopup = forwardRef(function TicketPopup(
   ref
 ) {
   const [opacity, setOpacity] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const ticketRef = useRef(null);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   // Expose the ticketRef to parent components
   useImperativeHandle(ref, () => ({
@@ -186,7 +194,11 @@ const TicketPopup = forwardRef(function TicketPopup(
         )}
 
         {/* ── Ticket Card ── */}
-        <div style={{ marginTop: '32px', filter: 'drop-shadow(0 20px 56px rgba(80,60,180,0.25))', maxWidth: '100%', overflowX: 'hidden', display: 'flex', justifyContent: 'center' }}>
+        <div style={{
+          marginTop: '32px',
+          filter: 'drop-shadow(0 20px 56px rgba(80,60,180,0.25))',
+          ...(isMobile ? { width: 'min(390px, calc(100vw - 32px))', flexShrink: 0 } : {}),
+        }}>
           {isTeam ? (
             <TeamTicket
               headerImage='/assets/ms_club_logo.png'
