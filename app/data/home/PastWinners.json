@@ -2,43 +2,43 @@
 	"data": [
 		{
 			"id": 1,
-			"position": "Winner of 2024",
+			"position": "Winner of 2025",
 			"description": "Winning the Mini Hackathon stands as proof of our teamwork, determination, and innovative mindset. This milestone not only expands our opportunities but also strengthens our reputation in the tech circle.",
+			"imageUrl": "images/home/pastWinners2025/winner.jpg",
+			"name": "Team The Kade",
+			"year": "2025"
+		},
+		{
+			"id": 2,
+			"position": "1st Runners up of 2025",
+			"description": "Achieving 1st Runners-up at the Mini Hackathon highlights our determination and innovative thinking. This recognition motivates us to push boundaries and aim higher in every challenge ahead.",
+			"imageUrl": "images/home/pastWinners2025/1st_runner_up.jpg",
+			"name": "Team Pebbels",
+			"year": "2025"
+		},
+		{
+			"id": 3,
+			"position": "2nd Runners up of 2025",
+			"description": "Our journey at the Mini Hackathon was a rewarding experience that showcased our ideas, resilience, and team spirit. This milestone fuels our passion to keep learning and creating in the tech space.",
+			"imageUrl": "images/home/pastWinners2025/2nd_runner_up.jpg",
+			"name": "Algo Knights",
+			"year": "2025"
+		},
+		{
+			"id": 4,
+			"position": "Winner of 2024",
+			"description": "The Mini Hackathon pushed us to think outside the box and put our skills to the test. We are grateful for the recognition we received, and this competition has definitely prepared us for even greater challenges.",
 			"imageUrl": "images/home/pastWinners/2024winners.png",
 			"name": "Team ICY",
 			"year": "2024"
 		},
 		{
-			"id": 2,
+			"id": 5,
 			"position": "1st Runners up of 2024",
-			"description": "Achieving 1st Runners-up at the Mini Hackathon highlights our determination and innovative thinking. This recognition motivates us to push boundaries and aim higher in every challenge ahead.",
+			"description": "Earning 1st Runners-up in the 2023 Mini Hackathon reflects our dedication and ingenuity. This milestone marked a stepping stone that continues to inspire our journey in tech.",
 			"imageUrl": "images/home/pastWinners/2024runnersup1.png",
 			"name": "Sweet Coders",
 			"year": "2024"
-		},
-		{
-			"id": 3,
-			"position": "2nd Runners up of 2024",
-			"description": "Our journey at the Mini Hackathon was a rewarding experience that showcased our ideas, resilience, and team spirit. This milestone fuels our passion to keep learning and creating in the tech space.",
-			"imageUrl": "images/home/pastWinners/2024runnersup2.png",
-			"name": "Team KaiZo",
-			"year": "2024"
-		},
-		{
-			"id": 4,
-			"position": "Winner of 2023",
-			"description": "The Mini Hackathon pushed us to think outside the box and put our skills to the test. We are grateful for the recognition we received, and this competition has definitely prepared us for even greater challenges.",
-			"imageUrl": "images/home/pastWinners/autobots.jpeg",
-			"name": "Team Autobots",
-			"year": "2023"
-		},
-		{
-			"id": 5,
-			"position": "1st Runners up of 2023",
-			"description": "Earning 1st Runners-up in the 2023 Mini Hackathon reflects our dedication and ingenuity. This milestone marked a stepping stone that continues to inspire our journey in tech.",
-			"imageUrl": "images/home/pastWinners/dreamshack.jpg",
-			"name": "Dreams Hack",
-			"year": "2023"
 		}
 	]
 }
