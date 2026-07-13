@@ -13,6 +13,14 @@
   background-position: center;
 }
 
+@font-face {
+  font-family: "Open Sans Hebrew Condensed";
+  src: url("/assets/fonts/Open-Sans-Hebrew-Condensed.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Styles for the Vertical Timeline */
 
 @media (min-width: 744px) and (max-width: 1170px) {
@@ -97,163 +105,163 @@
 }
 
 @font-face {
-	font-family: "SF Pro Display";
-	font-style: normal;
-	font-weight: 400;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYREGULAR.woff")
-			format("woff");
-}
-@font-face {
-	font-family: "SF Pro Display";
-	font-style: italic;
-	font-weight: 100;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYULTRALIGHTITALIC.woff")
-			format("woff");
-}
-@font-face {
-	font-family: "SF Pro Display";
-	font-style: italic;
-	font-weight: 200;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYTHINITALIC.woff")
-			format("woff");
-}
-@font-face {
-	font-family: "SF Pro Display";
-	font-style: italic;
-	font-weight: 300;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYLIGHTITALIC.woff")
-			format("woff");
-}
-@font-face {
-	font-family: "SF Pro Display";
-	font-style: normal;
-	font-weight: 500;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYMEDIUM.woff")
-			format("woff");
-}
-@font-face {
-	font-family: "SF Pro Display";
-	font-style: italic;
-	font-weight: 600;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYSEMIBOLDITALIC.woff")
-			format("woff");
-}
-@font-face {
-	font-family: "SF Pro Display";
-	font-style: normal;
-	font-weight: 700;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYBOLD.woff")
-			format("woff");
-}
-@font-face {
-	font-family: "SF Pro Display";
-	font-style: italic;
-	font-weight: 800;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYHEAVYITALIC.woff")
-			format("woff");
-}
-@font-face {
-	font-family: "SF Pro Display";
-	font-style: italic;
-	font-weight: 900;
-	src: local("SF Pro Display"),
-		url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYBLACKITALIC.woff")
-			format("woff");
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 400;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYREGULAR.woff") format("woff");
 }
 
-html,body, #root {
-	margin: 0;
-	width:100%;
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 100;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYULTRALIGHTITALIC.woff") format("woff");
 }
 
-.background-shade-1 {
-	background: rgb(0, 0, 0);
-	background: linear-gradient(
-		155deg,
-		rgba(0, 0, 0, 1) 35%,
-		rgba(122, 122, 122, 1) 83%
-	);
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 200;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYTHINITALIC.woff") format("woff");
 }
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 300;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYLIGHTITALIC.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYMEDIUM.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 600;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYSEMIBOLDITALIC.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYBOLD.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 800;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYHEAVYITALIC.woff") format("woff");
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 900;
+  src: local("SF Pro Display"),
+    url("https://fonts.cdnfonts.com/s/59278/SFPRODISPLAYBLACKITALIC.woff") format("woff");
+}
+
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+}
+
+/* .background-shade-1 {
+  background: rgb(0, 0, 0);
+  background: linear-gradient(155deg,
+      rgba(0, 0, 0, 1) 35%,
+      rgba(122, 122, 122, 1) 83%);
+} */
 
 .ticket-team-name {
-	font-family: SF Pro Display;
-	font-size: 32px;
-	font-weight: 700;
-	line-height: 38px;
-	letter-spacing: -0.02em;
+  font-family: SF Pro Display;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38px;
+  letter-spacing: -0.02em;
 }
 
 .ticket-team-member {
-	font-family: SF Pro Display;
-	font-size: 20px;
-	font-weight: 700;
-	line-height: 24px;
-	letter-spacing: -0.02em;
+  font-family: SF Pro Display;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.02em;
 }
 
 .ticket-team-bg {
-	background-image: url("/assets/teamcard/ticket-bg.png");
-	background-repeat: no-repeat;
-	background-position: center;
+  background-image: url("/assets/teamcard/ticket-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .ticket-team-round {
-	font-family: SF Pro Display;
-	color: #969696;
-	font-size: 24px;
-	font-weight: 500;
-	line-height: 29px;
-	letter-spacing: -0.02em;
-	text-align: center;
+  font-family: SF Pro Display;
+  color: #969696;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .ticket-team-date {
-	font-family: SF Pro Display;
-	font-size: 24px;
-	font-weight: 700;
-	line-height: 29px;
-	letter-spacing: -0.02em;
-	text-align: center;
+  font-family: SF Pro Display;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29px;
+  letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .ticket-team-time {
-	font-family: SF Pro Display;
-	color: #969696;
-	font-size: 24px;
-	font-weight: 600;
-	line-height: 29px;
-	letter-spacing: -0.02em;
-	text-align: center;
+  font-family: SF Pro Display;
+  color: #969696;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .team-hosted-by {
-	font-family: SF Pro Display;
-	font-size: 20px;
-	font-weight: 700;
-	line-height: 24px;
-	letter-spacing: -0.02em;
-	text-align: center;
+  font-family: SF Pro Display;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .team-dashed-line {
-	border: 2px dashed rgba(0, 0, 0, 0.19);
+  border: 2px dashed rgba(0, 0, 0, 0.19);
 }
 
 .team-number {
-	font-family: SF Pro Display;
-	font-size: 36px;
-	font-weight: 800;
-	writing-mode: vertical-lr;
-	text-orientation: mixed;
-	transform: rotate(-180deg);
+  font-family: SF Pro Display;
+  font-size: 36px;
+  font-weight: 800;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+  transform: rotate(-180deg);
 }
 
 .ant-steps-item-title,
@@ -276,4 +284,149 @@ html,body, #root {
 
 .ant-steps-item-finish .ant-steps-item-tail {
   border-color: #000 !important;
+}
+
+/* Custom Steps Styling to match Figma Design */
+.custom-steps .ant-steps-item-title {
+  color: #737272 !important;
+  /* textGrey */
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-top: 8px !important;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+.custom-steps .ant-steps-item-active .ant-steps-item-title {
+  color: #1d3bf3 !important;
+  /* vibrant blue */
+}
+
+.custom-steps .ant-steps-item-finish .ant-steps-item-title {
+  color: #1d3bf3 !important;
+  /* vibrant blue */
+}
+
+.custom-steps .ant-steps-item-icon {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+  /* light gray border */
+  color: #737272 !important;
+  /* textGrey */
+  font-weight: 600 !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 30px !important;
+  border-radius: 50% !important;
+  /* Force circle shape */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+.custom-steps .ant-steps-item-active .ant-steps-item-icon {
+  background-color: #1d3bf3 !important;
+  border-color: #1d3bf3 !important;
+  color: #ffffff !important;
+}
+
+.custom-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #1d3bf3 !important;
+  border-color: #1d3bf3 !important;
+  color: #ffffff !important;
+}
+
+/* Steps Connection Tails */
+.custom-steps .ant-steps-item-tail::after {
+  background-color: #e5e7eb !important;
+}
+
+.custom-steps .ant-steps-item-finish .ant-steps-item-tail {
+  border-color: #1d3bf3 !important;
+}
+
+.custom-steps .ant-steps-item-finish .ant-steps-item-tail::after {
+  background-color: #1d3bf3 !important;
+}
+
+/* Custom Input Fields */
+.custom-input {
+  background-color: #f5f6fa !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  height: 48px !important;
+  padding: 0 16px !important;
+  transition: all 0.3s ease !important;
+  font-size: 14px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.custom-input:hover {
+  background-color: #eaedf4 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.custom-input:focus,
+.custom-input-focused {
+  background-color: #ffffff !important;
+  border-color: #1d3bf3 !important;
+  box-shadow: 0 0 0 2px rgba(29, 59, 243, 0.1) !important;
+}
+
+.custom-input::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Custom Select Dropdowns */
+.custom-select .ant-select-selector {
+  background-color: #f5f6fa !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: all 0.3s ease !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.custom-select:hover .ant-select-selector {
+  background-color: #eaedf4 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.custom-select.ant-select-focused .ant-select-selector {
+  background-color: #ffffff !important;
+  border-color: #1d3bf3 !important;
+  box-shadow: 0 0 0 2px rgba(29, 59, 243, 0.1) !important;
+}
+
+.custom-select .ant-select-selection-placeholder {
+  color: #9ca3af !important;
+}
+
+/* Custom fonts utility and scoping */
+.font-condensed {
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif !important;
+}
+
+.step-title {
+  font-family: 'Open Sans Condensed', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.custom-steps-container .ant-form-item-label>label {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.custom-btn {
+  font-family: 'Open Sans Condensed', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
 }
