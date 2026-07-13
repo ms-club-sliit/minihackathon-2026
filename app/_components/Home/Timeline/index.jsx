@@ -4,10 +4,10 @@ import Image from "next/image";
 import TimelineData from "@/app/data/Timeline.json";
 
 const elementImages = [
-  "/assets/1.png", 
-  "/assets/2.png", 
-  "/assets/3.png", 
-  "/assets/4.png", 
+  "/assets/1.png",
+  "/assets/2.png",
+  "/assets/3.png",
+  "/assets/4.png",
 ];
 
 function DecorativeCorners({ images = elementImages }) {
@@ -121,9 +121,8 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
   return (
     <div
       ref={ref}
-      className={`${className} md:transition-all md:duration-700 md:ease-out md:will-change-transform ${
-        shown ? "md:opacity-100 md:translate-y-0" : "md:opacity-0 md:translate-y-6"
-      }`}
+      className={`${className} md:transition-all md:duration-700 md:ease-out md:will-change-transform ${shown ? "md:opacity-100 md:translate-y-0" : "md:opacity-0 md:translate-y-6"
+        }`}
     >
       {children}
     </div>
@@ -132,7 +131,7 @@ function RevealOnScroll({ children, className = "", delay = 0 }) {
 
 export default function Timeline() {
   return (
-    <main id="timeline" className="relative isolate bg-white min-h-screen py-12 overflow-hidden">
+    <main id="timeline" className="relative isolate bg-transparent min-h-screen py-12 overflow-hidden">
       {/* Decorative corner UI elements */}
       <DecorativeCorners />
 
@@ -217,21 +216,18 @@ export default function Timeline() {
                 {isLeft && <div className="hidden md:block md:w-1/2" />}
 
                 <div
-                  className={`w-full md:w-1/2 pl-16 pr-4 md:px-8 ${
-                    isLeft ? "md:pl-16" : "md:pr-16"
-                  }`}
+                  className={`w-full md:w-1/2 pl-16 pr-4 md:px-8 ${isLeft ? "md:pl-16" : "md:pr-16"
+                    }`}
                 >
                   <p
-                    className={`text-gray-500 text-xs md:text-md mb-1 uppercase tracking-wide ${
-                      !isLeft ? "md:text-right" : ""
-                    }`}
+                    className={`text-gray-500 text-xs md:text-md mb-1 uppercase tracking-wide ${!isLeft ? "md:text-right" : ""
+                      }`}
                   >
                     {timeline.date}
                   </p>
                   <h3
-                    className={`font-bold text-gray-900 text-base md:text-lg mb-2 leading-tight ${
-                      !isLeft ? "md:text-right" : ""
-                    }`}
+                    className={`font-bold text-gray-900 text-base md:text-lg mb-2 leading-tight ${!isLeft ? "md:text-right" : ""
+                      }`}
                   >
                     {timeline.title}
                   </h3>
@@ -245,11 +241,10 @@ export default function Timeline() {
 
               <div className="absolute left-8 top-2 md:left-1/2 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10">
                 <div
-                  className={`flex items-center justify-center shadow-lg border-4 border-white ${
-                    isFirst
+                  className={`flex items-center justify-center shadow-lg border-4 border-white ${isFirst
                       ? "h-12 w-12 md:h-14 md:w-14 rounded-full bg-black"
                       : "h-16 w-8 md:h-20 md:w-9 rounded-full"
-                  }`}
+                    }`}
                   style={!isFirst ? { backgroundColor: timeline.color } : {}}
                   aria-hidden
                 >
