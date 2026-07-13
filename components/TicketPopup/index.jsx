@@ -143,29 +143,31 @@ const TicketPopup = forwardRef(function TicketPopup(
           <>
             {/* H1 — bold, tight tracking, large, dark */}
             <h1 style={{
-              fontSize: 'clamp(24px, 3.2vw, 32px)',
+              fontSize: 'clamp(18px, 3.2vw, 32px)',
               fontWeight: '800',
               color: '#1a1a1a',
               textAlign: 'center',
-              lineHeight: 1.1,
+              lineHeight: 1.2,
               margin: 0,
               letterSpacing: '-0.5px',
               fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              whiteSpace: 'nowrap',
+              whiteSpace: 'normal',
+              wordBreak: 'break-word',
             }}>
               You have successfully registered for the Mini Hackathon 2026!
             </h1>
 
             {/* H2 — slightly smaller, dark gray, bold */}
             <h2 style={{
-              fontSize: 'clamp(18px, 2.4vw, 22px)',
+              fontSize: 'clamp(15px, 2.4vw, 22px)',
               fontWeight: '700',
               color: '#444444',
               textAlign: 'center',
               margin: '16px 0 0',
               letterSpacing: '-0.2px',
               fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-              whiteSpace: 'nowrap',
+              whiteSpace: 'normal',
+              wordBreak: 'break-word',
             }}>
               Here&apos;s your ticket. Share everywhere!
             </h2>
@@ -184,7 +186,7 @@ const TicketPopup = forwardRef(function TicketPopup(
         )}
 
         {/* ── Ticket Card ── */}
-        <div style={{ marginTop: '32px', filter: 'drop-shadow(0 20px 56px rgba(80,60,180,0.25))' }}>
+        <div style={{ marginTop: '32px', filter: 'drop-shadow(0 20px 56px rgba(80,60,180,0.25))', maxWidth: '100%', overflowX: 'hidden', display: 'flex', justifyContent: 'center' }}>
           {isTeam ? (
             <TeamTicket
               headerImage='/assets/ms_club_logo.png'
