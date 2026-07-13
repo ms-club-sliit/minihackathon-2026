@@ -18,6 +18,9 @@ module.exports = {
         textBlue : '#0080FF',
         textGrey : '#737272'
       },
+      fontFamily: {
+        slogan: ['"Open Sans Hebrew Condensed"', "sans-serif"],
+      },
     },
   },
   
