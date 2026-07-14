@@ -1,17 +1,13 @@
 import React from "react";
 import Sponsers from "../../../app/_components/Home/sponsers";
+import SectionHeader from "../../section-header";
 
 const SponsorsSection = () => {
   return (
-    <div className="relative px-2 sm:px-10 lg:px-0 py-10 bg-white">
-      {/* Section Header */}
-      <div className="flex flex-col items-center mb-8">
-        <div className="flex items-center w-full justify-center">
-          <div className="hidden md:block w-1/4 h-0.5 bg-gray-200 mr-4" />
-          <div className="bg-gray-800 px-6 py-2 rounded-full shadow text-white text-xl sm:text-2xl font-semibold">Our Sponsors</div>
-          <div className="hidden md:block w-1/4 h-0.5 bg-gray-200 ml-4" />
-        </div>
-        <p className="text-center text-gray-500 mt-4 max-w-2xl text-sm sm:text-base">
+    <div className="relative px-4 py-10 bg-white">
+      <div className="relative z-10 pt-2 pb-4 px-4 md:pl-[100px] md:pr-8 mb-4">
+        <SectionHeader title="Our Sponsors" className="mb-4" />
+        <p className="text-left text-gray-500 mt-4 max-w-2xl text-sm sm:text-base">
           We're grateful to these amazing organizations for making Mini Hackathon 2025 possible.
         </p>
       </div>
