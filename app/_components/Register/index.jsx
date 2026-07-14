@@ -384,7 +384,7 @@ const Register = () => {
       const emailResults = [];
       for (let i = 0; i < teamMembers.length; i++) {
         const { index, member } = teamMembers[i];
-        const subject = `Mini Hackathon 2025 Registration`;
+        const subject = `Mini Hackathon 2026 Registration`;
 
         setEmailProgress({
           current: i,
