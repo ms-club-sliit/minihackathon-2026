@@ -56,6 +56,46 @@
   }
 }
 
+.custom-gradient {
+  background: linear-gradient(
+    175deg,
+    rgba(255, 255, 255, 0.7) -0.23%,   /* more white */
+    rgba(239, 74, 35, 0.3) 48.5%,      /* EF4A23 orange with transparency */
+    rgba(255, 255, 255, 0.05) 97.24%   /* subtle white overlay */
+  );
+}
+
+
+/* End Of Styles for the Vertical Timeline */
+
+/* newly added */
+.gradient-45 {
+  background: 
+    linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.7) 0%,  /* more white at the start */
+      rgba(255, 255, 255, 0.7) 100%
+    ),
+    linear-gradient(
+      45deg,
+      #F49A85 0%,    /* light orange */
+      #EF4A23 40%,   /* dark orange */
+      #87BAF6 70%,   /* light blue */
+      #457EC1 100%   /* dark blue */
+    );
+}
+
+/* newly added */
+.gradient-120 {
+  background: 
+    linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.7) 0%,  /* semi-transparent white overlay */
+      rgba(255, 255, 255, 0.7) 100%
+    ),
+    linear-gradient(120deg, #F49A85 0%, #EF4A23 50%, #87BAF6 75%, #457EC1 100%);
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

@@ -40,7 +40,15 @@ const TicketPopup = forwardRef(function TicketPopup(
   ref
 ) {
   const [opacity, setOpacity] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const ticketRef = useRef(null);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   // Expose the ticketRef to parent components
   useImperativeHandle(ref, () => ({
@@ -54,7 +62,7 @@ const TicketPopup = forwardRef(function TicketPopup(
     if (display) {
       setTimeout(() => {
         setOpacity(1);
-      }, 500);
+      }, 350);
     } else {
       setOpacity(0);
     }
@@ -62,49 +70,23 @@ const TicketPopup = forwardRef(function TicketPopup(
 
   const saveTicket = async () => {
     if (!ticketRef.current) return;
-
     try {
-      let dataURL = await ticketRef.current.renderTicket();
+      const dataURL = await ticketRef.current.renderTicket();
       const link = document.createElement('a');
-      link.download = `ticket.png`;
+      link.download = 'ticket.png';
       link.href = dataURL;
       link.click();
     } catch (e) {}
   };
 
-  return (
-    <div
-      className={`${
-        minimal
-          ? ''
-          : 'z-[9999] fixed w-screen h-screen top-0 left-0 pb-[4em] overflow-y-auto bg-[#000000d9] backdrop-blur-md'
-      } flex flex-col items-center ${display ? 'z-[10]' : 'z-[-2]'}`}
-      style={{
-        opacity: opacity,
-        transition: 'opacity 500ms',
-      }}
-    >
-      {!minimal && (
-        <>
-          <h1 className='text-center font-bold text-2xl md:text-4xl mb-[2em] mt-[3em] text-white px-4'>
-            You have successfully registered{' '}
-            {isTeam
-              ? 'for the Mini Hackathon 2025'
-              : 'for the Awareness Session'}
-            ! <br></br>Here's your ticket. Share everywhere!
-          </h1>
-          <h2 className='text-md text-white mb-[1em]'>
-            {' '}
-            Check your email for more information.
-          </h2>
-        </>
-      )}
-      <div>
+  /* ── Minimal mode ── */
+  if (minimal) {
+    return (
+      <div style={{ opacity, transition: 'opacity 500ms' }}>
         {isTeam ? (
           <TeamTicket
-            headerImage={'/assets/ms_club_logo.png'}
-            title='Mini Hackathon 2025'
-            subTitle='Team Registration 📣'
+            headerImage='/assets/ms_club_logo.png'
+            title='Mini Hackathon 2026'
             date={new Date()}
             ticketNo={ticketNo}
             team={team}
@@ -114,40 +96,179 @@ const TicketPopup = forwardRef(function TicketPopup(
           />
         ) : (
           <Ticket
-            headerImage={'/assets/ms_club_logo.png'}
-            headerImage2={'/assets/fcsc_logo.png'}
-            title='Mini Hackathon 2025'
-            subTitle='Awareness Session 📣'
+            headerImage='/assets/ms_club_logo.png'
+            headerImage2='/assets/fcsc_logo.png'
+            title='Mini Hackathon 2026'
             date={moment('2022-07-30 19:00')}
             ticketNo={ticketNo}
-            studentItNo={student.studentItNo}
-            studentName={student.studentName}
+            studentItNo={student?.studentItNo}
+            studentName={student?.studentName}
             onRender={onRender}
             url={ticketURL}
             ref={ticketRef}
           />
         )}
       </div>
-      {/* <Share url={getShareURL(ticketNo)} title="I got registered for the Mini Hackathon 2024!" /> */}
-      <div className='mt-5'>
-        <button
-          onClick={saveTicket}
-          type='submit'
-          className={`flex-shrink-0 mt-2 ${
-            minimal ? '' : 'mr-5'
-          } w-24 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500`}
-        >
-          Save
-        </button>
+    );
+  }
+
+  /* ── Full-page ticket page ── */
+  return (
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: display ? 9999 : -2,
+        opacity,
+        transition: 'opacity 350ms ease',
+        overflowY: 'auto',
+        overflowX: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        /* ── Glassmorphism: transparent frosted glass over the page ── */
+        background: 'rgba(255, 255, 255, 0.18)',
+        backdropFilter: 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+      }}
+    >
+      {/* ── Page body ── */}
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '48px 24px 80px',
+        flex: 1,
+        position: 'relative',
+        zIndex: 1,
+        width: '100%',
+      }}>
+
         {!minimal && (
-          <button
-            onClick={() => onClose && onClose()}
-            type='submit'
-            className='flex-shrink-0 mt-2 w-24 h-10 rounded bg-black text-white hover:bg-gray-300 hover:text-black transition duration-0 hover:duration-500'
-          >
-            Close
-          </button>
+          <>
+            {/* H1 — bold, tight tracking, large, dark */}
+            <h1 style={{
+              fontSize: 'clamp(18px, 3.2vw, 32px)',
+              fontWeight: '800',
+              color: '#1a1a1a',
+              textAlign: 'center',
+              lineHeight: 1.2,
+              margin: 0,
+              letterSpacing: '-0.5px',
+              fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              whiteSpace: 'normal',
+              wordBreak: 'break-word',
+            }}>
+              You have successfully registered for the Mini Hackathon 2026!
+            </h1>
+
+            {/* H2 — slightly smaller, dark gray, bold */}
+            <h2 style={{
+              fontSize: 'clamp(15px, 2.4vw, 22px)',
+              fontWeight: '700',
+              color: '#444444',
+              textAlign: 'center',
+              margin: '16px 0 0',
+              letterSpacing: '-0.2px',
+              fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+              whiteSpace: 'normal',
+              wordBreak: 'break-word',
+            }}>
+              Here&apos;s your ticket. Share everywhere!
+            </h2>
+
+            {/* Check email sub-text */}
+            <p style={{
+              color: '#888888',
+              fontSize: '15px',
+              fontWeight: '500',
+              margin: '16px 0 0',
+              textAlign: 'center',
+            }}>
+              Check your email for more information.
+            </p>
+          </>
         )}
+
+        {/* ── Ticket Card ── */}
+        <div style={{
+          marginTop: '32px',
+          filter: 'drop-shadow(0 20px 56px rgba(80,60,180,0.25))',
+          ...(isMobile ? { width: 'min(390px, calc(100vw - 32px))', flexShrink: 0 } : {}),
+        }}>
+          {isTeam ? (
+            <TeamTicket
+              headerImage='/assets/ms_club_logo.png'
+              title='Mini Hackathon 2026'
+              date={new Date()}
+              ticketNo={ticketNo}
+              team={team}
+              onRender={onRender}
+              url={ticketURL}
+              ref={ticketRef}
+            />
+          ) : (
+            <Ticket
+              headerImage='/assets/ms_club_logo.png'
+              headerImage2='/assets/fcsc_logo.png'
+              title='Mini Hackathon 2026'
+              date={moment('2022-07-30 19:00')}
+              ticketNo={ticketNo}
+              studentItNo={student?.studentItNo}
+              studentName={student?.studentName}
+              onRender={onRender}
+              url={ticketURL}
+              ref={ticketRef}
+            />
+          )}
+        </div>
+
+        {/* Action buttons */}
+        <div style={{ display: 'flex', gap: '12px', marginTop: '28px' }}>
+          <button
+            id="ticket-save-btn"
+            onClick={saveTicket}
+            style={{
+              padding: '10px 36px',
+              borderRadius: '9px',
+              backgroundColor: '#1A1033',
+              color: '#fff',
+              fontWeight: '600',
+              fontSize: '14px',
+              border: 'none',
+              cursor: 'pointer',
+              transition: 'background 0.18s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7B52CC'}
+            onMouseLeave={e => e.currentTarget.style.backgroundColor = '#1A1033'}
+          >
+            Save
+          </button>
+          {!minimal && (
+            <button
+              id="ticket-close-btn"
+              onClick={() => onClose && onClose()}
+              style={{
+                padding: '10px 36px',
+                borderRadius: '9px',
+                backgroundColor: '#1A1033',
+                color: '#fff',
+                fontWeight: '600',
+                fontSize: '14px',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background 0.18s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7B52CC'}
+              onMouseLeave={e => e.currentTarget.style.backgroundColor = '#1A1033'}
+            >
+              Close
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
