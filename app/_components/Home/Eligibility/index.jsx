@@ -12,14 +12,14 @@ export default function Eligibility () {
         style={{boxShadow: '0px 0px 18px 8px #0000001A'}}
       >
         <h2
-          className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold text-black text-center mb-4 sm:mb-6 tracking-tight"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-black text-center mb-4 sm:mb-6"
           style={{fontFamily: 'inherit'}}
         >
           Who Can Participate ?
         </h2>
         <p
           style={{fontFamily: 'inherit'}}
-          className="text-base xs:text-lg sm:text-xl md:text-2xl text-black font-semibold text-center max-w-2xl sm:max-w-4xl mb-6 sm:mb-10 md:mb-12"
+          className="text-xs sm:text-sm md:text-base text-black font-medium text-center max-w-2xl sm:max-w-4xl mb-6 sm:mb-10 md:mb-12 tracking-wide"
         >
           Open to Students of Sri Lanka Institute of Information Technology (SLIIT) from the following batches.
         </p>
