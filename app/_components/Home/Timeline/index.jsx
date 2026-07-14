@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import TimelineData from "@/app/data/Timeline.json";
-import SectionHeader from "@/components/section header";
+import SectionHeader from "@/components/section-header";
 
 /**
  * Reveal items on scroll.
@@ -83,7 +83,7 @@ export default function Timeline() {
         <div className="relative md:w-[45%] min-h-[60vh] md:min-h-screen flex flex-col overflow-hidden">
 
           {/* SectionHeader badge + headline */}
-          <div className="relative z-10 pt-8 pb-4" style={{ marginLeft: "100px" }}>
+          <div className="relative z-10 pt-8 pb-4 px-4 md:pl-[100px] md:pr-8">
             <SectionHeader title="Timeline" className="mb-5" />
             <h2 className="font-slogan text-7xl md:text-8xl leading-[1.05] font-bold mt-4">
               The Road To

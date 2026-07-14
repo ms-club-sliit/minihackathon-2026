@@ -128,7 +128,6 @@ const TeamTicket = (props, this_ref) => {
 									minWidth: 0,
 									position: "relative",
 									overflow: "hidden",
-                                    /* Figma gradient for main area */
                                     background: "linear-gradient(145deg, #CFE1FB 0%, #FAFAFD 45%, #F7DDF5 100%)"
 								}}
 							>

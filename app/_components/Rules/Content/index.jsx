@@ -1,14 +1,5 @@
 "use client";
-import Image from "next/image";
 import sections from "@/app/data/rules/rules";
-
-// Import the same images used in Timeline
-const elementImages = [
-  "/assets/1.png",
-  "/assets/2.png",
-  "/assets/3.png",
-  "/assets/4.png",
-];
 
 export default function Content() {
 
@@ -119,14 +110,6 @@ export default function Content() {
 
   return (
     <div className="w-screen relative">
-      {/* Decorative corner images like Timeline */}
-      <div aria-hidden className="pointer-events-none select-none absolute inset-0 -z-10">
-        <Image src={elementImages[0]} alt="" width={100} height={100} className="absolute top-36 left-0 w-24 md:w-36 opacity-70" priority />
-        <Image src={elementImages[1]} alt="" width={100} height={100} className="absolute bottom-0 right-0 w-28 md:w-48 opacity-70" priority />
-        <Image src={elementImages[2]} alt="" width={100} height={100} className="absolute bottom-8 left-0 w-20 md:w-48 opacity-70" priority />
-        <Image src={elementImages[3]} alt="" width={100} height={100} className="absolute top-36 right-0 w-24 md:w-40 opacity-70" priority />
-      </div>
-
       <div className="container mx-auto text-justify text-[#161414] px-6 md:px-12 lg:px-20">
         {sections && Array.isArray(sections) ? (
           sections.map((section, index) => (

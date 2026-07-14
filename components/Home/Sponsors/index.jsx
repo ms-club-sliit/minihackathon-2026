@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import sponsorData from "@/app/data/home/sponsors.json";
+import SectionHeader from "../../section-header";
 
 const SponsorsSection = () => {
   const [imageErrors, setImageErrors] = useState(new Set());
@@ -38,22 +39,12 @@ const SponsorsSection = () => {
   return (
     // Outer section wrapper with the gorgeous soft radial/linear gradient
     <section className="relative w-full py-16 px-4 md:px-8 bg-gradient-to-br from-[#FFF0F3] via-[#F3F8FF] to-[#E6F4FF] overflow-hidden flex flex-col items-center">
-      {/* Header Badge */}
-      <div className="flex justify-center mb-10">
-        <div className="bg-[#0B3CC1] pl-6 pr-4 py-2.5 rounded-xl shadow-lg flex items-center gap-4 border border-blue-600/30">
-          <span className="text-white text-lg sm:text-xl font-bold tracking-wider uppercase font-sans">
-            Our Sponsors
-          </span>
-          {/* Vertical stripes on the right */}
-          <div className="flex gap-[3px] h-6 items-center">
-            <span className="w-[3px] h-5 bg-white/20 rounded-full"></span>
-            <span className="w-[3px] h-5 bg-white/30 rounded-full"></span>
-            <span className="w-[3px] h-5 bg-white/50 rounded-full"></span>
-            <span className="w-[3px] h-5 bg-white/70 rounded-full"></span>
-            <span className="w-[3px] h-5 bg-white/90 rounded-full"></span>
-            <span className="w-[3px] h-5 bg-white rounded-full"></span>
-          </div>
-        </div>
+      {/* Header */}
+      <div className="relative z-10 pt-8 pb-4 px-4 md:pl-[100px] md:pr-8 w-full max-w-6xl">
+        <SectionHeader title="Our Sponsors" className="mb-4" />
+        <p className="text-left text-gray-500 mt-4 max-w-2xl text-sm sm:text-base">
+          We're grateful to these amazing organizations for making Mini Hackathon 2026 possible.
+        </p>
       </div>
 
       {/* Main Glassmorphic Container */}
