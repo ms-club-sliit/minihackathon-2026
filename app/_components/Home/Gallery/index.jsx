@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import galleryJson from "@/app/data/home/gallery.json";
+import SectionHeader from "@/components/section header";
 
 export default function Gallery() {
   const defaultWidth = 480;
@@ -43,32 +44,7 @@ export default function Gallery() {
   return (
     <main id="gallery">
       <div className="container mx-auto">
-        {/* box + fading bars; base font-size drives every em unit so the
-            whole badge scales fluidly between ~40px and 60px tall */}
-        <div
-          className="inline-flex items-stretch gap-[0.6em] h-[6em]"
-          style={{ fontSize: "clamp(6.7px, 0.365vw + 5.33px, 10px)" }}
-        >
-          <div className="flex items-center bg-[#2E47FF] px-[3em] overflow-hidden">
-            <span
-              className="text-white text-[5.2em] leading-none translate-y-[2px]"
-              style={{
-                fontFamily: "'Open Sans Condensed', sans-serif",
-                fontWeight: 300,
-                WebkitTextStroke: "0.6px white",
-              }}
-            >
-              Gallery
-            </span>
-          </div>
-          <div className="flex items-stretch" aria-hidden="true">
-            <i className="block w-[1.8em] mr-[0.4em] bg-[#2E47FF]" />
-            <i className="block w-[1.1em] mr-[0.4em] bg-[#2E47FF]" />
-            <i className="block w-[1em] mr-[0.3em] bg-[#2E47FF]" />
-            <i className="block w-[0.5em] mr-[0.3em] bg-[#2E47FF]" />
-            <i className="block w-[0.1em] min-w-[1px] bg-[#2E47FF]" />
-          </div>
-        </div>
+        <SectionHeader title="Gallery" className="mb-0" />
       </div>
 
       <div className="gallery space-y-8 pt-8 md:pt-10 pb-8 md:pb-16 container block mx-auto overflow-x-hidden">
