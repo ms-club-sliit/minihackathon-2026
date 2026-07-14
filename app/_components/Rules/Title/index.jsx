@@ -68,7 +68,7 @@ export default function Title() {
           {/* ================= PORTRAIT + VERTICAL BRANDING (Right side, inside glass) ================= */}
           <div className="pointer-events-none absolute inset-0 z-[5] hidden md:block" aria-hidden="true">
             {/* Portrait — sits against the bottom edge, leaving room for the logo on its right */}
-            <div className="absolute bottom-[21.5%] right-[14%] z-[1] flex h-[64%] items-end lg:right-[16%]">
+            <div className="absolute bottom-[21.5%] right-[14%] z-[2] flex h-[64%] items-end lg:right-[16%]">
               <Image
                 src="/images/2026-images/tesla.png"
                 alt="Nikola Tesla portrait"
@@ -80,7 +80,7 @@ export default function Title() {
             </div>
 
             {/* Vertical brand logo strip — far right edge, above the portrait */}
-            <div className="absolute right-[2%] top-[44%] z-[2] -translate-y-1/2 rotate-90 origin-center">
+            <div className="absolute right-[2%] top-[44%] z-[1] -translate-y-1/2 rotate-90 origin-center">
               <Image
                 src="/images/2026-images/logo-main-2026.png"
                 alt="Mini Hackathon 26"
