@@ -14,10 +14,10 @@ export default function Title() {
     Q 210 50 240 50
     H 935
     Q 965 50 965 80
-    V 520
-    Q 965 550 935 550
+    V 600
+    Q 965 630 935 630
     H 65
-    Q 35 550 35 520
+    Q 35 630 35 600
     Z
   `.trim();
 
@@ -68,7 +68,7 @@ export default function Title() {
           {/* ================= PORTRAIT + VERTICAL BRANDING (Right side, inside glass) ================= */}
           <div className="pointer-events-none absolute inset-0 z-[5] hidden md:block" aria-hidden="true">
             {/* Portrait — sits against the bottom edge, leaving room for the logo on its right */}
-            <div className="absolute bottom-[21.5%] right-[14%] z-[2] flex h-[64%] items-end lg:right-[16%]">
+            <div className="absolute bottom-[10.5%] right-[14%] z-[2] flex h-[76%] items-end lg:right-[16%]">
               <Image
                 src="/images/2026-images/tesla.png"
                 alt="Nikola Tesla portrait"
@@ -104,18 +104,18 @@ export default function Title() {
               <div className="relative flex w-full flex-col items-start justify-center px-6 md:pl-[10%] md:pr-4 font-sans text-left">
 
                 {/* OFFICIAL */}
-                <h2 className="text-5xl sm:text-6xl md:text-7xl xl:text-8xl font-bold leading-none tracking-[-0.03em] text-[#1a1a1a] font-slogan">
+                <h2 className="text-6xl sm:text-7xl md:text-[5rem] xl:text-[6.6rem] font-bold leading-none tracking-[-0.03em] text-[#1a1a1a] font-slogan">
                   OFFICIAL
                 </h2>
 
                 {/* RULES AND REGULATIONS. */}
-                <h1 className="mt-1 md:mt-2 bg-gradient-to-r from-[#2E47FF] to-[#5b7bff] bg-clip-text text-transparent text-6xl sm:text-7xl md:text-8xl xl:text-9xl font-bold leading-[0.82] tracking-[-0.04em] font-slogan">
+                <h1 className="mt-1 md:mt-2 bg-gradient-to-r from-[#2E47FF] to-[#5b7bff] bg-clip-text text-transparent text-7xl sm:text-8xl md:text-[6.6rem] xl:text-[8.8rem] font-bold leading-[0.82] tracking-[-0.04em] font-slogan">
                   RULES AND
                   <span className="block">REGULATIONS.</span>
                 </h1>
 
                 {/* Description */}
-                <p className="mt-6 md:mt-8 max-w-md text-sm sm:text-base font-medium leading-6 text-gray-700">
+                <p className="mt-6 md:mt-8 max-w-lg text-base sm:text-lg font-medium leading-7 text-gray-700">
                   Your next big idea starts here!
                   <br />
                   Join the SLIIT Inter-University Ideation and inspire the future
@@ -127,7 +127,7 @@ export default function Title() {
           </div>
 
           {/* ================ Scroll For More (centered) ================ */}
-          <div className="flex md:absolute md:bottom-[8%] md:left-0 md:right-0 justify-center w-full px-4 mt-6 md:mt-0 z-10">
+          <div className="flex md:absolute md:bottom-[2%] md:left-0 md:right-0 justify-center w-full px-4 mt-6 md:mt-0 z-10">
             <button className="group flex h-12 md:h-14 w-full max-w-[320px] items-center justify-center gap-3 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)] hover:bg-white/40 border border-white/40 backdrop-blur-2xl transition-all duration-300">
               <span className="text-xs md:text-sm font-medium text-gray-800">Scroll For More.</span>
               <HiChevronDoubleDown className="animate-bounce text-base md:text-lg" />
