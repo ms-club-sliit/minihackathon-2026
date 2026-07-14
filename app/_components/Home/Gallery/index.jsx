@@ -43,7 +43,7 @@ export default function Gallery() {
 
   return (
     <main id="gallery">
-      <div className="container mx-auto px-4 md:pl-[100px] md:pr-8">
+      <div className="relative z-10 pt-8 pb-4 px-4 md:pl-[100px] md:pr-8">
         <SectionHeader title="Gallery" className="mb-0" />
       </div>
 

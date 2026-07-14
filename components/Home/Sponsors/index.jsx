@@ -5,7 +5,7 @@ import SectionHeader from "../../section-header";
 const SponsorsSection = () => {
   return (
     <div className="relative px-4 py-10 bg-white">
-      <div className="relative z-10 pt-2 pb-4 px-4 md:pl-[100px] md:pr-8 mb-4">
+      <div className="relative z-10 pt-8 pb-4 px-4 md:pl-[100px] md:pr-8">
         <SectionHeader title="Our Sponsors" className="mb-4" />
         <p className="text-left text-gray-500 mt-4 max-w-2xl text-sm sm:text-base">
           We're grateful to these amazing organizations for making Mini Hackathon 2025 possible.
