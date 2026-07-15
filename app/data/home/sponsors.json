@@ -44,5 +44,16 @@
       "width": 200,
       "height": 120
     }
+  ],
+  "Beverage Partner": [
+    {
+      "id": 5,
+      "src": "/images/home/sponsors/Coca-Cola.png",
+      "alt": "Beverage",
+      "name": "Coca-Cola",
+      "color": "#6A6970",
+      "width": 200,
+      "height": 120
+    }
   ]
 }
