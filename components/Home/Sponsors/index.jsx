@@ -125,7 +125,7 @@ export default function Sponsors() {
     >
       {/* Header — reuses the same SectionHeader badge used in Timeline */}
       <div className="relative z-10 w-full max-w-7xl mb-8 px-2">
-        <SectionHeader title="Our Sponsors" />
+        <SectionHeader title="Our Sponsors" className="ml-[-10px]" />
       </div>
 
       {/* Container — same width/treatment as Eligibility (translucent #EFEFEF + blur) */}

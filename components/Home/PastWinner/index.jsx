@@ -17,7 +17,7 @@ const PastWinnersList = () => {
         <PastWinner />
 
         {/* Tagline */}
-        <div className="max-w-7xl mx-auto px-4 md:pl-[100px] md:pr-8 pt-4 pb-8 text-left">
+        <div className="max-w-7xl mx-auto px-4 md:pl-[100px] md:pr-8 pt-4 pb-8 text-center">
           <p className="text-3xl sm:text-4xl md:text-5xl font-slogan text-gray-900 leading-tight">
             Innovate, collaborate, and shape{" "}
             <span className="text-[#2E47FF]">the future.</span>
