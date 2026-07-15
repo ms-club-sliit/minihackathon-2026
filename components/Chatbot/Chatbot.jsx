@@ -171,7 +171,7 @@ export default function ChatBot() {
 
       {/* Main Chat Interface Window - Transparent Glassmorphism */}
       {isOpen && (
-        <div className="w-80 md:w-[400px] h-[700px] max-h-[85vh] rounded-3xl shadow-2xl flex flex-col overflow-hidden border border-white/50 bg-white/10 backdrop-blur-md relative z-40 animate-in fade-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 md:relative md:inset-auto w-full h-[100dvh] md:w-[400px] md:h-[700px] md:max-h-[85vh] rounded-none md:rounded-3xl shadow-2xl flex flex-col overflow-hidden border-none md:border md:border-white/50 bg-white/10 backdrop-blur-md z-40 animate-in fade-in zoom-in-95 duration-200">
 
           {/* Chat Window Branding Header Section */}
           <div className="flex items-center justify-between p-4 border-b border-white/20 bg-white/10 backdrop-blur-sm" style={openSansHebrewCondensed}>
