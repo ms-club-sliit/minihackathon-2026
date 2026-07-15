@@ -2,8 +2,26 @@
 import React, { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 
-export default function Header() {
+const NAV_LINKS = [
+  { key: "home", label: "Home", href: "/" },
+  { key: "eligibility", label: "Eligibility", href: "/#eligibility" },
+  { key: "timeline", label: "Timeline", href: "/#timeline" },
+  { key: "gallery", label: "Gallery", href: "/#gallery" },
+  { key: "rules", label: "Rules", href: "/rules" },
+];
+
+export default function Header({ active = "home" }) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const desktopClass = (key) =>
+    key === active
+      ? "rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white"
+      : "rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white";
+
+  const mobileClass = (key) =>
+    key === active
+      ? "w-full rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+      : "w-full rounded-full border-2 border-blue-600 bg-white/50 px-5 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white";
 
   return (
     <header className="relative z-20">
@@ -21,35 +39,11 @@ export default function Header() {
 
         <div className="flex h-[60px] items-center justify-between mr-[-5.5vw] rounded-[40px] border border-white/20 bg-white/10 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
           <div className="flex items-center gap-3">
-            <a href="/">
-              <button className="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white">
-                Home
-              </button>
-            </a>
-
-            <a href="#eligibility">
-              <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-                Eligibility
-              </button>
-            </a>
-
-            <a href="#timeline">
-              <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-                Timeline
-              </button>
-            </a>
-
-            <a href="#gallery">
-              <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-                Gallery
-              </button>
-            </a>
-
-            <a href="/rules">
-              <button className="rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-                Rules
-              </button>
-            </a>
+            {NAV_LINKS.map((link) => (
+              <a key={link.key} href={link.href}>
+                <button className={desktopClass(link.key)}>{link.label}</button>
+              </a>
+            ))}
           </div>
 
           <a href="/register">
@@ -81,31 +75,11 @@ export default function Header() {
 
         {isOpen && (
           <div className="absolute top-[70px] left-0 right-0 z-50 flex flex-col gap-3 p-5 rounded-[24px] border border-white/20 bg-white/80 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
-            <a href="/" onClick={() => setIsOpen(false)}>
-              <button className="w-full rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700">
-                Home
-              </button>
-            </a>
-            <a href="#eligibility" onClick={() => setIsOpen(false)}>
-              <button className="w-full rounded-full border-2 border-blue-600 bg-white/50 px-5 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-                Eligibility
-              </button>
-            </a>
-            <a href="#timeline" onClick={() => setIsOpen(false)}>
-              <button className="w-full rounded-full border-2 border-blue-600 bg-white/50 px-5 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-                Timeline
-              </button>
-            </a>
-            <a href="#gallery" onClick={() => setIsOpen(false)}>
-              <button className="w-full rounded-full border-2 border-blue-600 bg-white/50 px-5 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-                Gallery
-              </button>
-            </a>
-            <a href="/rules" onClick={() => setIsOpen(false)}>
-              <button className="w-full rounded-full border-2 border-blue-600 bg-white/50 px-5 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white">
-                Rules
-              </button>
-            </a>
+            {NAV_LINKS.map((link) => (
+              <a key={link.key} href={link.href} onClick={() => setIsOpen(false)}>
+                <button className={mobileClass(link.key)}>{link.label}</button>
+              </a>
+            ))}
             <a href="/register" onClick={() => setIsOpen(false)}>
               <button className="w-full rounded-full bg-gradient-to-r from-[#3552ff] to-[#4d6eff] px-7 py-3 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(53,82,255,0.35)] transition hover:opacity-90">
                 Register Now
