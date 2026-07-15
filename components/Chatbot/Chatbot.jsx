@@ -39,20 +39,20 @@ export default function ChatBot() {
   const findBestMatch = (userText) => {
     // Standardize input matrix by stripping trailing or structural punctuations (? , ! .) to avoid matching failures
     const cleanMsg = userText.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
-    
+
     let bestMatch = null;
     let maxScore = 0;
 
     // Loop through the static knowledge baseline dictionary
     for (const faq of chatbotData.faqs) {
       let score = 0;
-      
+
       // Standardize the targeted dictionary key target question signature using the same validation mapping
       const cleanQuestion = faq.question.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
 
       // 1. Exact Structural Match Hook (Highest Priority Rule Assignment)
       if (cleanMsg === cleanQuestion) {
-        score += 20; 
+        score += 20;
       }
 
       // 2. Continuous Bi-Directional Cross-Inclusion Verification
@@ -63,11 +63,11 @@ export default function ChatBot() {
       // 3. Isolated Target Keyword Extraction & Standalone Token Weighting
       faq.keywords.forEach(keyword => {
         const cleanKeyword = keyword.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
-        
+
         // Exact standalone keyword phrase matching condition
         if (cleanMsg === cleanKeyword) {
           score += 15;
-        } 
+        }
         // Discrete word boundary regex verification to avoid greedy evaluation errors (e.g., matching "hi" inside "membership")
         else {
           const regex = new RegExp(`\\b${cleanKeyword}\\b`, 'i');
@@ -114,7 +114,7 @@ export default function ChatBot() {
     if (!userText.trim()) return;
 
     const userMessage = userText.trim();
-    
+
     // Immediate state commitment logging the fresh payload sent by the user
     setMessages((prev) => [...prev, { role: 'user', text: userMessage }]);
     setInput('');
@@ -157,9 +157,8 @@ export default function ChatBot() {
       */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`absolute bottom-0 right-0 z-50 flex items-center justify-center w-16 h-16 transition-all duration-300 bg-transparent rounded-full hover:scale-110 active:scale-95 drop-shadow-xl ${
-          isOpen ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 pointer-events-auto scale-100'
-        }`}
+        className={`absolute bottom-0 right-0 z-50 flex items-center justify-center w-16 h-16 transition-all duration-300 bg-transparent rounded-full hover:scale-110 active:scale-95 drop-shadow-xl ${isOpen ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 pointer-events-auto scale-100'
+          }`}
         aria-label="Open AI Assistant"
       >
         <img
@@ -190,12 +189,12 @@ export default function ChatBot() {
           <div className="flex-1 p-4 space-y-4 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.4) transparent' }}>
             {messages.map((msg, idx) => (
               <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div 
+                <div
                   className={`whitespace-pre-wrap max-w-[80%] p-3.5 rounded-2xl text-[13px] leading-relaxed transition-all
-                  ${msg.role === 'user' 
-                    ? 'bg-[#7248D2] text-white rounded-tr-sm shadow-sm' 
-                    : 'bg-white/20 backdrop-blur-sm text-slate-800 border border-white/40 rounded-tl-sm shadow-[0_4px_12px_rgba(0,0,0,0.08)]'
-                  }`}
+                  ${msg.role === 'user'
+                      ? 'bg-[#7248D2] text-white rounded-tr-sm shadow-sm'
+                      : 'bg-white/20 backdrop-blur-sm text-slate-800 border border-white/40 rounded-tl-sm shadow-[0_4px_12px_rgba(0,0,0,0.08)]'
+                    }`}
                 >
                   {msg.text}
                 </div>
@@ -216,8 +215,8 @@ export default function ChatBot() {
               placeholder="Ask me anything..."
               className="flex-1 px-4 py-3 text-sm bg-white/20 backdrop-blur-sm border border-white/40 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-[#7248D2]/40 text-slate-800 transition-all placeholder-slate-600"
             />
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="px-5 py-3 font-semibold text-sm text-white transition-all bg-[#7248D2] hover:opacity-90 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 shrink-0"
             >
               Send
