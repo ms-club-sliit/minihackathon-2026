@@ -9,7 +9,7 @@ import ChatBot from "@/components/Chatbot/Chatbot";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative min-h-screen bg-transparent">
       <Hero />
       <CountdownTimer />
       <Eligibility />

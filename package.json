@@ -1,5 +1,5 @@
 {
-  "name": "minihackathon-2024",
+  "name": "minihackathon-2026",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@iconify-react/selfhst": "^1.0.4",
     "@supabase/supabase-js": "^2.56.0",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/typography": "^0.5.14",

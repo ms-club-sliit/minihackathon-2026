@@ -1,0 +1,50 @@
+[
+  {
+    "question": "What is Mini Hackathon?",
+    "answer": "Mini Hackathon is a skill-based competition organized by the MS Club of SLIIT, open to all 1st year, 2nd year, and 3rd year 1st semester undergraduate students at SLIIT. Compete across 20 technology categories over three rounds, from a virtual pitch to an on-the-spot physical challenge."
+  },
+  {
+    "question": "Is there a registration fee?",
+    "answer": "No, participation is completely free. There are no hidden costs — just bring your creativity and skills."
+  },
+  {
+    "question": "Do I need prior hackathon or coding experience?",
+    "answer": "Not at all. The competition values innovation and problem-solving. Round 1 only requires a project proposal and a 3-minute presentation video, so beginners are welcome."
+  },
+  {
+    "question": "How do I register my team?",
+    "answer": "Visit the Registration page, fill in your team name and assets link, then add 3 to 4 members with their details (name, email, contact number, SLIIT ID, academic year, faculty, and profile image). Only one member needs to submit the registration."
+  },
+  {
+    "question": "Can I change team members after registration?",
+    "answer": "No, team composition is final once submitted. Make sure to confirm all members before registering."
+  },
+  {
+    "question": "Can students from different faculties form a team together?",
+    "answer": "Yes, cross-discipline and cross-faculty teams are allowed and encouraged. Diverse perspectives make stronger solutions."
+  },
+  {
+    "question": "What deliverables are required in Round 1?",
+    "answer": "You need a Project Proposal (Word or PDF, max 10 pages) and a 3-minute Presentation Video uploaded to Microsoft Streams via your SLIIT email. Optionally, you can also submit working software, software instructions, and an Adobe XD or Figma prototype."
+  },
+  {
+    "question": "How many teams advance to each round?",
+    "answer": "Round 1 (Virtual): Top 16 teams advance. Round 2 (Virtual): Top 10 teams advance to the Final Round. All advancement is based on cumulative scores from the judging panel."
+  },
+  {
+    "question": "What happens during the on-the-spot challenge in the final round?",
+    "answer": "On competition day, your team receives a random topic and has 5 hours to create an innovative solution from scratch — including a prototype and a 10-minute presentation. No prior material is allowed, so creativity under pressure is key."
+  },
+  {
+    "question": "What prizes are awarded beyond the cash reward?",
+    "answer": "All finalists receive printed certificates and exclusive swag. On top of that, the 3rd place team gets 15,000 LKR, 2nd place earns 20,000 LKR, and the 1st place winners take home 30,000 LKR."
+  },
+  {
+    "question": "Will we get a mentor during the competition?",
+    "answer": "Yes, in Round 2 each advancing team is assigned a mentor who helps fine-tune your solution and prepare for the live presentation."
+  },
+  {
+    "question": "Do I need to bring my own device for the physical round?",
+    "answer": "The organizing team will provide the necessary hardware at the venue. However, you should arrive early to test compatibility and ensure your demos run smoothly. It's a good idea to bring your own laptop as a backup."
+  }
+]
