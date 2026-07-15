@@ -4,22 +4,22 @@ import sections from "@/app/data/rules/rules";
 export default function Content() {
 
   const Table = ({ head, body }) => (
-    <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200 ml-0 lg:ml-20">
-        <thead className="bg-gray-50">
+    <div className="overflow-x-auto lg:ml-20">
+      <table className="min-w-full overflow-hidden rounded-[20px] border border-white/40 bg-white/20 backdrop-blur-2xl">
+        <thead className="bg-[#2E47FF]/10">
           <tr>
             {head.map((header, index) => (
-              <th key={`header-${index}`} className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+              <th key={`header-${index}`} className="px-6 py-3 text-left text-sm font-bold text-[#2E47FF] uppercase tracking-wider">
                 {header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="divide-y divide-white/40">
           {body.map((row, rowIndex) => (
             <tr key={`row-${rowIndex}`}>
               {row.map((cell, cellIndex) => (
-                <td key={`cell-${rowIndex}-${cellIndex}`} className="px-6 py-4 whitespace-nowrap text-md text-gray-500">
+                <td key={`cell-${rowIndex}-${cellIndex}`} className="px-6 py-4 whitespace-nowrap text-md text-gray-700">
                   {cell}
                 </td>
               ))}
@@ -32,25 +32,25 @@ export default function Content() {
 
   const NestedTable = ({ head, body }) => (
     <div className="overflow-x-auto">
-      <div className="inline-block min-w-full">
-        <table className="min-w-full divide-y divide-gray-200 ml-0 lg:ml-20">
-          <thead className="bg-gray-50">
+      <div className="inline-block min-w-full lg:ml-20">
+        <table className="min-w-full overflow-hidden rounded-[20px] border border-white/40 bg-white/20 backdrop-blur-2xl">
+          <thead className="bg-[#2E47FF]/10">
             <tr>
               {head.map((header, index) => (
                 <th
                   key={`header-${index}`}
-                  className="px-4 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                  className="px-4 py-2 text-left text-sm font-bold text-[#2E47FF] uppercase tracking-wider"
                 >
                   {header}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="divide-y divide-white/40">
             {body.map((row, rowIndex) => (
               <tr key={`row-${rowIndex}`}>
-                <td className="px-4 py-2 text-sm text-gray-500 font-semibold">{row.criteria}</td>
-                <td className="px-4 py-2 text-md text-gray-500">
+                <td className="px-4 py-2 text-sm text-gray-800 font-semibold">{row.criteria}</td>
+                <td className="px-4 py-2 text-md text-gray-700">
                   <ul className="list-disc pl-4">
                     {row.description.map((desc, descIndex) => (
                       <li key={`desc-${rowIndex}-${descIndex}`}>{desc}</li>
@@ -88,7 +88,7 @@ export default function Content() {
             {/* Category Items */}
             <div className="space-y-6">
               {categoryItems.map((category, index) => (
-                <div key={`${mainCategory}-${index}`} className="bg-white shadow-md rounded-lg p-6">
+                <div key={`${mainCategory}-${index}`} className="rounded-[24px] border border-white/40 bg-white/20 p-6 shadow-[0_0_28px_rgba(0,0,0,0.08)] backdrop-blur-2xl">
                   <h2 className="text-xl font-bold mb-4 text-left">
                     {index + 1}. {category.name}
                   </h2>
@@ -114,7 +114,8 @@ export default function Content() {
         {sections && Array.isArray(sections) ? (
           sections.map((section, index) => (
             <div key={`round-${section.title}-${index}`} className="my-10">
-              <h3 className="text-lg lg:text-2xl font-bold text-center lg:text-left uppercase mb-5">
+              <h3 className="relative mb-6 flex items-center gap-3 pl-4 text-lg font-black uppercase tracking-[-0.02em] text-gray-950 lg:text-2xl">
+                <span className="absolute left-0 top-1/2 h-[70%] w-[5px] -translate-y-1/2 rounded-full bg-[#2E47FF]" />
                 {section.title}
               </h3>
 
