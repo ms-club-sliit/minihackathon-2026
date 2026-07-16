@@ -1,7 +1,7 @@
 [
   {
     "index": 1,
-    "date": "02nd of September",
+    "date": "18th of July",
     "title": "Registration Open",
     "position": "right",
     "description": "Being aware of the competition will help you create a remarkable project adhering to the rules and guidelines of the competition. The best way to do so is by attending the awareness session.",
@@ -9,7 +9,7 @@
   },
   {
     "index": 2,
-    "date": "02nd of September - 7.00pm",
+    "date": "20th of July - 7.00pm",
     "title": "Awareness Session",
     "position": "left",
     "description": "Join us for the awareness session to learn more about the competition and how to prepare for it.",
@@ -17,23 +17,23 @@
   },
   {
     "index": 3,
-    "date": "02nd of September",
-    "title": "Team Registration Open",
+    "date": "7th of August",
+    "title": "Registration Closes",
     "position": "right",
-    "description": "Registrations for Round One are now open! Get your team registered on time by submitting an entry. Each team must consist of 3 to 4 members. Remember, a strong team is the key to winning championships.",
+    "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
     "color": "#F59E0B"
   },
   {
     "index": 4,
-    "date": "30th of September - 10.00 AM",
-    "title": "Registration Closes",
+    "date": "8th of August",
+    "title": "First Round Winners Announced",
     "position": "left",
-    "description": "Team registration closes on this day. Please note that NO registration is accepted after the registrations are closed. Be sure to get registered before the deadline ends.",
+    "description": "Results from Round One will be released, and shortlisted teams will be notified. Only the top-performing teams will advance to Round 2, so make sure your submission stands out.",
     "color": "#3B82F6"
   },
   {
     "index": 5,
-    "date": "10th of October",
+    "date": "13th of August",
     "title": "Round 2 - Live Presentation",
     "position": "right",
     "description": "Teams that qualify for Round 2 will present their projects to the judges in a live format.",
@@ -41,10 +41,10 @@
   },
   {
     "index": 6,
-    "date": "12th of October",
+    "date": "23rd of August",
     "title": "Final Round",
     "position": "left",
-    "description": "All teams advancing to round 3 are invited to the physical event at the Sri Lanka Institute of Information Technology Campus, Malabe, to present the project in front of an expert panel. Winners will be selected accordingly.",
+    "description": "All teams advancing to the final round are invited to the physical event at the Sri Lanka Institute of Information Technology Campus, Malabe, to present the project in front of an expert panel. Winners will be selected accordingly.",
     "color": "#374151"
   }
 ]
