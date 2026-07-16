@@ -6,7 +6,7 @@
     "description": "RAG-optimized, semantically rich knowledge base covering every aspect of Mini Hackathon 2026. Designed for high retrieval accuracy with dense keyword coverage, alternative phrasings, and comprehensive answers."
   },
   "greeting": "Hi there! 👋 I'm the Mini Hackathon 2026 AI assistant. Ask me anything eligibility, registration, rounds, tracks, prizes, judging, or anything else about the competition!",
-  "fallback": "Hmm, I'm not sure about that one! Try rephrasing your question, or ask about topics like registration, eligibility, team formation, the competition rounds, tracks, prizes, or judging criteria. You can also reach us at info@msclubsliit.org for anything not covered here!",
+  "fallback": "Sorry, I couldn't understand your question or I don't have information about it yet. 😔\n\nPlease visit the MS Club SLIIT website for more details:\n🔗 https://www.msclubsliit.org/\n\nYou can also email us at info@msclubsliit.org — we're happy to help!",
   "starterQuestions": [
     "How do I register?",
     "What are the competition rounds?",
@@ -1281,6 +1281,59 @@
         "get ready"
       ],
       "answer": "🚀 Tips to Succeed in Mini Hackathon 2026:\n\n📝 For Round 1:\n• Pick a problem you genuinely care about — passion shows in proposals\n• Address ALL 5 judging criteria explicitly in your proposal\n• Keep your video crisp, engaging, and well within 3 minutes\n• Include an optional Figma/XD prototype to stand out\n\n🎤 For Round 2:\n• Use your mentor actively — they're an invaluable resource\n• Build a polished, interactive Figma prototype\n• Practice your 10-minute presentation until it feels natural\n• Prepare for Q&A — judges often ask tough but fair questions\n\n⚡ For Round 3:\n• Practice rapid prototyping — build small apps quickly under time pressure\n• Stay calm under pressure and divide tasks clearly within the team\n• Focus on core functionality first, then polish\n• Communicate clearly in your final presentation\n\n🌟 General Tips:\n• Choose a diverse, complementary team\n• Start early — don't leave anything to the last minute\n• Solve a REAL problem that you can clearly explain in one sentence"
+    },
+    {
+      "id": "registration_fee",
+      "question": "Is there a registration fee? Do I need to pay to participate?",
+      "context": "User wants to know if there is a cost associated with joining the hackathon",
+      "keywords": [
+        "registration fee",
+        "how much to pay",
+        "cost to join",
+        "is it free",
+        "payment",
+        "fee",
+        "do i have to pay",
+        "ticket",
+        "entry fee",
+        "pay money"
+      ],
+      "answer": "💸 Registration Fee:\n\nNo, participation in Mini Hackathon 2026 is completely FREE!\n\nThere are no entry fees or hidden costs at any stage of the competition. Our goal is to encourage innovation and give every eligible SLIIT student the opportunity to showcase their skills."
+    },
+    {
+      "id": "tech_stack_restrictions",
+      "question": "Are there any restrictions on the programming languages or tech stack?",
+      "context": "User wants to know if they are forced to use a specific programming language or framework",
+      "keywords": [
+        "programming language",
+        "tech stack",
+        "what language can i use",
+        "frameworks",
+        "restrictions",
+        "is python allowed",
+        "is java allowed",
+        "is react allowed",
+        "what tools to use",
+        "can i use any tech",
+        "coding language"
+      ],
+      "answer": "🛠️ Tech Stack & Languages:\n\nThere are NO restrictions on the technology stack or programming languages you can use!\n\nYou are free to choose any language, framework, database, or tool that best fits your project (e.g., Python, JavaScript, Java, C++, React, Flutter, Node.js, Firebase, Supabase, etc.).\n\n💡 Tip: Just make sure to justify your technology choices in your Round 1 and Round 2 proposals under the 'Technology' and 'Feasibility' criteria."
+    },
+    {
+      "id": "certificate_details",
+      "question": "Will I receive a certificate of participation?",
+      "context": "User wants to know if all participants get certificates",
+      "keywords": [
+        "certificate of participation",
+        "will i get a certificate",
+        "do everyone get certificate",
+        "cert",
+        "participation proof",
+        "e-certificate",
+        "physical certificate",
+        "award certificate"
+      ],
+      "answer": "🎓 Certificates:\n\n• Grand Finale Teams: All 10 teams that make it to the Grand Finale (Round 3) will receive official physical printed certificates.\n• Round 1 & 2 Teams: We are currently finalizing the issuance of e-certificates for teams that successfully submit valid proposals in the earlier rounds. Keep an eye on announcements for more details!"
     }
   ]
 }

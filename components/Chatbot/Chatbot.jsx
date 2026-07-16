@@ -2,144 +2,320 @@
 
 import { useState, useRef, useEffect } from 'react';
 import chatbotData from './chatbot_data.json';
+import Fuse from 'fuse.js';
 
-// Global asset constant for the floating action button icon
+// ─── Fuse.js fuzzy-search setup ────────────────────────────────────────────────
+const fuse = new Fuse(chatbotData.faqs, {
+  keys: [
+    { name: 'question', weight: 2 },
+    { name: 'keywords', weight: 3 },
+    { name: 'context', weight: 1 },
+  ],
+  threshold: 0.35,   // Max fuzziness — tighter = fewer false positives
+  ignoreLocation: true,
+  includeScore: true,  // Score: 0=perfect, 1=no match
+});
+
+// Confidence gate: reject results where Fuse score is too weak (too close to 1 = unrelated)
+const SCORE_CUTOFF = 0.38;
+
+// ─── Greeting keyword detector ──────────────────────────────────────────────────
+const GREETING_WORDS = new Set([
+  'hi','hello','hey','hola','halo','howdy','greetings',
+  'good morning','good evening','good afternoon','good night',
+  'yo','sup','hai','hii','hiii','start','begin','chat',
+]);
+function isGreeting(text) {
+  const lower = text.toLowerCase().trim().replace(/[!?.]+$/, '');
+  return GREETING_WORDS.has(lower);
+}
+
+// ─── Topic categories shown after greeting ──────────────────────────────────────
+const TOPICS = [
+  {
+    emoji: '📋',
+    label: 'Registration',
+    ids: ['team_registration', 'entry_period', 'entry_limit', 'team_size'],
+  },
+  {
+    emoji: '✅',
+    label: 'Eligibility',
+    ids: ['eligibility', 'repeat_participation', 'different_faculties'],
+  },
+  {
+    emoji: '🏁',
+    label: 'Competition Rounds',
+    ids: ['round_schedule', 'round1_requirements', 'round1_advancement', 'round2_requirements', 'round2_advancement', 'round3_requirements', 'round3_location'],
+  },
+  {
+    emoji: '🎯',
+    label: 'Tracks & Topics',
+    ids: ['round1_topics', 'topic_ai', 'topic_iot', 'topic_blockchain', 'topic_sustainability', 'topic_society', 'topic_emerging'],
+  },
+  {
+    emoji: '🏆',
+    label: 'Prizes & Judging',
+    ids: ['prizes', 'judging_criteria', 'certificate_details'],
+  },
+  {
+    emoji: '📝',
+    label: 'Submissions',
+    ids: ['proposal_requirements', 'presentation_video_rules', 'live_presentation_rules', 'prototype_requirements'],
+  },
+  {
+    emoji: '💡',
+    label: 'Tips & Advice',
+    ids: ['preparation_tips', 'what_to_build', 'mentorship'],
+  },
+  {
+    emoji: '⚠️',
+    label: 'Rules & Policies',
+    ids: ['conduct_rules', 'disqualification', 'intellectual_property', 'can_i_use_ai_tools', 'team_changes', 'tech_stack_restrictions'],
+  },
+  {
+    emoji: '📬',
+    label: 'Contact & Info',
+    ids: ['contact_general', 'website_link', 'organizer', 'about_hackathon', 'registration_fee', 'results_announcement'],
+  },
+];
+
+function getFaqById(id) {
+  return chatbotData.faqs.find((f) => f.id === id);
+}
+
+// ─── Initial bot message (no question list) ─────────────────────────────────────
+const INITIAL_MESSAGE = {
+  role: 'bot',
+  type: 'welcome',
+  text: "👋 Hi there! I'm the Mini Hackathon 2026 AI Assistant.\n\nSay **Hello** to get started, or type your question directly below!",
+};
+
+// Global asset constant
 const AIBOT_ICON_URL = '/images/AIBot.png';
 
 export default function ChatBot() {
-  // Inline standard font styling overrides for UI uniformity
   const interFont = { fontFamily: "'Inter', sans-serif" };
   const openSansHebrewCondensed = {
     fontFamily: "'Open Sans Hebrew Condensed', 'Open Sans Condensed', sans-serif",
   };
 
-  // State visibility toggle controlling whether the main chatbot UI is open or hidden
   const [isOpen, setIsOpen] = useState(false);
-
-  // Array state storing live chat dialogue log history, pre-seeded with a welcome greeting
-  const [messages, setMessages] = useState([
-    { role: 'bot', text: chatbotData.greeting }
-  ]);
-
-  // Two-way controlled state binding capturing the active keystrokes inside the input text field
+  const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [input, setInput] = useState('');
-
-  // Auto-scroller reference node pinned structurally right below the youngest message container
+  const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
 
-  // Auto-scroll layout lock triggered seamlessly whenever a new response or user entry shifts the stack length
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+  }, [messages, isTyping]);
 
-  /**
-   * High-Performance Local FAQ Token Scoring Algorithm
-   * Processes input strings client-side matching structural relevance in O(N) constraints.
-   */
-  const findBestMatch = (userText) => {
-    // Standardize input matrix by stripping trailing or structural punctuations (? , ! .) to avoid matching failures
-    const cleanMsg = userText.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
+  // ── Push a bot reply with a typing indicator delay ────────────────────────────
+  function pushBotMessage(msgObj, delay = 450) {
+    setIsTyping(true);
+    setTimeout(() => {
+      setIsTyping(false);
+      setMessages((prev) => [...prev, msgObj]);
+    }, delay);
+  }
 
-    let bestMatch = null;
-    let maxScore = 0;
+  // ── Greeting response: warm text + topic cards ────────────────────────────────
+  function handleGreeting() {
+    pushBotMessage({
+      role: 'bot',
+      type: 'greeting',
+      text: "Hello! 😊 Great to see you here.\n\nI can help you with everything about **Mini Hackathon 2026**. Pick a topic below or just type your question!",
+    });
+  }
 
-    // Loop through the static knowledge baseline dictionary
-    for (const faq of chatbotData.faqs) {
-      let score = 0;
+  // ── Topic selected: show clickable questions in that category ─────────────────
+  function handleTopicSelect(topic) {
+    const questions = topic.ids
+      .map(getFaqById)
+      .filter(Boolean)
+      .map((faq) => ({ label: faq.question, id: faq.id }));
 
-      // Standardize the targeted dictionary key target question signature using the same validation mapping
-      const cleanQuestion = faq.question.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
+    setMessages((prev) => [
+      ...prev,
+      { role: 'user', type: 'text', text: `${topic.emoji} ${topic.label}` },
+    ]);
 
-      // 1. Exact Structural Match Hook (Highest Priority Rule Assignment)
-      if (cleanMsg === cleanQuestion) {
-        score += 20;
-      }
+    pushBotMessage({
+      role: 'bot',
+      type: 'questions',
+      category: topic.label,
+      questions,
+    });
+  }
 
-      // 2. Continuous Bi-Directional Cross-Inclusion Verification
-      if (cleanQuestion.includes(cleanMsg) || cleanMsg.includes(cleanQuestion)) {
-        score += 12;
-      }
+  // ── Question chip clicked ─────────────────────────────────────────────────────
+  function handleQuestionChip(faqId, questionText) {
+    setMessages((prev) => [
+      ...prev,
+      { role: 'user', type: 'text', text: questionText },
+    ]);
+    const faq = getFaqById(faqId);
+    pushBotMessage({
+      role: 'bot',
+      type: 'text',
+      text: faq ? faq.answer : chatbotData.fallback,
+    });
+  }
 
-      // 3. Isolated Target Keyword Extraction & Standalone Token Weighting
-      faq.keywords.forEach(keyword => {
-        const cleanKeyword = keyword.toLowerCase().replace(/[?.!,]/g, '').replace(/\s+/g, ' ').trim();
-
-        // Exact standalone keyword phrase matching condition
-        if (cleanMsg === cleanKeyword) {
-          score += 15;
-        }
-        // Discrete word boundary regex verification to avoid greedy evaluation errors (e.g., matching "hi" inside "membership")
-        else {
-          const regex = new RegExp(`\\b${cleanKeyword}\\b`, 'i');
-          if (regex.test(cleanMsg)) {
-            score += 5;
-          }
-        }
-      });
-
-      // 4. Structural Milestone Stage Routing Helpers (Contextual Fallbacks for Ambiguous Rounds queries)
-      const isRound1 = cleanMsg.includes('round 1') || cleanMsg.includes('1st round') || cleanMsg.includes('round one') || cleanMsg.includes('first round');
-      const isRound2 = cleanMsg.includes('round 2') || cleanMsg.includes('2nd round') || cleanMsg.includes('round two') || cleanMsg.includes('second round');
-      const isRound3 = cleanMsg.includes('round 3') || cleanMsg.includes('3rd round') || cleanMsg.includes('round three') || cleanMsg.includes('third round') || cleanMsg.includes('final round');
-
-      if (isRound1 && faq.id.includes('round1')) score += 6;
-      if (isRound2 && faq.id.includes('round2')) score += 6;
-      if (isRound3 && faq.id.includes('round3')) score += 6;
-
-      // 5. Intercepting expressions of gratitude or common standard conversational exits
-      const isThankYou = cleanMsg.includes('thank you') || cleanMsg.includes('thanks') || cleanMsg.includes('thank u') || cleanMsg.includes('tq') || cleanMsg.includes('ty');
-      if (isThankYou && faq.id === 'thanks') {
-        score += 10;
-      }
-
-      // Track the absolute top scoring dataset metadata item
-      if (score > maxScore) {
-        maxScore = score;
-        bestMatch = faq;
-      }
-    }
-
-    // Evaluate final threshold conditions to determine whether to surface an explicit match or fire a fallback
-    if (bestMatch && maxScore > 3) {
-      return bestMatch.answer;
-    }
-
-    return chatbotData.fallback;
-  };
-
-  /**
-   * Dispatches conversation logs and controls typing simulation sequences.
-   */
-  const handleUserMessage = (userText) => {
-    if (!userText.trim()) return;
-
-    const userMessage = userText.trim();
-
-    // Immediate state commitment logging the fresh payload sent by the user
-    setMessages((prev) => [...prev, { role: 'user', text: userMessage }]);
+  // ── Main handler ──────────────────────────────────────────────────────────────
+  function handleUserMessage(userText) {
+    const trimmed = userText.trim();
+    if (!trimmed) return;
     setInput('');
 
-    // Fetch matching data strings instantly via client execution stack loop
-    const botReply = findBestMatch(userMessage);
+    setMessages((prev) => [...prev, { role: 'user', type: 'text', text: trimmed }]);
 
-    // Artificial interface delay loop added to emulate responsive human-like typing behaviors
-    setTimeout(() => {
-      setMessages((prev) => [...prev, { role: 'bot', text: botReply }]);
-    }, 400);
-  };
+    if (isGreeting(trimmed)) {
+      handleGreeting();
+      return;
+    }
 
-  // Explicit form submission listener wrapping keyboard actions or tap clicks
-  const handleSendMessage = (e) => {
+    // Fuzzy search
+    const results = fuse.search(trimmed);
+
+    // Only accept the match if Fuse confidence is above our cutoff.
+    // A score near 0 = strong match; near 1 = poor/unrelated match.
+    const topResult = results[0];
+    const isConfidentMatch = topResult && (topResult.score ?? 1) <= SCORE_CUTOFF;
+
+    if (isConfidentMatch) {
+      const best = topResult.item;
+      if (best.id === 'greeting' || best.id === 'bot_capabilities_questions') {
+        handleGreeting();
+        return;
+      }
+      pushBotMessage({ role: 'bot', type: 'text', text: best.answer });
+    } else {
+      // No confident match found — topic is unrelated or not in knowledge base
+      pushBotMessage({ role: 'bot', type: 'fallback', text: chatbotData.fallback });
+    }
+  }
+
+  function handleSendMessage(e) {
     e.preventDefault();
     handleUserMessage(input);
-  };
+  }
+
+  // ── Render a single message bubble ───────────────────────────────────────────
+  function renderMessage(msg, idx) {
+    if (msg.role === 'user') {
+      return (
+        <div key={idx} className="flex justify-end">
+          <div className="max-w-[78%] px-4 py-2.5 rounded-2xl rounded-tr-sm text-[13px] leading-relaxed bg-[#7248D2] text-white shadow-sm">
+            {msg.text}
+          </div>
+        </div>
+      );
+    }
+
+    // Bot messages
+    if (msg.type === 'welcome') {
+      return (
+        <div key={idx} className="flex justify-start">
+          <div className="max-w-[88%] px-4 py-3 rounded-2xl rounded-tl-sm text-[13px] leading-relaxed bg-white/25 backdrop-blur-sm border border-white/40 text-slate-800 shadow-sm">
+            <p className="mb-2 font-semibold text-[14px] text-slate-900">👋 Hi there!</p>
+            <p className="text-slate-700">I'm the <span className="font-semibold text-[#7248D2]">Mini Hackathon 2026</span> AI Assistant.</p>
+            <p className="mt-1.5 text-slate-600 text-[12px]">Say <span className="font-medium text-slate-800">"Hello"</span> to get started, or type your question directly!</p>
+            <div className="mt-3 pt-2.5 border-t border-white/40">
+              <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wide mb-1">Get More Information</p>
+              <a
+                href="https://www.msclubsliit.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-[12px] font-medium text-[#7248D2] hover:underline"
+              >
+                🔗 www.msclubsliit.org
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (msg.type === 'greeting') {
+      return (
+        <div key={idx} className="flex flex-col gap-2 items-start">
+          {/* Greeting text bubble */}
+          <div className="max-w-[88%] px-4 py-3 rounded-2xl rounded-tl-sm text-[13px] leading-relaxed bg-white/25 backdrop-blur-sm border border-white/40 text-slate-800 shadow-sm">
+            <p className="font-semibold text-slate-900 mb-1">Hello! 😊 Great to see you here.</p>
+            <p className="text-slate-600 text-[12px]">Pick a topic below or type your question anytime!</p>
+          </div>
+
+          {/* Topic cards grid */}
+          <div className="w-full grid grid-cols-3 gap-1.5 pt-1">
+            {TOPICS.map((topic) => (
+              <button
+                key={topic.label}
+                onClick={() => handleTopicSelect(topic)}
+                className="flex flex-col items-center justify-center gap-0.5 px-1 py-2.5 rounded-xl text-center transition-all duration-150 bg-white/20 hover:bg-[#7248D2]/20 border border-white/30 hover:border-[#7248D2]/40 active:scale-95 group"
+              >
+                <span className="text-lg leading-none">{topic.emoji}</span>
+                <span className="text-[10.5px] font-medium text-slate-700 group-hover:text-[#7248D2] leading-tight">{topic.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    if (msg.type === 'questions') {
+      return (
+        <div key={idx} className="flex flex-col gap-1.5 items-start">
+          <div className="max-w-[88%] px-4 py-2.5 rounded-2xl rounded-tl-sm text-[13px] bg-white/25 backdrop-blur-sm border border-white/40 text-slate-800 shadow-sm">
+            <p className="font-semibold text-[12px] text-[#7248D2] mb-0.5">📂 {msg.category}</p>
+            <p className="text-slate-600 text-[12px]">Tap a question to get the answer:</p>
+          </div>
+          <div className="flex flex-col gap-1.5 w-full">
+            {msg.questions.map((q) => (
+              <button
+                key={q.id}
+                onClick={() => handleQuestionChip(q.id, q.label)}
+                className="text-left px-3.5 py-2.5 rounded-xl text-[12px] text-slate-700 bg-white/20 hover:bg-[#7248D2]/10 border border-white/30 hover:border-[#7248D2]/30 transition-all duration-150 active:scale-[0.99] leading-snug"
+              >
+                <span className="text-[#7248D2] font-bold mr-1">›</span> {q.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // Fallback bubble — unrelated / unsupported query
+    if (msg.type === 'fallback') {
+      return (
+        <div key={idx} className="flex justify-start">
+          <div className="max-w-[88%] px-4 py-3 rounded-2xl rounded-tl-sm text-[13px] leading-relaxed bg-amber-50/60 backdrop-blur-sm border border-amber-200/60 text-slate-800 shadow-sm">
+            <p className="font-semibold text-slate-800 mb-1">😔 Sorry, I couldn't find any information related to your question.</p>
+            <p className="text-slate-600 text-[12px] mb-2">If you're looking for more details about Mini Hackathon 2026, please visit the official MS Club SLIIT website or ask your question there.</p>
+            <a
+              href="https://www.msclubsliit.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[12px] font-medium text-[#7248D2] hover:underline"
+            >
+              🔗 msclubsliit.org
+            </a>
+          </div>
+        </div>
+      );
+    }
+
+    // Default text bubble
+    return (
+      <div key={idx} className="flex justify-start">
+        <div className="max-w-[85%] px-4 py-3 rounded-2xl rounded-tl-sm text-[13px] leading-relaxed bg-white/25 backdrop-blur-sm border border-white/40 text-slate-800 shadow-sm whitespace-pre-wrap">
+          {msg.text}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed z-50 bottom-6 right-6 text-slate-900" style={interFont}>
-      {/* The Premium Fixed 3D Animation Definition:
-        Restored original Y-Axis spin (turns sideways beautifully), and removed backface visibility hides 
-        so both sides of the asset show cleanly during rotation frames.
-      */}
       <style>{`
         @keyframes custom3DSpinY {
           from { transform: rotateY(0deg); }
@@ -149,75 +325,86 @@ export default function ChatBot() {
           animation: custom3DSpinY 4s linear infinite;
           transform-style: preserve-3d;
         }
+        @keyframes typing-bounce {
+          0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+          40% { transform: translateY(-4px); opacity: 1; }
+        }
+        .typing-dot {
+          animation: typing-bounce 1.2s infinite ease-in-out;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
       `}</style>
 
-      {/* Floating Action Button (FAB) Trigger Group:
-        Instead of unmounting via {!isOpen && ...}, we control visibility using CSS opacity and transitions.
-        This fixes the GPU layout splitting bug completely because the element stays rooted safely in the DOM.
-      */}
+      {/* FAB Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`absolute bottom-0 right-0 z-50 flex items-center justify-center w-16 h-16 transition-all duration-300 bg-transparent rounded-full hover:scale-110 active:scale-95 drop-shadow-xl ${isOpen ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 pointer-events-auto scale-100'
-          }`}
+        className={`absolute bottom-0 right-0 z-50 flex items-center justify-center w-16 h-16 transition-all duration-300 bg-transparent rounded-full hover:scale-110 active:scale-95 drop-shadow-xl ${
+          isOpen ? 'opacity-0 pointer-events-none scale-75' : 'opacity-100 pointer-events-auto scale-100'
+        }`}
         aria-label="Open AI Assistant"
       >
-        <img
-          src={AIBOT_ICON_URL}
-          alt="AI Assistant"
-          className="object-contain w-16 h-16 bot-perfect-3d-spin"
-        />
+        <img src={AIBOT_ICON_URL} alt="AI Assistant" className="object-contain w-16 h-16 bot-perfect-3d-spin" />
       </button>
 
-      {/* Main Chat Interface Window - Transparent Glassmorphism */}
+      {/* Chat Window */}
       {isOpen && (
-        <div className="fixed inset-0 md:relative md:inset-auto w-full h-[100dvh] md:w-[400px] md:h-[700px] md:max-h-[85vh] rounded-none md:rounded-3xl shadow-2xl flex flex-col overflow-hidden border-none md:border md:border-white/50 bg-white/10 backdrop-blur-md z-40 animate-in fade-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 md:relative md:inset-auto w-full h-[100dvh] md:w-[400px] md:h-[680px] md:max-h-[88vh] rounded-none md:rounded-3xl shadow-2xl flex flex-col overflow-hidden border-none md:border md:border-white/50 bg-white/10 backdrop-blur-md z-40 animate-in fade-in zoom-in-95 duration-200">
 
-          {/* Chat Window Branding Header Section */}
-          <div className="flex items-center justify-between p-4 border-b border-white/20 bg-white/10 backdrop-blur-sm" style={openSansHebrewCondensed}>
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 py-3 border-b border-white/20 bg-white/10 backdrop-blur-sm" style={openSansHebrewCondensed}>
             <div className="flex items-end font-bold leading-none tracking-tighter text-black select-none">
               <div className="flex flex-col items-start">
-                <span className="text-[14px] -mb-1">mini</span>
-                <span className="text-[22px]">Hackathon</span>
+                <span className="text-[13px] -mb-1">mini</span>
+                <span className="text-[20px]">Hackathon</span>
               </div>
-              <span className="bg-[#7248D2] text-white text-[22px] px-1 ml-0.5 rounded-sm shadow-sm">26</span>
+              <span className="bg-[#7248D2] text-white text-[20px] px-1 ml-0.5 rounded-sm shadow-sm">26</span>
             </div>
-            {/* Smooth glass escape button */}
-            <button onClick={() => setIsOpen(false)} className="flex items-center self-start justify-center w-8 h-8 font-bold text-gray-700 transition-all border rounded-full shadow-sm bg-white/20 hover:bg-white/40 hover:text-black backdrop-blur-sm border-white/30">✕</button>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="flex items-center justify-center w-8 h-8 font-bold text-gray-700 transition-all border rounded-full shadow-sm bg-white/20 hover:bg-white/40 hover:text-black backdrop-blur-sm border-white/30"
+            >
+              ✕
+            </button>
           </div>
 
-          {/* Dynamic Scrollable Chat Log Rendering Window Layer */}
-          <div className="flex-1 p-4 space-y-4 overflow-y-auto" style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.4) transparent' }}>
-            {messages.map((msg, idx) => (
-              <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div
-                  className={`whitespace-pre-wrap max-w-[80%] p-3.5 rounded-2xl text-[13px] leading-relaxed transition-all
-                  ${msg.role === 'user'
-                      ? 'bg-[#7248D2] text-white rounded-tr-sm shadow-sm'
-                      : 'bg-white/20 backdrop-blur-sm text-slate-800 border border-white/40 rounded-tl-sm shadow-[0_4px_12px_rgba(0,0,0,0.08)]'
-                    }`}
-                >
-                  {msg.text}
+          {/* Messages area */}
+          <div
+            className="flex-1 px-4 py-4 space-y-3 overflow-y-auto"
+            style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.3) transparent' }}
+          >
+            {messages.map((msg, idx) => renderMessage(msg, idx))}
+
+            {/* Typing indicator */}
+            {isTyping && (
+              <div className="flex justify-start">
+                <div className="flex items-center gap-1 px-4 py-3 rounded-2xl rounded-tl-sm bg-white/25 backdrop-blur-sm border border-white/40 shadow-sm">
+                  <span className="typing-dot w-1.5 h-1.5 rounded-full bg-slate-500 inline-block"></span>
+                  <span className="typing-dot w-1.5 h-1.5 rounded-full bg-slate-500 inline-block"></span>
+                  <span className="typing-dot w-1.5 h-1.5 rounded-full bg-slate-500 inline-block"></span>
                 </div>
               </div>
-            ))}
-            {/* Phantom anchor node targeting scroll locking viewport coordinates */}
+            )}
+
             <div ref={chatEndRef} />
           </div>
 
-
-
-          {/* User Input Message Submission Form Area */}
-          <form onSubmit={handleSendMessage} className="flex gap-2 p-4 border-t border-white/20 bg-white/10 backdrop-blur-sm">
+          {/* Input area */}
+          <form
+            onSubmit={handleSendMessage}
+            className="flex gap-2 px-4 py-3 border-t border-white/20 bg-white/10 backdrop-blur-sm"
+          >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask me anything..."
-              className="flex-1 px-4 py-3 text-sm bg-white/20 backdrop-blur-sm border border-white/40 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-[#7248D2]/40 text-slate-800 transition-all placeholder-slate-600"
+              className="flex-1 px-4 py-2.5 text-[13px] bg-white/20 backdrop-blur-sm border border-white/40 rounded-2xl shadow-inner focus:outline-none focus:ring-2 focus:ring-[#7248D2]/40 text-slate-800 transition-all placeholder-slate-500"
             />
             <button
               type="submit"
-              className="px-5 py-3 font-semibold text-sm text-white transition-all bg-[#7248D2] hover:opacity-90 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 shrink-0"
+              disabled={!input.trim()}
+              className="px-5 py-2.5 font-semibold text-[13px] text-white transition-all bg-[#7248D2] hover:opacity-90 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 shrink-0 disabled:opacity-40 disabled:cursor-not-allowed disabled:translate-y-0"
             >
               Send
             </button>
