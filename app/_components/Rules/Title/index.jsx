@@ -25,12 +25,19 @@ export default function Title() {
     clipPath: "polygon(0 0, 100% 0, 100% 100%, 18% 100%, 0 84%)",
   };
 
+  const scrollToRules = () => {
+    document.getElementById("rules-content")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
-    <main className="relative min-h-screen overflow-hidden bg-transparent px-2 py-3 sm:px-4 md:px-0 md:py-4">
-      <section className="relative mx-auto flex min-h-[calc(100vh-1.5rem)] w-full max-w-[1600px] filter drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)] md:h-[95vh] md:min-h-[680px] md:w-[95vw] md:max-h-[940px]">
-        <div className="relative flex w-full flex-col overflow-hidden rounded-[30px] border border-white/20 bg-white/10 p-2 backdrop-blur-3xl md:rounded-none md:border-none md:bg-transparent md:p-0 md:backdrop-blur-none">
+    <main className="relative overflow-hidden bg-transparent px-3 pb-3 pt-3 sm:px-4 md:px-0 md:pb-4 md:pt-4">
+      <section className="relative mx-auto w-full max-w-[1600px] md:w-[95vw]">
+        <div className="relative flex h-[650px] w-full flex-col overflow-hidden rounded-[26px] border border-white/30 bg-white/10 p-2 shadow-[0_22px_50px_rgba(70,95,145,0.18)] backdrop-blur-3xl sm:h-[720px] sm:rounded-[30px] md:h-[720px] lg:h-auto lg:min-h-[520px] lg:aspect-[2/1] lg:max-h-[650px] lg:rounded-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:filter lg:drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)]">
           <svg
-            className="absolute inset-0 z-0 hidden h-full w-full md:block"
+            className="absolute inset-0 z-0 hidden h-full w-full lg:block"
             viewBox="0 0 1000 700"
             preserveAspectRatio="none"
           >
@@ -51,31 +58,31 @@ export default function Title() {
             />
           </svg>
 
-          <div className="relative z-10 flex min-h-full w-full flex-col px-2 pb-6 pt-2 sm:px-4 sm:pb-8 md:flex-1 md:px-[5.6%] md:pb-[5.5%] md:pt-[4.8%] lg:px-[6.6%]">
-            <div className="relative z-50 w-full md:max-w-[92%] lg:max-w-[96%]">
+          <div className="relative z-10 flex min-h-full w-full flex-col px-2 pb-3 pt-2 sm:px-4 sm:pb-5 lg:flex-1 lg:px-[6.6%] lg:pb-[7%] lg:pt-[4.8%]">
+            <div className="relative z-50 w-full lg:max-w-[96%]">
               <Header active="rules" />
             </div>
 
-            <div className="grid items-end gap-5 py-7 sm:gap-6 sm:py-10 md:flex-1 md:grid-cols-[minmax(0,58%)_minmax(220px,42%)] md:gap-x-4 md:gap-y-3 md:py-0 lg:grid-cols-[minmax(0,56%)_minmax(300px,44%)]">
-              <div className="relative z-10 flex min-w-0 max-w-[calc(100vw-3rem)] flex-col items-start justify-center self-center px-2 pr-0 text-left sm:max-w-full sm:px-4 md:max-w-none md:px-0 md:pr-4 lg:pr-8">
-                <p className="font-slogan text-[clamp(2.25rem,9.5vw,3rem)] font-bold leading-none tracking-normal text-[#1a1a1a] md:text-[clamp(2.9rem,5.2vw,6.5rem)]">
+            <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-3 pt-5 sm:gap-4 sm:pt-7 lg:grid-cols-[minmax(0,56%)_minmax(300px,44%)] lg:grid-rows-1 lg:items-end lg:gap-x-4 lg:gap-y-3 lg:pt-0">
+              <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start justify-center self-center px-2 text-left sm:px-4 lg:max-w-none lg:px-0 lg:pr-8">
+                <p className="font-slogan text-[clamp(2.15rem,10vw,3rem)] font-bold leading-none tracking-normal text-[#1a1a1a] lg:text-[clamp(2.9rem,5.2vw,6.5rem)]">
                   OFFICIAL
                 </p>
 
-                <h1 className="mt-2 max-w-full font-slogan text-[clamp(1.8rem,8.2vw,2.55rem)] font-bold leading-[0.95] tracking-normal text-[#2E47FF] md:text-[clamp(2.5rem,5.4vw,6.75rem)]">
+                <h1 className="mt-2 max-w-full font-slogan text-[clamp(1.72rem,8.6vw,2.5rem)] font-bold leading-[0.95] tracking-normal text-[#2E47FF] lg:text-[clamp(2.5rem,5.4vw,6.75rem)]">
                   <span className="block whitespace-nowrap">RULES AND</span>
                   <span className="block whitespace-nowrap">REGULATIONS.</span>
                 </h1>
 
-                <p className="mt-5 max-w-[calc(100vw-4rem)] text-sm font-medium leading-6 text-gray-700 sm:max-w-[36rem] sm:text-base md:mt-6 md:text-base md:leading-6 lg:text-lg lg:leading-7">
+                <p className="mt-4 max-w-[36rem] text-sm font-medium leading-5 text-gray-700 sm:text-base sm:leading-6 lg:mt-6 lg:text-lg lg:leading-7">
                   Your next big idea starts here! Join the SLIIT Inter-University
                   Ideation and inspire the future through innovation.
                 </p>
               </div>
 
-              <div className="pointer-events-none relative z-0 mx-auto h-[260px] w-full max-w-[500px] self-end sm:h-[360px] md:z-10 md:mx-0 md:h-full md:max-w-none" aria-hidden="true">
+              <div className="pointer-events-none relative z-0 mx-auto h-full min-h-0 w-full max-w-[500px] self-end lg:z-10 lg:mx-0 lg:max-w-none" aria-hidden="true">
                 <div
-                  className="absolute inset-x-0 bottom-0 flex h-full items-end justify-center overflow-hidden md:justify-end"
+                  className="absolute inset-x-0 bottom-0 flex h-full items-end justify-center overflow-hidden lg:justify-end"
                   style={portraitClip}
                 >
                   <Image
@@ -84,11 +91,11 @@ export default function Title() {
                     width={1100}
                     height={1366}
                     priority
-                    className="h-full w-auto max-w-none object-contain object-bottom drop-shadow-2xl md:h-[78%] lg:h-[86%] xl:h-[90%] 2xl:h-[94%]"
+                    className="h-full w-auto max-w-none object-contain object-bottom drop-shadow-2xl lg:mr-[10%]"
                   />
                 </div>
 
-                <div className="absolute right-0 top-1/2 hidden origin-center -translate-y-1/2 translate-x-[34%] rotate-90 md:block">
+                <div className="absolute right-[-3%] top-1/2 hidden origin-center -translate-y-1/2 translate-x-[34%] rotate-90 lg:block">
                   <Image
                     src="/images/2026-images/logo-main-2026.png"
                     alt="Mini Hackathon 26"
@@ -98,16 +105,19 @@ export default function Title() {
                   />
                 </div>
               </div>
-
             </div>
           </div>
+        </div>
 
-          <div className="absolute bottom-[1.6%] left-0 right-0 z-20 flex justify-center px-4">
-            <button className="group flex h-12 w-full max-w-[280px] items-center justify-center gap-3 rounded-full border border-white/50 bg-white/30 shadow-[0_16px_38px_rgba(15,23,42,0.16)] backdrop-blur-2xl transition-all duration-300 hover:bg-white/45 md:h-14 md:max-w-[360px]">
-              <span className="text-sm font-semibold text-gray-800 md:text-base">Scroll For More.</span>
-              <HiChevronDoubleDown className="animate-bounce text-lg md:text-xl" />
-            </button>
-          </div>
+        <div className="flex justify-center px-4 pb-2 pt-5 sm:pt-6 lg:pt-5">
+          <button
+            type="button"
+            onClick={scrollToRules}
+            className="group flex h-12 w-full max-w-[260px] items-center justify-center gap-3 rounded-full border border-white/60 bg-white/30 shadow-[0_12px_30px_rgba(15,23,42,0.15)] backdrop-blur-2xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2E47FF] focus-visible:ring-offset-2 sm:h-14 sm:max-w-[320px] lg:h-16 lg:max-w-[360px]"
+          >
+            <span className="text-sm font-semibold text-gray-900 sm:text-base">Scroll For More.</span>
+            <HiChevronDoubleDown className="text-lg transition-transform group-hover:translate-y-0.5 sm:text-xl" />
+          </button>
         </div>
       </section>
     </main>
