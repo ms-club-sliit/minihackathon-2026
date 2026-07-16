@@ -109,11 +109,11 @@ export default function Content() {
   };
 
   return (
-    <div className="w-screen relative">
-      <div className="container mx-auto text-justify text-gray-950 px-6 md:px-12 lg:px-20">
+    <div id="rules-content" className="relative w-full scroll-mt-6">
+      <div className="container mx-auto px-6 text-left text-gray-950 sm:text-justify md:px-12 lg:px-20">
         {sections && Array.isArray(sections) ? (
           sections.map((section, index) => (
-            <div key={`round-${section.title}-${index}`} className={index === 0 ? "mb-10 mt-4" : "my-10"}>
+            <div key={`round-${section.title}-${index}`} className={index === 0 ? "mb-10 mt-3" : "my-10"}>
               <h3 className="relative mb-6 flex items-center gap-3 pl-4 text-lg font-black uppercase tracking-[-0.02em] text-gray-950 lg:text-2xl">
                 <span className="absolute left-0 top-1/2 h-[70%] w-[5px] -translate-y-1/2 rounded-full bg-[#2E47FF]" />
                 {section.title}
