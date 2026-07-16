@@ -27,7 +27,7 @@ export default function Header({ active = "home" }) {
     <header className="relative z-50 w-full">
       <div className="hidden w-full grid-cols-[170px_minmax(0,1fr)] items-start gap-4 lg:grid xl:grid-cols-[220px_minmax(0,1fr)]">
 
-        <div className="flex h-[86px] items-center xl:h-[96px]">
+        <div className="flex h-[72px] -translate-y-8 items-end pb-2">
           <div className="flex items-center">
             <img
               src="/images/2026-images/logo-main-2026.png"
