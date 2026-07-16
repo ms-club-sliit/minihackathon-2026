@@ -5,6 +5,7 @@ import Hero from "./_components/Home/Hero";
 import PastWinnersList from "../components/Home/PastWinner";
 import Sponsor from "@/components/Home/Sponsors";
 import Timeline from "./_components/Home/Timeline";
+import ChatBot from "@/components/Chatbot/Chatbot";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Gallery />
       <Sponsor />
       <PastWinnersList />
+      <ChatBot />
     </main>
   );
 }
