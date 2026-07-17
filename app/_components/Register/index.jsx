@@ -13,11 +13,7 @@ import EmailTemplate from '../EmailTemplate/EmailTemplate';
 import { supabase } from '@/app/supabase';
 import ReactDOMServer from 'react-dom/server';
 import { useRouter } from 'next/navigation';
-import HackathonImage from "../../../public/images/2025-images/hero-image-up.png";
-import img1 from "../../../public/images/2025-images/register/Vector 1.png";
-import img2 from "../../../public/images/2025-images/register/Orange Ricky.png";
-import img3 from "../../../public/images/2025-images/register/Orange.png";
-import Image from "next/image";
+import Header from '@/components/Header';
 
 function jsx2html(element) {
   return ReactDOMServer.renderToString(element);
@@ -92,11 +88,10 @@ async function sendEmail(to, subject, body, retryCount = 0) {
       return await response.json();
     }
 
-    // Handle rate limiting specifically
     if (response.status === 429) {
       if (retryCount < maxRetries) {
         const data = await response.json();
-        const retryAfter = data.retryAfter || 5000; // Default to 5 seconds
+        const retryAfter = data.retryAfter || 5000;
 
         console.log(
           `Rate limit hit for ${to}, retrying in ${retryAfter}ms (attempt ${
@@ -104,7 +99,6 @@ async function sendEmail(to, subject, body, retryCount = 0) {
           }/${maxRetries})`
         );
 
-        // Wait before retrying
         await new Promise(resolve => setTimeout(resolve, retryAfter));
         return sendEmail(to, subject, body, retryCount + 1);
       } else {
@@ -133,7 +127,7 @@ async function sendEmail(to, subject, body, retryCount = 0) {
 
 const Register = () => {
   const [current, setCurrent] = useState(0);
-  const [showSpinner, setShowSpinner] = useState(true); // State to show spinner initially
+  const [showSpinner, setShowSpinner] = useState(true);
   const router = useRouter();
 
   const setStepData = (step, data) => {
@@ -150,10 +144,8 @@ const Register = () => {
   const [isTicketLoading, setIsTicketLoading] = useState(false);
   const ticketRef = useRef(null);
 
-  // Effect to handle ticket generation when ticket popup is shown
   useEffect(() => {
     if (showTicket && ticketRef.current && !isTicketLoading) {
-      // Small delay to ensure the ticket component is fully rendered
       setTimeout(async () => {
         try {
           await handleTicketGeneration(ticketRef);
@@ -245,31 +237,18 @@ const Register = () => {
   };
 
   const dataURItoBlob = dataURI => {
-    // convert base64 to raw binary data held in a string
-    // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
     let byteString = atob(dataURI.split(',')[1]);
-
-    // separate out the mime component
     let mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-    // write the bytes of the string to an ArrayBuffer
     let ab = new ArrayBuffer(byteString.length);
-
-    // create a view into the buffer
     let ia = new Uint8Array(ab);
-
-    // set the bytes of the buffer to the correct values
     for (let i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);
     }
-
-    // write the ArrayBuffer to a blob, and you're done
     let blob = new Blob([ab], { type: mimeString });
     return blob;
   };
 
   const saveTicketToSupabase = async popupRef => {
-    // Check if we already saved this ticket
     if (saveTicketToSupabase.lastSavedTicket) {
       console.log(
         'Reusing existing ticket URL:',
@@ -279,9 +258,7 @@ const Register = () => {
     }
 
     try {
-      // Use renderTicket method through the popup ref instead of onRender
       const dataURL = await popupRef.current.renderTicket();
-
       let fileName = generateFileName();
       const filePath = `ticket-images-2026/${fileName}`;
       const blob = dataURItoBlob(dataURL);
@@ -303,7 +280,6 @@ const Register = () => {
         data: { publicUrl },
       } = supabase.storage.from('uploads').getPublicUrl(filePath);
 
-      // Save the URL for reuse
       saveTicketToSupabase.lastSavedTicket = publicUrl;
       console.log('Uploaded successfully to:', publicUrl);
       return publicUrl;
@@ -314,7 +290,6 @@ const Register = () => {
   };
 
   const saveTicket = async image_string => {
-    // Add a static variable to track if we've already saved this ticket
     if (saveTicket.lastSavedTicket) {
       console.log('Reusing existing ticket URL:', saveTicket.lastSavedTicket);
       return saveTicket.lastSavedTicket;
@@ -342,7 +317,6 @@ const Register = () => {
         data: { publicUrl },
       } = supabase.storage.from('uploads').getPublicUrl(filePath);
 
-      // Save the URL for reuse
       saveTicket.lastSavedTicket = publicUrl;
       console.log('Uploaded successfully to:', publicUrl);
       return publicUrl;
@@ -353,19 +327,16 @@ const Register = () => {
   };
 
   const handleTicketGeneration = async popupRef => {
-    // If already loading or ticket is already displayed, don't proceed
     if (isTicketLoading || ticketData.display) {
       return;
     }
 
     setIsTicketLoading(true);
     try {
-      // Use renderTicket method through the popup ref to get image and upload to Supabase
       let url = await saveTicketToSupabase(popupRef);
       const teamInfo = { ...addedDoc.current };
       let str = jsx2html(<EmailTemplate image={url} team={teamInfo} />);
 
-      // Count team members for progress tracking
       const teamMembers = [];
       for (let i = 1; i <= 4; i++) {
         if (`member0${i}` in teamInfo) {
@@ -373,14 +344,12 @@ const Register = () => {
         }
       }
 
-      // Initialize email progress
       setEmailProgress({
         current: 0,
         total: teamMembers.length,
         message: 'Starting email delivery...',
       });
 
-      // Send emails to team members sequentially to avoid rate limiting
       const emailResults = [];
       for (let i = 0; i < teamMembers.length; i++) {
         const { index, member } = teamMembers[i];
@@ -403,16 +372,14 @@ const Register = () => {
           });
           console.log(`Successfully sent email to member ${index}`);
 
-          // Update progress
           setEmailProgress({
             current: i + 1,
             total: teamMembers.length,
             message: `Email sent to ${member.name}`,
           });
 
-          // Add a small delay between emails to be extra safe with rate limits
           if (i < teamMembers.length - 1) {
-            await new Promise(resolve => setTimeout(resolve, 1000)); // 1 second delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
           }
         } catch (error) {
           console.error(
@@ -426,7 +393,6 @@ const Register = () => {
             error: error.message,
           });
 
-          // Update progress even on failure
           setEmailProgress({
             current: i + 1,
             total: teamMembers.length,
@@ -435,23 +401,19 @@ const Register = () => {
         }
       }
 
-      // Final progress update
       setEmailProgress({
         current: teamMembers.length,
         total: teamMembers.length,
         message: 'Email delivery complete!',
       });
 
-      // Check for any email sending failures
       const failedEmails = emailResults.filter(result => !result.success);
       if (failedEmails.length > 0) {
         console.error('Some emails failed to send:', failedEmails);
-        // You might want to show a notification to the user here
       } else {
         console.log('All emails sent successfully');
       }
 
-      // Update ticket data only once
       setTicketData(prev => ({
         ...prev,
         display: true,
@@ -464,181 +426,252 @@ const Register = () => {
       console.error('Error in ticket generation:', e);
     } finally {
       setIsTicketLoading(false);
-      setEmailProgress({ current: 0, total: 0, message: '' }); // Reset email progress
+      setEmailProgress({ current: 0, total: 0, message: '' });
     }
   };
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowSpinner(false); // Hide spinner after 2 seconds
+      setShowSpinner(false);
     }, 1000);
 
-    return () => clearTimeout(timer); // Cleanup timer on component unmount
+    return () => clearTimeout(timer);
   }, []);
 
   function generateTicketID() {
     const prefix = 'MS25';
-    const randomComponent = Math.floor(Math.random() * 1000000); // Random number between 0 and 999999
-    const paddedNumber = randomComponent.toString().padStart(5, '0'); // Ensure it is always 5 digits
+    const randomComponent = Math.floor(Math.random() * 1000000);
+    const paddedNumber = randomComponent.toString().padStart(5, '0');
     return `${prefix}${paddedNumber}`;
   }
 
   return (
-    <main className="relative overflow-hidden">
+    <main className="register-page">
+      {/* ================= REGISTER HERO ================= */}
+      <div className="register-section-wrapper">
+  <section className="register-glass-hero">
+    <svg
+      className="register-glass-svg"
+      viewBox="0 0 1000 700"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <filter
+          id="register-glass-shadow"
+          x="-20%"
+          y="-20%"
+          width="140%"
+          height="140%"
+        >
+          <feDropShadow
+            dx="4"
+            dy="10"
+            stdDeviation="10"
+            floodColor="#53698f"
+            floodOpacity="0.25"
+          />
 
-      {/* Main Content */}
-      <div className="container mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
-        <div className="relative w-full flex flex-col lg:flex-row items-center justify-between min-h-[600px] rounded-[40px] py-12 px-8 lg:px-16 overflow-hidden my-12 lg:my-20 bg-[#222222]">
-          {/* Left Section */}
-          <div className="relative z-20 text-left max-w-2xl flex flex-col gap-5">
-            {/* Badge */}
-            <div className="inline-block">
-              <span className="px-4 py-1 bg-gray-600 text-white text-sm font-semibold rounded-lg">
-                MINIHACKATHON 2025
-              </span>
-            </div>
+          <feDropShadow
+            dx="1"
+            dy="3"
+            stdDeviation="2"
+            floodColor="#000000"
+            floodOpacity="0.15"
+          />
+        </filter>
+      </defs>
 
-            {/* Headlines */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
-              Register!
-            </h2>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-black text-white leading-none tracking-tight">
-              Your Team
-            </h1>
+      <path
+        className="register-glass-background"
+        d="
+          M 35 150
+          Q 35 120 65 120
+          H 180
+          Q 210 120 210 90
+          V 80
+          Q 210 50 240 50
+          H 935
+          Q 965 50 965 80
+          V 620
+          Q 965 650 935 650
+          H 65
+          Q 35 650 35 620
+          Z
+        "
+      />
 
-            {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 font-medium leading-relaxed">
-              A Great Idea Becomes A Winning Solution When Minds Come Together.
-            </p>
-          </div>
+      <path
+        className="register-glass-border"
+        d="
+          M 35 150
+          Q 35 120 65 120
+          H 180
+          Q 210 120 210 90
+          V 80
+          Q 210 50 240 50
+          H 935
+          Q 965 50 965 80
+          V 620
+          Q 965 650 935 650
+          H 65
+          Q 35 650 35 620
+          Z
+        "
+        filter="url(#register-glass-shadow)"
+      />
+    </svg>
 
-          {/* Right Side Image */}
-          <div className="absolute -bottom-8 lg:-bottom-12 right-0 lg:right-12 w-[50%] lg:w-[38%] opacity-80 transform hover:scale-105 transition-transform duration-700 ease-out">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-transparent to-transparent blur-3xl"></div>
-              <div className="flex justify-end">
-                <Image
-                  src={HackathonImage}
-                  alt="Hackathon Elements"
-                  className="w-3/4 h-auto object-contain relative z-10 drop-shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="register-notch-logo">
+  <img
+    src="/images/2026-images/logo-main-2026.png"
+    alt="Mini Hackathon 26"
+  />
+</div>
 
-      {/* Steps Section */}
+<div className="register-navigation">
+  <Header active="" hideLogo />
+</div>
+
+   <div className="register-hero-content">
+  <img
+    src="/images/2026-images/logo-main-2026.png"
+    alt="Mini Hackathon 26"
+    className="register-center-logo-image"
+  />
+
+  <h1 className="register-hero-heading">
+    Register Your Team
+  </h1>
+
+  <p className="register-hero-description">
+    A Great Idea Becomes A Winning Solution When Minds Come Together.
+  </p>
+</div>
+</section>
+</div>
+
+      {/* ================= STEPS SECTION ================= */}
       {showSpinner ? (
-        <div className='flex justify-center items-center h-screen'>
-          <Spin size='large' />
+        <div className="flex h-screen items-center justify-center">
+          <Spin size="large" />
         </div>
       ) : (
         <>
           {isTicketLoading && (
-            <div className='flex justify-center items-center h-screen'>
+            <div className="flex h-screen items-center justify-center">
               <Row>
-                <div className='text-center'>
+                <div className="text-center">
                   <div>Generating Ticket...</div>
+
                   {emailProgress.total > 0 && (
-                    <div className='mt-4'>
+                    <div className="mt-4">
                       <div>
                         Sending Emails ({emailProgress.current}/
                         {emailProgress.total})
                       </div>
-                      <div className='text-sm text-gray-600 mt-2'>
+
+                      <div className="mt-2 text-sm text-gray-600">
                         {emailProgress.message}
                       </div>
-                      <div className='w-full bg-gray-200 rounded-full h-2.5 mt-2'>
+
+                      <div className="mt-2 h-2.5 w-full rounded-full bg-gray-200">
                         <div
-                          className='bg-blue-600 h-2.5 rounded-full transition-all duration-300'
+                          className="h-2.5 rounded-full bg-blue-600 transition-all duration-300"
                           style={{
                             width: `${
-                              (emailProgress.current / emailProgress.total) *
-                              100
+                              (emailProgress.current / emailProgress.total) * 100
                             }%`,
                           }}
-                        ></div>
+                        />
                       </div>
                     </div>
                   )}
                 </div>
-                &nbsp; <Spin size='large' />
+
+                &nbsp;
+                <Spin size="large" />
               </Row>
             </div>
           )}
+
           {showTicket && (
             <TicketPopup
               onClose={onClose}
-              onRender={null} // Remove onRender, we'll use renderTicket instead
+              onRender={null}
               ref={ticketRef}
               {...ticketData}
             />
           )}
-          <div className='mx-2 my-2 px-2 lg:mx-20 lg:my-20 lg:px-20'>
-            <div className="custom-steps-container bg-gradient-to-br from-[#f0f4ff] via-[#f7f3ff] to-[#fff0f6] rounded-[32px] border border-white/60 shadow-sm p-8 sm:p-12 lg:p-16">
-              <div className='mb-6 lg:mb-10 p-2'>
-                <Steps current={current} size='small' items={stepItems} className="custom-steps" labelPlacement="vertical" />
+
+          <div className="mx-2 my-2 px-2 lg:mx-20 lg:my-20 lg:px-20">
+            <div className="custom-steps-container rounded-[32px] border border-white/60 bg-gradient-to-br from-[#f0f4ff] via-[#f7f3ff] to-[#fff0f6] p-8 shadow-sm sm:p-12 lg:p-16">
+              <div className="mb-6 p-2 lg:mb-10">
+                <Steps
+                  current={current}
+                  size="small"
+                  items={stepItems}
+                  className="custom-steps"
+                  labelPlacement="vertical"
+                />
               </div>
-              <div className='my-6 lg:my-10 step-body'>
-              {showSpinner ? (
-                <div className='flex justify-center items-center h-64'>
-                  <Spin size='large' />
-                </div>
-              ) : (
-                <>
-                  {current === 0 && (
-                    <Step1
-                      stepData={stepData.step1}
-                      next={next}
-                      setHook={setStepData}
-                    />
-                  )}
-                  {current === 1 && (
-                    <Step2
-                      stepData={stepData.step2}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 2 && (
-                    <Step3
-                      stepData={stepData.step3}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 3 && (
-                    <Step4
-                      stepData={stepData.step4}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 4 && (
-                    <Step5
-                      stepData={stepData.step5}
-                      next={next}
-                      setHook={setStepData}
-                      BackHook={prev}
-                    />
-                  )}
-                  {current === 5 && (
-                    <Step6
-                      teamData={stepData}
-                      next={next}
-                      onSubmitComplete={onSubmitComplete}
-                    />
-                  )}
-                </>
-              )}
+
+              <div className="step-body my-6 lg:my-10">
+                {current === 0 && (
+                  <Step1
+                    stepData={stepData.step1}
+                    next={next}
+                    setHook={setStepData}
+                  />
+                )}
+
+                {current === 1 && (
+                  <Step2
+                    stepData={stepData.step2}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+
+                {current === 2 && (
+                  <Step3
+                    stepData={stepData.step3}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+
+                {current === 3 && (
+                  <Step4
+                    stepData={stepData.step4}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+
+                {current === 4 && (
+                  <Step5
+                    stepData={stepData.step5}
+                    next={next}
+                    setHook={setStepData}
+                    BackHook={prev}
+                  />
+                )}
+
+                {current === 5 && (
+                  <Step6
+                    teamData={stepData}
+                    next={next}
+                    onSubmitComplete={onSubmitComplete}
+                  />
+                )}
+              </div>
             </div>
           </div>
-        </div>
-        </>
+          </>
       )}
     </main>
   );

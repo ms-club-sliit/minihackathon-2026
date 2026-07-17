@@ -10,7 +10,10 @@ const NAV_LINKS = [
   { key: "rules", label: "Rules", href: "/rules" },
 ];
 
-export default function Header({ active = "home" }) {
+export default function Header({
+  active = "home",
+  hideLogo = false,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const desktopClass = (key) =>
@@ -25,23 +28,36 @@ export default function Header({ active = "home" }) {
 
   return (
     <header className="relative z-20">
-      <div className="hidden lg:grid grid-cols-[20%_80%] gap-4 items-center w-full">
 
-        <div className="flex items-center h-[110px]">
-          <div className="flex items-center gap-2">
-            <img
-              src="/images/2026-images/logo-main-2026.png"
-              alt="MS Club"
-              className="h-14 w-auto object-contain"
-            />
+      {/* ================= DESKTOP ================= */}
+      <div
+        className={`hidden lg:grid items-center w-full ${
+          hideLogo ? "grid-cols-1" : "grid-cols-[20%_80%] gap-4"
+        }`}
+      >
+        {!hideLogo && (
+          <div className="flex items-center h-[110px]">
+            <div className="flex items-center gap-2">
+              <img
+                src="/images/2026-images/logo-main-2026.png"
+                alt="Mini Hackathon"
+                className="h-14 w-auto object-contain"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
-        <div className="flex h-[60px] items-center justify-between mr-[-5.5vw] rounded-[40px] border border-white/20 bg-white/10 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
+        <div
+          className={`flex h-[60px] items-center justify-between rounded-[40px] border border-white/20 bg-white/10 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)] ${
+            hideLogo ? "w-full" : "mr-[-5.5vw]"
+          }`}
+        >
           <div className="flex items-center gap-3">
             {NAV_LINKS.map((link) => (
               <a key={link.key} href={link.href}>
-                <button className={desktopClass(link.key)}>{link.label}</button>
+                <button className={desktopClass(link.key)}>
+                  {link.label}
+                </button>
               </a>
             ))}
           </div>
@@ -51,35 +67,51 @@ export default function Header({ active = "home" }) {
               Register Now
             </button>
           </a>
-
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <div className="flex lg:hidden items-center justify-between w-full h-[60px] px-5 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.1)] relative">
-        <div className="flex items-center">
-          <img
-            src="/images/2026-images/logo-main-2026.png"
-            alt="MS Club"
-            className="h-10 w-auto object-contain"
-          />
-        </div>
+      {/* ================= MOBILE ================= */}
+      <div
+        className={`flex lg:hidden items-center w-full h-[60px] px-5 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.1)] relative ${
+          hideLogo ? "justify-end" : "justify-between"
+        }`}
+      >
+        {!hideLogo && (
+          <div className="flex items-center">
+            <img
+              src="/images/2026-images/logo-main-2026.png"
+              alt="Mini Hackathon"
+              className="h-10 w-auto object-contain"
+            />
+          </div>
+        )}
 
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="text-blue-700 focus:outline-none p-1 rounded-lg hover:bg-white/20 transition-colors"
           aria-label="Toggle menu"
         >
-          {isOpen ? <HiX className="text-2xl" /> : <HiMenu className="text-2xl" />}
+          {isOpen ? (
+            <HiX className="text-2xl" />
+          ) : (
+            <HiMenu className="text-2xl" />
+          )}
         </button>
 
         {isOpen && (
-          <div className="absolute top-[70px] left-0 right-0 z-50 flex flex-col gap-3 p-5 rounded-[24px] border border-white/20 bg-white/80 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
+          <div className="absolute top-[70px] left-0 right-0 z-50 flex flex-col gap-3 p-5 rounded-[24px] border border-white/20 bg-white/80 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
             {NAV_LINKS.map((link) => (
-              <a key={link.key} href={link.href} onClick={() => setIsOpen(false)}>
-                <button className={mobileClass(link.key)}>{link.label}</button>
+              <a
+                key={link.key}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+              >
+                <button className={mobileClass(link.key)}>
+                  {link.label}
+                </button>
               </a>
             ))}
+
             <a href="/register" onClick={() => setIsOpen(false)}>
               <button className="w-full rounded-full bg-gradient-to-r from-[#3552ff] to-[#4d6eff] px-7 py-3 text-sm font-semibold text-white shadow-[0_10px_25px_rgba(53,82,255,0.35)] transition hover:opacity-90">
                 Register Now
@@ -88,6 +120,7 @@ export default function Header({ active = "home" }) {
           </div>
         )}
       </div>
+
     </header>
   );
 }
