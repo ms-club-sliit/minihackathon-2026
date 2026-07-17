@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/Header/index";
+import HeroHeader from "@/components/HeroHeader";
 
 import InstagramIcon from '@iconify-react/selfhst/instagram';
 import FacebookIcon from '@iconify-react/selfhst/facebook';
@@ -79,13 +79,11 @@ export default function Hero() {
             />
           </svg>
 
+          <HeroHeader />
+
           {/* ================= CONTENT LAYER ================= */}
           <div className="md:w-[80%] md:min-h-full mx-0">
-
-            {/* Integrated Top Navigation Menu */}
-            <div className="relative w-full md:left-[8%] md:mt-[5.5vh]">
-              <Header />
-            </div>
+            <div className="h-[60px] md:h-[calc(5.5vh+110px)]" aria-hidden="true" />
 
             {/* ================= HERO CONTENT LAYER ================= */}
             <div className="md:absolute flex items-center justify-center w-full md:min-h-[50vh] min-h-[65vh]">
