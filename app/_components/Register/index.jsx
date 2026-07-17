@@ -485,30 +485,6 @@ const Register = () => {
 
   return (
     <main className="relative overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute bottom-0 left-0 z-0 opacity-70">
-        <Image
-          src={img1}
-          alt="Decorative Element Left"
-          className="w-40 h-auto"
-        />
-      </div>
-
-      <div className="absolute top-0 left-0 z-0 opacity-70 pointer-events-none">
-        <Image
-          src={img2}
-          alt="Decorative Element Top Left"
-          className="w-40 h-auto object-contain"
-        />
-      </div>
-
-      <div className="absolute bottom-0 right-0 z-0 opacity-70">
-        <Image
-          src={img3}
-          alt="Decorative Element Right Bottom"
-          className="w-48 h-auto"
-        />
-      </div>
 
       {/* Main Content */}
       <div className="container mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
