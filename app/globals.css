@@ -955,7 +955,7 @@ body,
 ======================================== */
 
 .register-center-logo-image {
-  width: 260px;
+  width: 500px;
   height: auto;
   display: block;
   margin: 0 auto 28px;
@@ -999,7 +999,7 @@ body,
 .register-hero-heading {
   margin: 0;
   color: #111111;
-  font-size: clamp(34px, 4vw, 53px);
+  font-size: clamp(10px, 3.5vw, 44px);
   font-weight: 800;
   line-height: 1.1;
 }
