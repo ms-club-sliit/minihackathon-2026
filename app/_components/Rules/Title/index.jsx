@@ -1,23 +1,23 @@
 "use client";
 
-import HeroHeader from "@/components/HeroHeader";
+import GlassHeroShell from "@/components/GlassHeroShell";
 import Image from "next/image";
 import { HiChevronDoubleDown } from "react-icons/hi";
 
 export default function Title() {
   const glassPath = `
-    M 35 205
-    Q 35 168 65 168
+    M 35 165
+    Q 35 135 65 135
     H 180
-    Q 210 168 210 138
-    V 98
-    Q 210 68 240 68
+    Q 210 135 210 105
+    V 95
+    Q 210 65 240 57
     H 935
-    Q 965 68 965 98
-    V 600
-    Q 965 630 935 630
+    Q 965 57 965 87
+    V 670
+    Q 965 700 935 700
     H 65
-    Q 35 630 35 600
+    Q 35 700 35 670
     Z
   `.trim();
 
@@ -33,37 +33,18 @@ export default function Title() {
   };
 
   return (
-    <main className="relative overflow-hidden bg-transparent px-3 pb-3 pt-3 sm:px-4 md:px-0 md:pb-0 md:pt-0">
-      <section className="relative mx-auto w-full md:w-[95vw]">
-        <div className="relative flex h-[650px] w-full flex-col overflow-hidden rounded-[26px] border border-white/30 bg-white/10 p-2 shadow-[0_22px_50px_rgba(70,95,145,0.18)] backdrop-blur-3xl sm:h-[720px] sm:rounded-[30px] md:h-[720px] lg:h-auto lg:min-h-[520px] lg:aspect-[2/1] lg:max-h-[650px] lg:rounded-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:filter lg:drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)]">
-          <svg
-            className="absolute inset-0 z-0 hidden h-full w-full lg:block"
-            viewBox="0 0 1000 700"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <filter id="rules-glass-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="5" dy="10" stdDeviation="6" floodColor="#000000" floodOpacity="0.9" />
-                <feDropShadow dx="2" dy="4" stdDeviation="2" floodColor="#000000" floodOpacity="0.5" />
-              </filter>
-            </defs>
-
-            <path d={glassPath} fill="rgba(255, 255, 255, 0.1)" />
-            <path
-              d={glassPath}
-              fill="none"
-              stroke="rgba(157, 237, 248, 0.6)"
-              strokeWidth="1.5"
-              filter="url(#rules-glass-shadow)"
-            />
-          </svg>
-
-          <HeroHeader active="rules" />
-
-          <div className="relative z-10 flex min-h-full w-full flex-col px-2 pb-3 pt-2 sm:px-4 sm:pb-5 lg:flex-1 lg:px-[6.6%] lg:pb-[7%] lg:pt-[4.8%]">
-            <div className="h-[60px] shrink-0 lg:h-[110px]" aria-hidden="true" />
-
-            <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-3 pt-5 sm:gap-4 sm:pt-7 lg:grid-cols-[minmax(0,56%)_minmax(300px,44%)] lg:grid-rows-1 lg:items-end lg:gap-x-4 lg:gap-y-3 lg:pt-0">
+    <main className="relative overflow-visible bg-transparent px-3 pb-3 pt-3 sm:px-4 md:px-0 md:pb-0 md:pt-0 lg:overflow-hidden">
+      <GlassHeroShell
+        glassPath={glassPath}
+        active="rules"
+        containerClassName="z-20 min-h-0 filter-none drop-shadow-none md:h-auto md:w-[95vw]"
+        cardClassName="flex h-[650px] flex-col overflow-visible rounded-[26px] border border-white/30 bg-white/10 p-2 shadow-[0_22px_50px_rgba(70,95,145,0.18)] backdrop-blur-3xl sm:h-[720px] sm:rounded-[30px] md:h-[720px] lg:h-auto lg:min-h-[520px] lg:aspect-[2/1] lg:max-h-[650px] lg:overflow-hidden lg:rounded-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:filter lg:drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)]"
+        svgClassName="absolute inset-0 z-0 hidden h-full w-full lg:block"
+        contentWrapperClassName="mx-0 min-h-full w-full"
+        spacerClassName="h-[60px] shrink-0 lg:h-[110px]"
+      >
+        <div className="relative z-10 flex min-h-full w-full flex-col px-2 pb-3 pt-2 sm:px-4 sm:pb-5 lg:flex-1 lg:px-[6.6%] lg:pb-[7%] lg:pt-[4.8%]">
+          <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-3 pt-5 sm:gap-4 sm:pt-7 lg:grid-cols-[minmax(0,56%)_minmax(300px,44%)] lg:grid-rows-1 lg:items-end lg:gap-x-4 lg:gap-y-3 lg:pt-0">
               <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start justify-center self-center px-2 text-left sm:px-4 lg:max-w-none lg:px-0 lg:pr-8">
                 <p className="font-slogan text-[clamp(2.15rem,10vw,3rem)] font-bold leading-none tracking-normal text-[#1a1a1a] lg:text-[clamp(2.9rem,5.2vw,6.5rem)]">
                   OFFICIAL
@@ -105,10 +86,11 @@ export default function Title() {
                   />
                 </div>
               </div>
-            </div>
           </div>
         </div>
+      </GlassHeroShell>
 
+      <div className="relative z-0 mx-auto w-full md:w-[95vw]">
         <div className="flex justify-center px-4 pb-2 pt-5 sm:pt-6 lg:pt-5">
           <button
             type="button"
@@ -119,7 +101,7 @@ export default function Title() {
             <HiChevronDoubleDown className="text-lg transition-transform group-hover:translate-y-0.5 sm:text-xl" />
           </button>
         </div>
-      </section>
+      </div>
     </main>
   );
 }
