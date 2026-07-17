@@ -15,8 +15,8 @@ export default function Header({ active = "home" }) {
 
   const desktopClass = (key) =>
     key === active
-      ? "rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white"
-      : "rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white";
+      ? "rounded-full bg-blue-600 px-3 py-2 text-xs font-semibold text-white xl:px-5 xl:text-sm"
+      : "rounded-full border-2 border-blue-600 bg-none px-3 py-2 text-xs font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white xl:px-5 xl:text-sm";
 
   const mobileClass = (key) =>
     key === active
@@ -24,11 +24,11 @@ export default function Header({ active = "home" }) {
       : "w-full rounded-full border-2 border-blue-600 bg-white/50 px-5 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white";
 
   return (
-    <header className="relative z-20">
-      <div className="hidden lg:grid grid-cols-[20%_80%] gap-4 items-center w-full">
+    <header className="relative z-50 w-full">
+      <div className="hidden w-full grid-cols-[20%_80%] items-center gap-4 lg:grid">
 
-        <div className="flex items-center h-[110px]">
-          <div className="flex items-center gap-2">
+        <div className="flex h-[110px] items-center">
+          <div className="flex items-center">
             <img
               src="/images/2026-images/logo-main-2026.png"
               alt="MS Club"
@@ -37,8 +37,8 @@ export default function Header({ active = "home" }) {
           </div>
         </div>
 
-        <div className="flex h-[60px] items-center justify-between mr-[-5.5vw] rounded-[40px] border border-white/20 bg-white/10 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
-          <div className="flex items-center gap-3">
+        <div className="mr-[-5.5vw] flex h-[60px] min-w-0 items-center justify-between rounded-[40px] border border-white/20 bg-white/10 px-4 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)] xl:px-8">
+          <div className="flex min-w-0 items-center gap-2 xl:gap-3">
             {NAV_LINKS.map((link) => (
               <a key={link.key} href={link.href}>
                 <button className={desktopClass(link.key)}>{link.label}</button>
@@ -47,7 +47,7 @@ export default function Header({ active = "home" }) {
           </div>
 
           <a href="/register">
-            <button className="rounded-full bg-gradient-to-r from-[#3552ff] to-[#4d6eff] px-7 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(53,82,255,0.45)] transition hover:-translate-y-1">
+            <button className="whitespace-nowrap rounded-full bg-gradient-to-r from-[#3552ff] to-[#4d6eff] px-4 py-3 text-xs font-semibold text-white shadow-[0_15px_35px_rgba(53,82,255,0.45)] transition hover:-translate-y-1 xl:px-7 xl:text-sm">
               Register Now
             </button>
           </a>
@@ -56,7 +56,7 @@ export default function Header({ active = "home" }) {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="flex lg:hidden items-center justify-between w-full h-[60px] px-5 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.1)] relative">
+      <div className="relative flex h-[60px] w-full items-center justify-between rounded-[30px] border border-white/20 bg-white/10 px-5 shadow-[0_0_30px_rgba(0,0,0,0.1)] backdrop-blur-3xl lg:hidden">
         <div className="flex items-center">
           <img
             src="/images/2026-images/logo-main-2026.png"
@@ -74,7 +74,7 @@ export default function Header({ active = "home" }) {
         </button>
 
         {isOpen && (
-          <div className="absolute top-[70px] left-0 right-0 z-50 flex flex-col gap-3 p-5 rounded-[24px] border border-white/20 bg-white/80 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
+          <div className="absolute left-0 right-0 top-[70px] z-[100] flex flex-col gap-3 rounded-[24px] border border-white/20 bg-white/80 p-5 px-8 shadow-[0_0_45px_rgba(0,0,0,0.2)] backdrop-blur-3xl">
             {NAV_LINKS.map((link) => (
               <a key={link.key} href={link.href} onClick={() => setIsOpen(false)}>
                 <button className={mobileClass(link.key)}>{link.label}</button>
