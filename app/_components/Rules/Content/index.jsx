@@ -19,7 +19,7 @@ export default function Content() {
           {body.map((row, rowIndex) => (
             <tr key={`row-${rowIndex}`}>
               {row.map((cell, cellIndex) => (
-                <td key={`cell-${rowIndex}-${cellIndex}`} className="px-6 py-4 whitespace-nowrap text-md text-gray-700">
+                <td key={`cell-${rowIndex}-${cellIndex}`} className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-950">
                   {cell}
                 </td>
               ))}
@@ -50,7 +50,7 @@ export default function Content() {
             {body.map((row, rowIndex) => (
               <tr key={`row-${rowIndex}`}>
                 <td className="px-4 py-2 text-sm text-gray-800 font-semibold">{row.criteria}</td>
-                <td className="px-4 py-2 text-md text-gray-700">
+                <td className="px-4 py-2 text-md font-medium text-gray-950">
                   <ul className="list-disc pl-4">
                     {row.description.map((desc, descIndex) => (
                       <li key={`desc-${rowIndex}-${descIndex}`}>{desc}</li>
@@ -89,12 +89,12 @@ export default function Content() {
             <div className="space-y-6">
               {categoryItems.map((category, index) => (
                 <div key={`${mainCategory}-${index}`} className="rounded-[24px] border border-white/40 bg-white/20 p-6 shadow-[0_0_28px_rgba(0,0,0,0.08)] backdrop-blur-2xl">
-                  <h2 className="text-xl font-bold mb-4 text-left">
+                    <h2 className="text-xl font-bold mb-4 text-left text-gray-950">
                     {index + 1}. {category.name}
                   </h2>
                   <ul className="list-disc pl-5 space-y-2 text-left">
                     {category.content.map((item, itemIndex) => (
-                      <li key={`item-${mainCategory}-${index}-${itemIndex}`} className="text-gray-700 text-base">
+                      <li key={`item-${mainCategory}-${index}-${itemIndex}`} className="text-base font-medium text-gray-950">
                         {item}
                       </li>
                     ))}
@@ -109,18 +109,18 @@ export default function Content() {
   };
 
   return (
-    <div className="w-screen relative">
-      <div className="container mx-auto text-justify text-[#161414] px-6 md:px-12 lg:px-20">
+    <div id="rules-content" className="relative w-full scroll-mt-6">
+      <div className="container mx-auto px-6 text-left text-gray-950 sm:text-justify md:px-12 lg:px-20">
         {sections && Array.isArray(sections) ? (
           sections.map((section, index) => (
-            <div key={`round-${section.title}-${index}`} className="my-10">
+            <div key={`round-${section.title}-${index}`} className={index === 0 ? "mb-10 mt-3" : "my-10"}>
               <h3 className="relative mb-6 flex items-center gap-3 pl-4 text-lg font-black uppercase tracking-[-0.02em] text-gray-950 lg:text-2xl">
                 <span className="absolute left-0 top-1/2 h-[70%] w-[5px] -translate-y-1/2 rounded-full bg-[#2E47FF]" />
                 {section.title}
               </h3>
 
               {section.content && (
-                <p className="text-[#334155] text-base lg:text-lg my-5">
+                <p className="text-base font-medium text-gray-950 lg:text-lg my-5">
                   {section.content}
                 </p>
               )}
@@ -128,12 +128,12 @@ export default function Content() {
               {section.table && <Table head={section.table.head} body={section.table.body} />}
               {section.nestedTable && <NestedTable head={section.nestedTable.head} body={section.nestedTable.body} />}
               {section.list && (
-                <ul className="list-disc text-[#334155] text-base lg:text-lg my-5 pl-5 lg:pl-10">
+                <ul className="list-disc text-base font-medium text-gray-950 lg:text-lg my-5 pl-5 lg:pl-10">
                   {section.list.map((item, index) => <li key={index}>{item}</li>)}
                 </ul>
               )}
-              {section.note && <p className="text-base lg:text-lg text-[#334155] font-semibold my-10 italic">{section.note}</p>}
-              {section.content2 && <p className="text-[#334155] text-base lg:text-lg my-5">{section.content2}</p>}
+              {section.note && <p className="text-base lg:text-lg text-gray-950 font-semibold my-10 italic">{section.note}</p>}
+              {section.content2 && <p className="text-gray-950 text-base font-medium lg:text-lg my-5">{section.content2}</p>}
 
               {/* Added rounds */}
               {section.rounds && section.rounds.map((round, rIndex) => (
@@ -141,13 +141,13 @@ export default function Content() {
                   <h3 className="text-xl lg:text-2xl font-bold my-5 text-center lg:text-left lg:pl-20">
                     {round.title}
                   </h3>
-                  <div className="text-[#334155] text-base lg:text-lg lg:pl-20 mx-10 lg:mx-0">
+                  <div className="text-base font-medium text-gray-950 lg:text-lg lg:pl-20 mx-10 lg:mx-0">
                     {round.content.map((contentItem, cIndex) => (
                       <p key={`content-${rIndex}-${cIndex}`} className="mb-2">{contentItem}</p>
                     ))}
 
                     {round.list && (
-                      <ul className="list-disc text-[#334155] text-base lg:text-lg pl-10 lg:pl-20 my-5">
+                      <ul className="list-disc text-base font-medium text-gray-950 lg:text-lg pl-10 lg:pl-20 my-5">
                         {round.list.map((listItem, lIndex) => <li key={`list-item-${rIndex}-${lIndex}`}>{listItem}</li>)}
                       </ul>
                     )}
@@ -171,7 +171,7 @@ export default function Content() {
 
               {/* Added prizes */}
               {section.prizes && section.prizes.map((prize, pIndex) => (
-                <div key={`prize-${pIndex}`} className="text-base lg:text-lg text-[#334155] lg:pl-20 mx-10 lg:mx-0">
+                <div key={`prize-${pIndex}`} className="text-base lg:text-lg font-medium text-gray-950 lg:pl-20 mx-10 lg:mx-0">
                   <p>
                     <span className="font-semibold">{prize.place}</span>:
                     <span>{prize.description}</span>{' '}

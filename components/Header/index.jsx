@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 
@@ -18,8 +19,8 @@ export default function Header({
 
   const desktopClass = (key) =>
     key === active
-      ? "rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white"
-      : "rounded-full border-2 border-blue-600 bg-none px-5 py-2 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white";
+      ? "rounded-full bg-blue-600 px-3 py-2 text-xs font-semibold text-white xl:px-5 xl:text-sm"
+      : "rounded-full border-2 border-blue-600 bg-none px-3 py-2 text-xs font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white xl:px-5 xl:text-sm";
 
   const mobileClass = (key) =>
     key === active
@@ -27,17 +28,16 @@ export default function Header({
       : "w-full rounded-full border-2 border-blue-600 bg-white/50 px-5 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white";
 
   return (
-    <header className="relative z-20">
-
-      {/* ================= DESKTOP ================= */}
+    <header className="relative z-50 w-full">
+      {/* Desktop Navigation */}
       <div
-        className={`hidden lg:grid items-center w-full ${
+        className={`hidden w-full items-center lg:grid ${
           hideLogo ? "grid-cols-1" : "grid-cols-[20%_80%] gap-4"
         }`}
       >
         {!hideLogo && (
-          <div className="flex items-center h-[110px]">
-            <div className="flex items-center gap-2">
+          <div className="flex h-[110px] items-center">
+            <div className="flex items-center">
               <img
                 src="/images/2026-images/logo-main-2026.png"
                 alt="Mini Hackathon"
@@ -48,11 +48,11 @@ export default function Header({
         )}
 
         <div
-          className={`flex h-[60px] items-center justify-between rounded-[40px] border border-white/20 bg-white/10 px-8 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)] ${
+          className={`flex h-[60px] min-w-0 items-center justify-between rounded-[40px] border border-white/20 bg-white/10 px-4 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)] xl:px-8 ${
             hideLogo ? "w-full" : "mr-[-5.5vw]"
           }`}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex min-w-0 items-center gap-2 xl:gap-3">
             {NAV_LINKS.map((link) => (
               <a key={link.key} href={link.href}>
                 <button className={desktopClass(link.key)}>
@@ -63,16 +63,16 @@ export default function Header({
           </div>
 
           <a href="/register">
-            <button className="rounded-full bg-gradient-to-r from-[#3552ff] to-[#4d6eff] px-7 py-3 text-sm font-semibold text-white shadow-[0_15px_35px_rgba(53,82,255,0.45)] transition hover:-translate-y-1">
+            <button className="whitespace-nowrap rounded-full bg-gradient-to-r from-[#3552ff] to-[#4d6eff] px-4 py-3 text-xs font-semibold text-white shadow-[0_15px_35px_rgba(53,82,255,0.45)] transition hover:-translate-y-1 xl:px-7 xl:text-sm">
               Register Now
             </button>
           </a>
         </div>
       </div>
 
-      {/* ================= MOBILE ================= */}
+      {/* Mobile Navigation */}
       <div
-        className={`flex lg:hidden items-center w-full h-[60px] px-5 bg-white/10 backdrop-blur-3xl border border-white/20 rounded-[30px] shadow-[0_0_30px_rgba(0,0,0,0.1)] relative ${
+        className={`relative flex h-[60px] w-full items-center rounded-[30px] border border-white/20 bg-white/10 px-5 shadow-[0_0_30px_rgba(0,0,0,0.1)] backdrop-blur-3xl lg:hidden ${
           hideLogo ? "justify-end" : "justify-between"
         }`}
       >
@@ -88,7 +88,7 @@ export default function Header({
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="text-blue-700 focus:outline-none p-1 rounded-lg hover:bg-white/20 transition-colors"
+          className="rounded-lg p-1 text-blue-700 transition-colors hover:bg-white/20 focus:outline-none"
           aria-label="Toggle menu"
         >
           {isOpen ? (
@@ -99,7 +99,7 @@ export default function Header({
         </button>
 
         {isOpen && (
-          <div className="absolute top-[70px] left-0 right-0 z-50 flex flex-col gap-3 p-5 rounded-[24px] border border-white/20 bg-white/80 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)]">
+          <div className="absolute left-0 right-0 top-[70px] z-[100] flex flex-col gap-3 rounded-[24px] border border-white/20 bg-white/80 p-5 px-8 shadow-[0_0_45px_rgba(0,0,0,0.2)] backdrop-blur-3xl">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.key}
@@ -120,7 +120,6 @@ export default function Header({
           </div>
         )}
       </div>
-
     </header>
   );
 }

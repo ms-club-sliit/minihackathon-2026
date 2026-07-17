@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/Header/index";
+import GlassHeroShell from "@/components/GlassHeroShell";
 
 import InstagramIcon from '@iconify-react/selfhst/instagram';
 import FacebookIcon from '@iconify-react/selfhst/facebook';
@@ -37,58 +37,9 @@ export default function Hero() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-transparent">
-
-      {/* ================= HERO WRAPPER CARD ================= */}
-      <section className="relative w-full md:w-[95vw] min-h-[90vh] md:h-[95vh] filter drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)] mx-auto">
-
-        {/* Main Custom Shaped Glass Container */}
-        <div className="relative w-full h-full overflow-hidden rounded-[30px] md:rounded-none border border-white/20 md:border-none bg-white/10 md:bg-transparent backdrop-blur-3xl md:backdrop-blur-none p-2 md:p-0">
-
-          {/* Unified Fluid SVG Outer Border & Glass Background Mask (Visible only on Desktop) */}
-          <svg
-            className="absolute inset-0 w-full h-full z-0 hidden md:block"
-            viewBox="0 0 1000 700"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <clipPath id="glass-shape">
-                <path d={glassPath} />
-              </clipPath>
-
-              <filter id="glass-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="5" dy="10" stdDeviation="6" floodColor="#000000" floodOpacity="0.9" />
-                {/* Layer 2: Sharp core shadow for crisp depth */}
-                <feDropShadow dx="2" dy="4" stdDeviation="2" floodColor="#000000" floodOpacity="0.5" />
-              </filter>
-            </defs>
-
-            {/* Glass Backdrop Fill */}
-            <path
-              d={glassPath}
-              fill="rgba(255, 255, 255, 0.1)"
-              className="backdrop-blur-3xl"
-            />
-
-            {/* Precise Border Stroke */}
-            <path
-              d={glassPath}
-              fill="none"
-              stroke="rgba(157, 237, 248, 0.6)"
-              strokeWidth="1.5"
-              filter="url(#glass-shadow)"
-            />
-          </svg>
-
-          {/* ================= CONTENT LAYER ================= */}
-          <div className="md:w-[80%] md:min-h-full mx-0">
-
-            {/* Integrated Top Navigation Menu */}
-            <div className="relative w-full md:left-[8%] md:mt-[5.5vh]">
-              <Header />
-            </div>
-
-            {/* ================= HERO CONTENT LAYER ================= */}
-            <div className="md:absolute flex items-center justify-center w-full md:min-h-[50vh] min-h-[65vh]">
+      <GlassHeroShell glassPath={glassPath}>
+        {/* ================= HERO CONTENT LAYER ================= */}
+        <div className="md:absolute flex min-h-[65vh] w-full items-center justify-center md:min-h-[50vh]">
               <div className="relative flex flex-col items-center justify-center px-4 md:px-5 font-sans">
 
                 {/* Center Content Row (Hero Branding) */}
@@ -141,10 +92,10 @@ export default function Hero() {
                   </p>
                 </div>
               </div>
-            </div>
+        </div>
 
-            {/* ================ Bottom Controls Row ================ */}
-            <div className="flex flex-col md:grid md:grid-cols-[25%_1fr_25%] md:bottom-[12%] md:absolute items-center md:items-end px-4 md:px-16 gap-4 md:gap-2 w-full">
+        {/* ================ Bottom Controls Row ================ */}
+        <div className="flex w-full flex-col items-center gap-4 px-4 md:absolute md:bottom-[12%] md:grid md:grid-cols-[25%_1fr_25%] md:items-end md:gap-2 md:px-16">
 
               {/* Left Tab Button - Scroll For More */}
               <button className="group flex h-12 md:h-14 w-full max-w-[320px] md:max-w-none items-center justify-center gap-3 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)] hover:bg-white/40 border border-white/40 transition-all duration-300 md:ml-2 md:mb-1">
@@ -177,12 +128,8 @@ export default function Hero() {
                 </div>
               </div>
 
-            </div>
-          </div>
-
-
         </div>
-      </section>
+      </GlassHeroShell>
     </main>
   );
 }
