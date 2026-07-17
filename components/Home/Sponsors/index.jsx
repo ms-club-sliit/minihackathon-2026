@@ -10,8 +10,8 @@ import SectionHeader from "@/components/section-header";
  */
 const categoryMap = {
   "Platinum Sponsors": "Platinum Partner",
-  "Knowledge Partners": "Knowledge Partner",
   "Gold Partners": "Gold Partner",
+  "Knowledge Partners": "Knowledge Partner",
   "Media Partners": "Media Partner",
   "Beverage Partners": "Beverage Partner",
 };
@@ -22,8 +22,8 @@ const categoryMap = {
  */
 const categoryOrder = [
   "Platinum Sponsors",
-  "Knowledge Partners",
   "Gold Partners",
+  "Knowledge Partners",
   "Media Partners",
   "Beverage Partners",
 ];
