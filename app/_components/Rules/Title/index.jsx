@@ -1,19 +1,19 @@
 "use client";
 
-import Header from "@/components/Header/index";
+import HeroHeader from "@/components/HeroHeader";
 import Image from "next/image";
 import { HiChevronDoubleDown } from "react-icons/hi";
 
 export default function Title() {
   const glassPath = `
-    M 35 150
-    Q 35 120 65 120
+    M 35 205
+    Q 35 168 65 168
     H 180
-    Q 210 120 210 90
-    V 80
-    Q 210 50 240 50
+    Q 210 168 210 138
+    V 98
+    Q 210 68 240 68
     H 935
-    Q 965 50 965 80
+    Q 965 68 965 98
     V 600
     Q 965 630 935 630
     H 65
@@ -33,8 +33,8 @@ export default function Title() {
   };
 
   return (
-    <main className="relative overflow-hidden bg-transparent px-3 pb-3 pt-3 sm:px-4 md:px-0 md:pb-4 md:pt-4">
-      <section className="relative mx-auto w-full max-w-[1600px] md:w-[95vw]">
+    <main className="relative overflow-hidden bg-transparent px-3 pb-3 pt-3 sm:px-4 md:px-0 md:pb-0 md:pt-0">
+      <section className="relative mx-auto w-full md:w-[95vw]">
         <div className="relative flex h-[650px] w-full flex-col overflow-hidden rounded-[26px] border border-white/30 bg-white/10 p-2 shadow-[0_22px_50px_rgba(70,95,145,0.18)] backdrop-blur-3xl sm:h-[720px] sm:rounded-[30px] md:h-[720px] lg:h-auto lg:min-h-[520px] lg:aspect-[2/1] lg:max-h-[650px] lg:rounded-none lg:border-none lg:bg-transparent lg:p-0 lg:shadow-none lg:backdrop-blur-none lg:filter lg:drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)]">
           <svg
             className="absolute inset-0 z-0 hidden h-full w-full lg:block"
@@ -58,10 +58,10 @@ export default function Title() {
             />
           </svg>
 
+          <HeroHeader active="rules" />
+
           <div className="relative z-10 flex min-h-full w-full flex-col px-2 pb-3 pt-2 sm:px-4 sm:pb-5 lg:flex-1 lg:px-[6.6%] lg:pb-[7%] lg:pt-[4.8%]">
-            <div className="relative z-50 w-full lg:max-w-[96%]">
-              <Header active="rules" variant="rules" />
-            </div>
+            <div className="h-[60px] shrink-0 lg:h-[110px]" aria-hidden="true" />
 
             <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-3 pt-5 sm:gap-4 sm:pt-7 lg:grid-cols-[minmax(0,56%)_minmax(300px,44%)] lg:grid-rows-1 lg:items-end lg:gap-x-4 lg:gap-y-3 lg:pt-0">
               <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start justify-center self-center px-2 text-left sm:px-4 lg:max-w-none lg:px-0 lg:pr-8">
