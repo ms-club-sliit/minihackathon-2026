@@ -137,7 +137,7 @@ export default function Hero() {
 
                   {/* Sub-Description Paragraph */}
                   <p className="max-w-[900px] text-base sm:text-lg md:text-2xl leading-relaxed text-gray-900 font-normal px-2">
-                    Join the SLIIT Inter-university Ideation and showcase your creativity, innovation, and technical skills on a national stage.
+                    Join the SLIIT Intra-university ideathon and showcase your creativity, innovation, and technical skills on a national stage.
                   </p>
                 </div>
               </div>
