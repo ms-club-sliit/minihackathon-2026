@@ -8,6 +8,7 @@ import YoutubeIcon from '@iconify-react/selfhst/youtube';
 import GithubDarkIcon from '@iconify-react/selfhst/github-dark';
 import LinkedinIcon from '@iconify-react/selfhst/linkedin';
 import Image from "next/image";
+import Link from "next/link";
 import { HiArrowRight, HiChevronDoubleDown } from "react-icons/hi";
 
 export default function Hero() {
@@ -105,13 +106,13 @@ export default function Hero() {
 
               {/* Center Tab Button - Primary CTA */}
               <div className="flex justify-center w-full md:pb-1">
-                <button className="group relative w-full max-w-[320px] md:max-w-[450px] h-12 md:h-14 overflow-hidden rounded-full bg-gradient-to-r from-[#3552ff] to-[#4f71ff] shadow-[0_12px_30px_rgba(53,82,255,0.35)] hover:shadow-[0_16px_40px_rgba(53,82,255,0.45)] transition-all duration-300 transform hover:-translate-y-0.5">
+                <Link href="/rules" className="group relative w-full max-w-[320px] md:max-w-[450px] h-12 md:h-14 overflow-hidden rounded-full bg-gradient-to-r from-[#3552ff] to-[#4f71ff] shadow-[0_12px_30px_rgba(53,82,255,0.35)] hover:shadow-[0_16px_40px_rgba(53,82,255,0.45)] transition-all duration-300 transform hover:-translate-y-0.5">
                   <span className="absolute inset-y-0 -left-40 w-32 -skew-x-12 bg-white/20 transition-all duration-700 group-hover:left-[110%]" />
-                  <span className="relative flex items-center justify-center gap-3 text-sm md:text-lg font-semibold text-white">
+                  <span className="relative flex h-full items-center justify-center gap-3 text-sm md:text-lg font-semibold text-white">
                     Get Full Instructions
                     <HiArrowRight className="text-base md:text-xl transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
-                </button>
+                </Link>
               </div>
 
               {/* Right Tab - Social Networking Panel */}
