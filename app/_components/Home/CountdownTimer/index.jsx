@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 const Timer = dynamic(() => import('./timer'), { ssr: false });
 
 const AWARENESS_TITLE = process.env.EVENT_TITLE || 'Awareness Session';
-const TARGET_DATE = process.env.EVENT_TARGET_DATE || '2026-08-15T17:00:00';
+const TARGET_DATE = process.env.EVENT_TARGET_DATE || '2026-07-21T20:00:00';
 
 export default function CountdownTimer() {
   return (
