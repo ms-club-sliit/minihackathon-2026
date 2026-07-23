@@ -30,6 +30,7 @@ export default function Header({ active = "home", className = "" }) {
         <div className="flex h-[110px] items-center">
           <div className="flex items-center">
             <img
+              id="header-logo"
               src="/images/2026-images/logo-main-2026.png"
               alt="MS Club"
               className="h-14 w-auto object-contain"
