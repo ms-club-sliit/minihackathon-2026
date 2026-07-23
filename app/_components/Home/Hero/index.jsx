@@ -116,11 +116,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <main className="relative h-auto sm:h-screen sm:min-h-[43rem] overflow-hidden bg-transparent">
+    <main className="relative h-auto md:h-screen md:min-h-[43rem] overflow-hidden bg-transparent">
       <GlassHeroShell glassPath={glassPath}>
         {/* ================= HERO CONTENT LAYER ================= */}
-        <div className="flex flex-col h-full w-full items-center justify-center pb-[4.5rem]">
-              <div className="relative w-full h-full flex flex-col items-center justify-center font-sans">
+        <div className="flex flex-col h-full w-full items-center justify-center pt-16 md:pt-0 pb-[4.5rem]">
+              <div className="relative w-full h-full flex flex-col items-center justify-center font-sans md:pb-20">
 
                 {/* Center Content Row (Hero Branding) */}
                 <div className="flex flex-col items-center justify-center text-center">
@@ -173,7 +173,7 @@ export default function Hero() {
                 </div>
               </div>
           {/* ================ Bottom Controls Row ================ */}
-          <div className="md:absolute md:bottom-8 md:left-0 w-full flex flex-col items-center gap-4 md:flex-row md:items-end md:gap-0 pt-7 md:pt-0">
+          <div className="md:absolute md:bottom-8 md:left-0 w-full flex flex-col items-center gap-4 md:flex-row md:items-end md:gap-0 pt-7 md:pt-10 md:pb-10">
                 <div className="hidden md:block w-[3.5%]" />
                 
                 {/* Left Tab Button - Scroll For More */}
@@ -187,7 +187,7 @@ export default function Hero() {
                 <div className="hidden md:block w-[6%]" />
 
                 {/* Center Tab Button - Primary CTA */}
-                <div className="w-full md:w-[31%] flex justify-center px-4 md:px-0">
+                <div className="w-full md:w-[31%] flex justify-center px-4 md:px-0 mb-0 md:mb-5">
                   <Link href="/rules" className="group relative w-full max-w-[320px] md:max-w-none h-12 md:h-14 overflow-hidden rounded-full bg-gradient-to-r from-[#3552ff] to-[#4f71ff] shadow-[0_12px_30px_rgba(53,82,255,0.35)] hover:shadow-[0_16px_40px_rgba(53,82,255,0.45)] transition-all duration-300 transform hover:-translate-y-0.5">
                     <span className="absolute inset-y-0 -left-40 w-32 -skew-x-12 bg-white/20 transition-all duration-700 group-hover:left-[110%]" />
                     <span className="relative flex h-full items-center justify-center gap-3 text-sm md:text-lg font-semibold text-white">
