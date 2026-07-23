@@ -2,16 +2,16 @@
 
 import { useId } from "react";
 import HeroHeader from "@/components/HeroHeader";
+import Header from "@/components/Header";
 
 export default function GlassHeroShell({
   glassPath,
   active = "home",
   children,
-  containerClassName = "min-h-[90vh] filter drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)] md:h-[95vh] md:w-[95vw]",
+  containerClassName = "h-full filter drop-shadow-[0_25px_45px_rgba(100,125,175,0.16)] md:w-[95vw]",
   cardClassName = "h-full rounded-[30px] border border-white/20 bg-white/10 p-2 backdrop-blur-3xl md:rounded-none md:border-none md:bg-transparent md:p-0 md:backdrop-blur-none",
   svgClassName = "absolute inset-0 z-0 hidden h-full w-full md:block",
-  contentWrapperClassName = "mx-0 md:min-h-full md:w-[80%]",
-  spacerClassName = "h-[60px] shrink-0 md:h-[calc(5.5vh+110px)]",
+  contentWrapperClassName = "h-full flex flex-col items-center w-full mx-auto bg-white px-5 sm:px-10 md:px-12 lg:px-[5vw]",
 }) {
   const idPrefix = useId().replace(/:/g, "");
   const clipPathId = `glass-shape-${idPrefix}`;
@@ -45,10 +45,8 @@ export default function GlassHeroShell({
           />
         </svg>
 
-        <HeroHeader active={active} />
-
         <div className={contentWrapperClassName}>
-          <div className={spacerClassName} aria-hidden="true" />
+          <Header active={active} className="pt-4 md:pt-16 lg:pt-10"/>
           {children}
         </div>
       </div>

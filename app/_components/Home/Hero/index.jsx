@@ -37,14 +37,14 @@ export default function Hero() {
   `.trim();
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-transparent">
+    <main className="relative h-auto sm:h-screen sm:min-h-[43rem] overflow-hidden bg-transparent">
       <GlassHeroShell glassPath={glassPath}>
         {/* ================= HERO CONTENT LAYER ================= */}
-        <div className="md:absolute flex min-h-[65vh] w-full items-center justify-center md:min-h-[50vh]">
-              <div className="relative flex flex-col items-center justify-center px-4 md:px-5 font-sans">
+        <div className="flex flex-col h-full w-full items-center justify-center pb-[4.5rem]">
+              <div className="relative w-full h-full flex flex-col items-center justify-center font-sans">
 
                 {/* Center Content Row (Hero Branding) */}
-                <div className="flex flex-col items-center justify-center text-center px-4 md:px-8 py-8 md:py-5">
+                <div className="flex flex-col items-center justify-center text-center">
                   {/* Core Co-Branding Logos */}
                   <div className="mb-6 md:mb-8 flex items-center justify-center gap-4 md:gap-6">
                     <Image
@@ -67,21 +67,21 @@ export default function Hero() {
                   {/* Core Tagline Heading */}
                   <div className="relative flex h-12 sm:h-14 md:h-16 w-full max-w-[280px] sm:max-w-[340px] md:max-w-[496px] md:mx-auto items-center justify-center mb-6 md:mb-[3vh]">
                     {/* Left blue accent */}
-                    <div className="flex h-full absolute left-0 top-0 bottom-0 z-0">
+                    <div className="flex h-full left-0 top-0 bottom-0 z-0 relative">
                       <div className="w-px bg-[#2E47FF]" />
                       <div className="ml-0.5 md:ml-1 w-[3px] md:w-[5px] bg-[#2E47FF]" />
                       <div className="ml-0.5 md:ml-1 w-[6px] md:w-[10px] bg-[#2E47FF]" />
                       <div className="ml-0.5 md:ml-1 w-[9px] md:w-[15px] bg-[#2E47FF]" />
                       <div className="ml-0.5 md:ml-1 w-[12px] md:w-[20px] bg-[#2E47FF]" />
                       <div className="ml-0.5 md:ml-1 w-[120px] sm:w-[150px] md:w-[206px] bg-[#2E47FF]" />
+                      <h2 className="absolute  top-1/2 -translate-y-1/2 right-0 text-3xl sm:text-2xl md:text-5xl leading-none tracking-[-0.05em] text-[#FFF8F8] font-slogan pr-3 md:pr-5">
+                        Innovation
+                      </h2>
                     </div>
 
                     {/* Text */}
-                    <div className="absolute flex left-[15vw] md:left-[4vw] md:inset-0 md:justify-center z-10 items-center h-full">
-                      <h2 className="text-3xl sm:text-2xl md:text-5xl leading-none tracking-[-0.05em] text-[#FFF8F8] font-slogan">
-                        Innovation &nbsp;
-                      </h2>
-                      <h2 className="text-3xl sm:text-2xl md:text-5xl leading-none tracking-[-0.05em] text-[#000000] font-slogan">
+                    <div className="flex left-[15vw] md:left-[4vw] md:inset-0 md:justify-center z-10 items-center h-full pl-3 md:pl-5">
+                      <h2 className="text-3xl sm:text-2xl md:text-5xl leading-none tracking-[-0.05em] text-[#000000] font-slogan text-nowrap">
                         starts here.
                       </h2>
                     </div>
@@ -93,43 +93,43 @@ export default function Hero() {
                   </p>
                 </div>
               </div>
-        </div>
+          {/* ================ Bottom Controls Row ================ */}
+          <div className="flex w-full flex-col items-center gap-4 md:grid md:grid-cols-[25%_1fr_25%] md:items-end md:gap-2 pt-7">
 
-        {/* ================ Bottom Controls Row ================ */}
-        <div className="flex w-full flex-col items-center gap-4 px-4 md:absolute md:bottom-[12%] md:grid md:grid-cols-[25%_1fr_25%] md:items-end md:gap-2 md:px-16">
+                {/* Left Tab Button - Scroll For More */}
+                <button className="group flex h-12 md:h-14 w-full max-w-[320px] md:max-w-none items-center justify-center gap-3 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)] hover:bg-white/40 border border-white/40 transition-all duration-300 md:ml-2 md:mb-1">
+                  <span className="text-xs md:text-sm font-medium text-gray-800">Scroll For More.</span>
+                  <HiChevronDoubleDown className="animate-bounce text-base md:text-lg" />
+                </button>
 
-              {/* Left Tab Button - Scroll For More */}
-              <button className="group flex h-12 md:h-14 w-full max-w-[320px] md:max-w-none items-center justify-center gap-3 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)] hover:bg-white/40 border border-white/40 transition-all duration-300 md:ml-2 md:mb-1">
-                <span className="text-xs md:text-sm font-medium text-gray-800">Scroll For More.</span>
-                <HiChevronDoubleDown className="animate-bounce text-base md:text-lg" />
-              </button>
-
-              {/* Center Tab Button - Primary CTA */}
-              <div className="flex justify-center w-full md:pb-1">
-                <Link href="/rules" className="group relative w-full max-w-[320px] md:max-w-[450px] h-12 md:h-14 overflow-hidden rounded-full bg-gradient-to-r from-[#3552ff] to-[#4f71ff] shadow-[0_12px_30px_rgba(53,82,255,0.35)] hover:shadow-[0_16px_40px_rgba(53,82,255,0.45)] transition-all duration-300 transform hover:-translate-y-0.5">
-                  <span className="absolute inset-y-0 -left-40 w-32 -skew-x-12 bg-white/20 transition-all duration-700 group-hover:left-[110%]" />
-                  <span className="relative flex h-full items-center justify-center gap-3 text-sm md:text-lg font-semibold text-white">
-                    Get Full Instructions
-                    <HiArrowRight className="text-base md:text-xl transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                </Link>
-              </div>
-
-              {/* Right Tab - Social Networking Panel */}
-              <div className="flex flex-col items-center justify-center h-12 md:h-14 w-full max-w-[320px] md:max-w-none md:mr-2 md:mb-1 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)] border border-white/40">
-                <p className="text-[9px] md:text-[11px] font-bold tracking-wider text-gray-600 uppercase mb-1">
-                  Follow Us On.
-                </p>
-                <div className="flex items-center gap-4 md:gap-5">
-                  <a href="https://www.facebook.com/msclubsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-600" target="_blank" rel="noopener noreferrer"><FacebookIcon height="1.3em" /></a>
-                  <a href="https://www.instagram.com/msclub.sliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-pink-600" target="_blank" rel="noopener noreferrer"><InstagramIcon height="1.3em" /></a>
-                  <a href="https://www.youtube.com/@msclubofsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-red-600" target="_blank" rel="noopener noreferrer"><YoutubeIcon height="1.3em" /></a>
-                  <a href="https://www.linkedin.com/company/msclubsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-700" target="_blank" rel="noopener noreferrer"><LinkedinIcon height="1.3em" /></a>
-                  <a href="https://github.com/ms-club-sliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-black" target="_blank" rel="noopener noreferrer"><GithubDarkIcon height="1.3em" /></a>
+                {/* Center Tab Button - Primary CTA */}
+                <div className="flex justify-center w-full md:pb-1 sm:mb-5">
+                  <Link href="/rules" className="group relative w-full max-w-[320px] md:max-w-[450px] h-12 md:h-14 overflow-hidden rounded-full bg-gradient-to-r from-[#3552ff] to-[#4f71ff] shadow-[0_12px_30px_rgba(53,82,255,0.35)] hover:shadow-[0_16px_40px_rgba(53,82,255,0.45)] transition-all duration-300 transform hover:-translate-y-0.5">
+                    <span className="absolute inset-y-0 -left-40 w-32 -skew-x-12 bg-white/20 transition-all duration-700 group-hover:left-[110%]" />
+                    <span className="relative flex h-full items-center justify-center gap-3 text-sm md:text-lg font-semibold text-white">
+                      Get Full Instructions
+                      <HiArrowRight className="text-base md:text-xl transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </Link>
                 </div>
-              </div>
 
+                {/* Right Tab - Social Networking Panel */}
+                <div className="flex flex-col items-center justify-center h-12 md:h-14 w-full max-w-[320px] md:max-w-none md:mr-2 md:mb-1 rounded-full bg-white/20 shadow-[0_0_40px_rgba(0,0,0,0.15)] border border-white/40">
+                  <p className="text-[9px] md:text-[11px] font-bold tracking-wider text-gray-600 uppercase mb-1">
+                    Follow Us On.
+                  </p>
+                  <div className="flex items-center gap-4 md:gap-5">
+                    <a href="https://www.facebook.com/msclubsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-600" target="_blank" rel="noopener noreferrer"><FacebookIcon height="1.3em" /></a>
+                    <a href="https://www.instagram.com/msclub.sliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-pink-600" target="_blank" rel="noopener noreferrer"><InstagramIcon height="1.3em" /></a>
+                    <a href="https://www.youtube.com/@msclubofsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-red-600" target="_blank" rel="noopener noreferrer"><YoutubeIcon height="1.3em" /></a>
+                    <a href="https://www.linkedin.com/company/msclubsliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-blue-700" target="_blank" rel="noopener noreferrer"><LinkedinIcon height="1.3em" /></a>
+                    <a href="https://github.com/ms-club-sliit/" className="transition-transform duration-300 hover:scale-110 text-gray-700 hover:text-black" target="_blank" rel="noopener noreferrer"><GithubDarkIcon height="1.3em" /></a>
+                  </div>
+                </div>
+
+          </div>
         </div>
+
       </GlassHeroShell>
     </main>
   );
