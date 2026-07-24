@@ -13,31 +13,9 @@ import { useState, useEffect } from "react";
 import { HiArrowRight, HiChevronDoubleDown } from "react-icons/hi";
 
 export default function Hero() {
-  const defaultPath = `
-    M 35 175
-    Q 35 145 65 145
-    H 165
-    Q 195 145 195 80
-    V 80
-    Q 195 50 225 50
-    H 935 
-    Q 965 50 965 80 
-    V 520
-    Q 965 550 935 550
-    H 715
-    Q 685 550 685 580
-    V 590
-    Q 685 620 655 620
-    H 345
-    Q 315 620 315 590
-    V 580
-    Q 315 550 285 550
-    H 65
-    Q 35 550 35 520
-    Z
-  `.trim();
+  const defaultPath = "M 35 80 Q 35 50 65 50 H 935 Q 965 50 965 80 V 520 Q 965 550 935 550 H 715 Q 685 550 685 580 V 590 Q 685 620 655 620 H 345 Q 315 620 315 590 V 580 Q 315 550 285 550 H 65 Q 35 550 35 520 Z";
 
-  const mobilePath = "M 35 155 Q 35 125 65 125 H 108 Q 138 125 138 80 V 80 Q 138 50 168 50 H 935 Q 965 50 965 80 V 520 Q 965 550 935 550 H 715 Q 685 550 685 580 V 590 Q 685 620 655 620 H 345 Q 315 620 315 590 V 580 Q 315 550 285 550 H 65 Q 35 550 35 520 Z";
+  const mobilePath = "M 35 80 Q 35 50 65 50 H 935 Q 965 50 965 80 V 520 Q 965 550 935 550 H 715 Q 685 550 685 580 V 590 Q 685 620 655 620 H 345 Q 315 620 315 590 V 580 Q 315 550 285 550 H 65 Q 35 550 35 520 Z";
 
   const [glassPath, setGlassPath] = useState(defaultPath);
 
@@ -118,7 +96,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <main className="relative h-auto md:h-screen md:min-h-[43rem] overflow-hidden bg-transparent">
+    <main className="relative h-auto md:h-screen md:min-h-[43rem] overflow-visible lg:overflow-hidden bg-transparent">
       <GlassHeroShell glassPath={glassPath} viewBox="0 0 1000 700">
         {/* ================= HERO CONTENT LAYER ================= */}
         <div className="flex flex-col h-full w-full items-center justify-center pt-16 md:pt-0 pb-[4.5rem]">

@@ -7,23 +7,9 @@ import { HiChevronDoubleDown } from "react-icons/hi";
 import { useState, useEffect } from "react";
 
 export default function Title() {
-  const defaultPath = `
-    M 35 187
-    Q 35 157 65 157
-    H 165
-    Q 195 157 195 87
-    V 87
-    Q 195 57 225 57
-    H 935
-    Q 965 57 965 87
-    V 670
-    Q 965 700 935 700
-    H 65
-    Q 35 700 35 670
-    Z
-  `.trim();
+  const defaultPath = "M 35 87 Q 35 57 65 57 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
 
-  const mobilePath = "M 35 160 Q 35 130 65 130 H 108 Q 138 130 138 80 V 80 Q 138 50 168 50 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
+  const mobilePath = "M 35 87 Q 35 57 65 57 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
 
   const [glassPath, setGlassPath] = useState(defaultPath);
 
@@ -110,7 +96,7 @@ export default function Title() {
         glassPath={glassPath}
         active="rules"
       >
-        <div className="relative z-10 flex min-h-full w-full flex-col px-2 pb-3 pt-2 sm:px-4 sm:pb-5 lg:flex-1 lg:px-[6.6%] lg:pb-[7%] lg:pt-[4.8%]">
+        <div className="relative z-10 flex min-h-full w-full flex-col px-2 pb-10 pt-2 sm:px-4 sm:pb-20 lg:flex-1 lg:px-[6.6%] lg:pb-[7%] lg:pt-[4.8%]">
           <div className="grid min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)] gap-3 pt-5 sm:gap-4 sm:pt-7 lg:grid-cols-[minmax(0,56%)_minmax(300px,44%)] lg:grid-rows-1 lg:items-end lg:gap-x-4 lg:gap-y-3 lg:pt-0">
               <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start justify-center self-center px-2 text-left sm:px-4 lg:max-w-none lg:px-0 lg:pr-8">
                 <p className="font-slogan text-[clamp(2.15rem,10vw,3rem)] font-bold leading-none tracking-normal text-[#1a1a1a] lg:text-[clamp(2.9rem,5.2vw,6.5rem)]">
