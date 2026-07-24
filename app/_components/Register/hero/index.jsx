@@ -6,21 +6,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function RegisterHero() {
-  const defaultPath = `
-    M 35 202
-    Q 35 172 65 172
-    H 165
-    Q 195 172 195 87
-    V 87
-    Q 195 57 225 57
-    H 935
-    Q 965 57 965 87
-    V 670
-    Q 965 700 935 700
-    H 65
-    Q 35 700 35 670
-    Z
-  `.trim();
+  const defaultPath = "M 35 87 Q 35 57 65 57 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
 
   const mobilePath = "M 35 87 Q 35 57 65 57 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
 
@@ -93,12 +79,12 @@ export default function RegisterHero() {
   }, []);
 
   return (
-    <main className="relative overflow-visible bg-transparent px-3 pt-3 sm:px-4 md:px-0 md:pt-0 lg:overflow-hidden lg:min-h-[110px] min-h-[60px] pb-20">
+    <main className="relative overflow-visible bg-transparent px-3 pt-3 sm:px-4 md:px-0 md:pt-0 lg:overflow-hidden lg:min-h-[110px] min-h-[90px] pb-20">
       <GlassHeroShell
         glassPath={glassPath}
         active="register"
       >
-        <div className="relative z-10 flex min-h-full w-full flex-col items-center justify-center gap-4 px-4 pb-3 pt-2 text-center sm:gap-5 sm:px-6 lg:gap-6 lg:px-[6.6%] lg:pb-[7%] lg:pt-[4.8%]">
+        <div className="relative z-10 flex min-h-full w-full flex-col items-center justify-center gap-4 px-4 pt-10 pb-20 text-center sm:gap-5 sm:px-6 lg:gap-6 lg:px-[6.6%] lg:pb-[7%] lg:pt-[4.8%]">
           <Image
             src="/images/2026-images/logo-main-2026.png"
             alt="Mini Hackathon 26"
