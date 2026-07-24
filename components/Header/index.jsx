@@ -10,7 +10,7 @@ const NAV_LINKS = [
   { key: "rules", label: "Rules", href: "/rules" },
 ];
 
-export default function Header({ active = "home" }) {
+export default function Header({ active = "home", className = "" }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const desktopClass = (key) =>
@@ -24,12 +24,13 @@ export default function Header({ active = "home" }) {
       : "w-full rounded-full border-2 border-blue-600 bg-white/50 px-5 py-2.5 text-sm font-bold text-blue-700 transition hover:bg-blue-600 hover:text-white";
 
   return (
-    <header className="relative z-50 w-full">
-      <div className="hidden w-full grid-cols-[20%_80%] items-center gap-4 lg:grid">
+    <header className={`relative z-50 w-full ${className}`}>
+      <div className="hidden lg:flex w-full h-full items-center gap-12">
 
         <div className="flex h-[110px] items-center">
           <div className="flex items-center">
             <img
+              id="header-logo"
               src="/images/2026-images/logo-main-2026.png"
               alt="MS Club"
               className="h-14 w-auto object-contain"
@@ -37,7 +38,7 @@ export default function Header({ active = "home" }) {
           </div>
         </div>
 
-        <div className="mr-[-5.5vw] flex h-[60px] min-w-0 items-center justify-between rounded-[40px] border border-white/20 bg-white/10 px-4 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)] xl:px-8">
+        <div className="flex flex-grow min-w-0 items-center py-2 justify-between rounded-[40px] border border-white/20 bg-white/10 px-4 backdrop-blur-3xl shadow-[0_0_45px_rgba(0,0,0,0.2)] xl:px-8">
           <div className="flex min-w-0 items-center gap-2 xl:gap-3">
             {NAV_LINKS.map((link) => (
               <a key={link.key} href={link.href}>
