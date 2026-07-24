@@ -22,7 +22,7 @@ export default function RegisterHero() {
     Z
   `.trim();
 
-  const mobilePath = "M 35 175 Q 35 145 65 145 H 108 Q 138 145 138 80 V 80 Q 138 50 168 50 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
+  const mobilePath = "M 35 87 Q 35 57 65 57 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
 
   const [glassPath, setGlassPath] = useState(defaultPath);
 
