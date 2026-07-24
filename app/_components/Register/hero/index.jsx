@@ -7,12 +7,12 @@ import { useState, useEffect } from "react";
 
 export default function RegisterHero() {
   const defaultPath = `
-    M 35 165
-    Q 35 135 65 135
-    H 180
-    Q 210 135 210 105
-    V 95
-    Q 210 65 240 57
+    M 35 202
+    Q 35 172 65 172
+    H 165
+    Q 195 172 195 87
+    V 87
+    Q 195 57 225 57
     H 935
     Q 965 57 965 87
     V 670
@@ -22,7 +22,7 @@ export default function RegisterHero() {
     Z
   `.trim();
 
-  const mobilePath = "M 35 78 Q 35 50 65 50 H 130 Q 163 51 179 50 V 50 Q 210 50 240 50 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
+  const mobilePath = "M 35 175 Q 35 145 65 145 H 108 Q 138 145 138 80 V 80 Q 138 50 168 50 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
 
   const [glassPath, setGlassPath] = useState(defaultPath);
 
@@ -52,7 +52,8 @@ export default function RegisterHero() {
 
             const yTop = 57; 
             
-            if (yMax < yTop + 40) yMax = yTop + 40;
+            // Critical fix: yMax must be >= yTop + 90 to prevent the two bezier curves (r=30) from crossing and breaking the path
+            if (yMax < yTop + 90) yMax = yTop + 90;
 
             const r = 30; 
             const yMid = yMax - r;
@@ -92,7 +93,7 @@ export default function RegisterHero() {
   }, []);
 
   return (
-    <main className="relative overflow-visible bg-transparent px-3 pb-3 pt-3 sm:px-4 md:px-0 md:pb-0 md:pt-0 lg:overflow-hidden lg:h-[110px] h-[60px]">
+    <main className="relative overflow-visible bg-transparent px-3 pt-3 sm:px-4 md:px-0 md:pt-0 lg:overflow-hidden lg:min-h-[110px] min-h-[60px] pb-20">
       <GlassHeroShell
         glassPath={glassPath}
         active="register"
