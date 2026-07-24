@@ -96,7 +96,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <main className="relative h-auto md:h-screen md:min-h-[43rem] overflow-hidden bg-transparent">
+    <main className="relative h-auto md:h-screen md:min-h-[43rem] overflow-visible lg:overflow-hidden bg-transparent">
       <GlassHeroShell glassPath={glassPath} viewBox="0 0 1000 700">
         {/* ================= HERO CONTENT LAYER ================= */}
         <div className="flex flex-col h-full w-full items-center justify-center pt-16 md:pt-0 pb-[4.5rem]">

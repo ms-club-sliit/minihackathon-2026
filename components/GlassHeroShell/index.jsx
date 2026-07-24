@@ -20,7 +20,7 @@ export default function GlassHeroShell({
 
   return (
     <div className={`relative mx-auto w-full ${containerClassName}`}>
-      <div id="glass-container" className={`relative h-full w-full overflow-hidden ${cardClassName}`}>
+      <div id="glass-container" className={`relative h-full w-full overflow-visible lg:overflow-hidden ${cardClassName}`}>
         <svg
           className={svgClassName}
           viewBox={viewBox}
