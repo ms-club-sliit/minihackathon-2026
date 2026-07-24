@@ -12,7 +12,7 @@ export default function GlassHeroShell({
   cardClassName = "h-full rounded-[30px] border border-white/20 bg-white/10 p-2 backdrop-blur-3xl md:rounded-none md:border-none md:bg-transparent md:p-0 md:backdrop-blur-none",
   svgClassName = "absolute inset-0 z-0 hidden h-full w-full md:block",
   contentWrapperClassName = "h-full flex flex-col items-center w-full mx-auto px-5 sm:px-10 md:px-12 lg:px-[5vw]",
-  viewBox = "0 0 1000 700",
+  viewBox = "0 0 1000 750",
 }) {
   const idPrefix = useId().replace(/:/g, "");
   const clipPathId = `glass-shape-${idPrefix}`;
