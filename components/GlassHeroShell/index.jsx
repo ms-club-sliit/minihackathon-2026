@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useState, useEffect } from "react";
 import HeroHeader from "@/components/HeroHeader";
 import Header from "@/components/Header";
 
@@ -12,11 +12,24 @@ export default function GlassHeroShell({
   cardClassName = "h-full rounded-[30px] border border-white/20 bg-white/10 p-2 backdrop-blur-3xl md:rounded-none md:border-none md:bg-transparent md:p-0 md:backdrop-blur-none",
   svgClassName = "absolute inset-0 z-0 hidden h-full w-full md:block",
   contentWrapperClassName = "h-full flex flex-col items-center w-full mx-auto px-5 sm:px-10 md:px-12 lg:px-[5vw]",
-  viewBox = "0 0 1000 750",
+  viewBox = "0 0 1000 700",
 }) {
   const idPrefix = useId().replace(/:/g, "");
   const clipPathId = `glass-shape-${idPrefix}`;
   const shadowFilterId = `glass-shadow-${idPrefix}`;
+
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInitialLoad(false);
+    }, 600); // Remove delay after the initial animation completes (300ms delay + 300ms duration)
+    return () => clearTimeout(timer);
+  }, []);
+
+  const transitionClass = isInitialLoad 
+    ? "transition-all duration-300 delay-300 ease-in-out" 
+    : "transition-all duration-300 ease-in-out";
 
   return (
     <div className={`relative mx-auto w-full ${containerClassName}`}>
@@ -28,7 +41,7 @@ export default function GlassHeroShell({
         >
           <defs>
             <clipPath id={clipPathId}>
-              <path d={glassPath} className="transition-all duration-700 delay-300 ease-in-out" />
+              <path d={glassPath} className={transitionClass} />
             </clipPath>
             <filter id={shadowFilterId} x="-20%" y="-20%" width="140%" height="140%">
               <feDropShadow dx="5" dy="10" stdDeviation="6" floodColor="#000000" floodOpacity="0.9" />
@@ -36,14 +49,14 @@ export default function GlassHeroShell({
             </filter>
           </defs>
 
-          <path d={glassPath} fill="rgba(255, 255, 255, 0.1)" className="backdrop-blur-3xl transition-all duration-700 delay-300 ease-in-out" clipPath={`url(#${clipPathId})`} />
+          <path d={glassPath} fill="rgba(255, 255, 255, 0.1)" className={`backdrop-blur-3xl ${transitionClass}`} clipPath={`url(#${clipPathId})`} />
           <path
             d={glassPath}
             fill="none"
             stroke="rgba(157, 237, 248, 0.6)"
             strokeWidth="1.5"
             filter={`url(#${shadowFilterId})`}
-            className="transition-all duration-700 delay-300 ease-in-out"
+            className={transitionClass}
           />
         </svg>
 
