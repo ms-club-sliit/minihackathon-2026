@@ -7,9 +7,9 @@ import { HiChevronDoubleDown } from "react-icons/hi";
 import { useState, useEffect } from "react";
 
 export default function Title() {
-  const defaultPath = "M 35 87 Q 35 57 65 57 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
-
-  const mobilePath = "M 35 87 Q 35 57 65 57 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z";
+  const flatPathStr = `M 35 87 Q 35 57 65 57 H 135 Q 165 57 165 57 V 57 Q 165 57 195 57 H 935 Q 965 57 965 87 V 670 Q 965 700 935 700 H 65 Q 35 700 35 670 Z`;
+  const defaultPath = flatPathStr;
+  const mobilePath = flatPathStr;
 
   const [glassPath, setGlassPath] = useState(defaultPath);
 

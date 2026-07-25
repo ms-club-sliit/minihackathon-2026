@@ -13,9 +13,9 @@ import { useState, useEffect } from "react";
 import { HiArrowRight, HiChevronDoubleDown } from "react-icons/hi";
 
 export default function Hero() {
-  const defaultPath = "M 35 80 Q 35 50 65 50 H 935 Q 965 50 965 80 V 520 Q 965 550 935 550 H 715 Q 685 550 685 580 V 590 Q 685 620 655 620 H 345 Q 315 620 315 590 V 580 Q 315 550 285 550 H 65 Q 35 550 35 520 Z";
-
-  const mobilePath = "M 35 80 Q 35 50 65 50 H 935 Q 965 50 965 80 V 520 Q 965 550 935 550 H 715 Q 685 550 685 580 V 590 Q 685 620 655 620 H 345 Q 315 620 315 590 V 580 Q 315 550 285 550 H 65 Q 35 550 35 520 Z";
+  const flatPathStr = `M 35 80 Q 35 50 65 50 H 135 Q 165 50 165 50 V 50 Q 165 50 195 50 H 935 Q 965 50 965 80 V 520 Q 965 550 935 550 H 715 Q 685 550 685 580 V 590 Q 685 620 655 620 H 345 Q 315 620 315 590 V 580 Q 315 550 285 550 H 65 Q 35 550 35 520 Z`;
+  const defaultPath = flatPathStr;
+  const mobilePath = flatPathStr;
 
   const [glassPath, setGlassPath] = useState(defaultPath);
 
