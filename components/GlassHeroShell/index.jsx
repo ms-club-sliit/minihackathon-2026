@@ -28,7 +28,7 @@ export default function GlassHeroShell({
         >
           <defs>
             <clipPath id={clipPathId}>
-              <path d={glassPath} className="transition-all duration-500 ease-in-out" />
+              <path d={glassPath} className="transition-all duration-700 delay-300 ease-in-out" />
             </clipPath>
             <filter id={shadowFilterId} x="-20%" y="-20%" width="140%" height="140%">
               <feDropShadow dx="5" dy="10" stdDeviation="6" floodColor="#000000" floodOpacity="0.9" />
@@ -36,14 +36,14 @@ export default function GlassHeroShell({
             </filter>
           </defs>
 
-          <path d={glassPath} fill="rgba(255, 255, 255, 0.1)" className="backdrop-blur-3xl transition-all duration-500 ease-in-out" clipPath={`url(#${clipPathId})`} />
+          <path d={glassPath} fill="rgba(255, 255, 255, 0.1)" className="backdrop-blur-3xl transition-all duration-700 delay-300 ease-in-out" clipPath={`url(#${clipPathId})`} />
           <path
             d={glassPath}
             fill="none"
             stroke="rgba(157, 237, 248, 0.6)"
             strokeWidth="1.5"
             filter={`url(#${shadowFilterId})`}
-            className="transition-all duration-500 ease-in-out"
+            className="transition-all duration-700 delay-300 ease-in-out"
           />
         </svg>
 
