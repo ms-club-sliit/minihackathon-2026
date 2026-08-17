@@ -13,7 +13,7 @@ const categoryMap = {
   "Gold Partners": "Gold Partner",
   "Knowledge Partners": "Knowledge Partner",
   "Media Partners": "Media Partner",
-  "Beverage Partners": "Beverage Partner",
+  "Snack Partners": "Snack Partner",
 };
 
 /**
@@ -25,7 +25,7 @@ const categoryOrder = [
   "Gold Partners",
   "Knowledge Partners",
   "Media Partners",
-  "Beverage Partners",
+  "Snack Partners",
 ];
 
 function SponsorCard({ sponsor, onImageError, hasError }) {
@@ -41,7 +41,7 @@ function SponsorCard({ sponsor, onImageError, hasError }) {
       }
       role={isClickable ? "button" : undefined}
       tabIndex={isClickable ? 0 : undefined}
-      className={`w-[260px] sm:w-[290px] md:w-[310px] lg:w-[330px] max-w-[88vw] h-[320px] sm:h-[360px] md:h-[390px] lg:h-[410px] shrink-0 rounded-[2rem] sm:rounded-[2.5rem] bg-gradient-to-b from-[#1B5FAE] to-[#081227] p-5 sm:p-6 flex flex-col items-center justify-between relative shadow-xl border border-white/10 transition-all duration-300 ${
+      className={`w-[260px] sm:w-[290px] md:w-[310px] lg:w-[330px] max-w-[88vw] h-[320px] sm:h-[360px] md:h-[390px] lg:h-[410px] shrink-0 rounded-[2rem] sm:rounded-[2.5rem] p-5 sm:p-6 flex flex-col items-center justify-between relative bg-white shadow-xl border border-white/10 transition-all duration-300 ${
         isClickable ? "cursor-pointer hover:scale-[1.03] hover:shadow-2xl" : ""
       }`}
       style={{
@@ -50,7 +50,7 @@ function SponsorCard({ sponsor, onImageError, hasError }) {
       }}
     >
       {/* Category badge */}
-      <div className="font-slogan px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-white text-xs sm:text-sm md:text-base font-semibold bg-white/10 backdrop-blur-md border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] tracking-wide uppercase">
+      <div className="font-slogan px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-gray-500 text-xs text-center sm:text-sm md:text-base font-semibold bg-sky/50 backdrop-blur-md border border-white/30 shadow-[inset_0_5px_5px_rgba(255,255,255,0.2)] tracking-wide uppercase">
         {sponsor.category}
       </div>
 
@@ -61,7 +61,7 @@ function SponsorCard({ sponsor, onImageError, hasError }) {
           alt={sponsor.alt || sponsor.name}
           width={sponsor.width ? Math.min(sponsor.width, 260) : 200}
           height={sponsor.height ? Math.min(sponsor.height, 180) : 140}
-          className="object-contain max-h-[140px] sm:max-h-[160px] md:max-h-[180px] w-auto drop-shadow-lg"
+          className="object-contain max-h-[140px] sm:max-h-[240px] md:max-h-[270px] w-auto drop-shadow-lg"
           onError={() => onImageError(sponsor.id)}
           quality={95}
         />
