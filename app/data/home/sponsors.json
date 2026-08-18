@@ -1,60 +1,108 @@
 {
-  "Platinum Partner": [
+  "Printing Partner": [
     {
       "id": 1,
-      "src": "/images/logos/placeholder.png",
-      "alt": "Become Our Platinum Partner",
-      "name": "Your Logo Here",
-      "description": "Become our Platinum Partner",
+      "src": "/images/home/sponsors/Anim8_logo.png",
+      "alt": "Anim8.LK",
+      "name": "Anim8.LK",
+      "description": "Anim8.LK",
       "color": "#9CA3AF",
       "width": 200,
-      "height": 120
+      "height": 180
     }
   ],
-  "Gold Partner": [
-    {
-      "id": 3,
-      "src": "/images/logos/placeholder.png",
-      "alt": "Become Our Gold Partner",
-      "name": "Your Logo Here",
-      "description": "Become our Gold Partner",
-      "color": "#9CA3AF",
-      "width": 200,
-      "height": 120
-    }
-  ],
-  "Knowledge Partner": [
+  "Knowledge Sharing Partner": [
     {
       "id": 2,
-      "src": "/images/logos/MLSALogo.png",
-      "alt": "MSA",
-      "name": "MSA",
-      "description": "Microsoft Student Ambassadors",
+      "src": "/images/home/sponsors/Dijital_Team_logo.png",
+      "alt": "Dijital Team",
+      "name": "Dijital Team",
+      "description": "Dijital Team",
       "color": "#3B82F6",
+      "width": 200,
+      "height": 120
+    }
+  ],
+  "Silver Partner": [
+    {
+      "id": 3,
+      "src": "/images/home/sponsors/Divolca_logo.png",
+      "alt": "Divolca",
+      "name": "Divolca",
+      "description": "Divolca",
+      "color": "#9CA3AF",
+      "width": 200,
+      "height": 120
+    }
+  ],
+  "Bronze Partner": [
+    {
+      "id": 4,
+      "src": "/images/home/sponsors/dattreo_logo.png",
+      "alt": "Dattreo",
+      "name": "Dattreo",
+      "description": "Dattreo",
+      "color": "#3B82F6",
+      "width": 200,
+      "height": 120
+    }
+  ],
+  "Industry Partner": [
+    {
+      "id": 5,
+      "src": "/images/home/sponsors/Adept_Tech_Logo.png",
+      "alt": "Adept Technologies",
+      "name": "Adept Technologies",
+      "description": "Adept Technologies",
+      "color": "#3B82F6",
+      "width": 200,
+      "height": 120
+    }
+  ],
+    "Confidence Partner": [
+    {
+      "id": 6,
+      "src": "/images/home/sponsors/Park_Avenue_Logo.png",
+      "alt": "Park Avenue",
+      "name": "Park Avenue",
+      "description": "Park Avenue",
+      "color": "#6A6970",
+      "width": 200,
+      "height": 120
+    }
+  ],
+    "Snack Partner": [
+    {
+      "id": 7,
+      "src": "/images/home/sponsors/Rancrisp_Logo.png",
+      "alt": "Rancrisp",
+      "name": "Rancrisp",
+      "description": "Rancrisp",
+      "color": "#9CA3AF",
       "width": 200,
       "height": 120
     }
   ],
   "Media Partner": [
     {
-      "id": 4,
-      "src": "/images/home/sponsors/FCMULogo.webp",
+      "id": 8,
+      "src": "/images/home/sponsors/MediaClub_Logo.png",
       "alt": "FCMU",
-      "name": "FCMU",
-      "description": "Media Partner",
-      "color": "#6A6970",
+      "name": "Faculty of Computing Media Unit",
+      "description": "FCMU",
+      "color": "#9CA3AF",
       "width": 200,
       "height": 120
     }
   ],
-  "Beverage Partner": [
+  "Resource Sharing Partner": [
     {
-      "id": 5,
-      "src": "/images/logos/placeholder.png",
-      "alt": "Become Our Beverage Partner",
-      "name": "Your Logo Here",
-      "description": "Become our Beverage Partner",
-      "color": "#9CA3AF",
+      "id": 9,
+      "src": "/images/home/sponsors/MSA_Logo.png",
+      "alt": "MSA",
+      "name": "MSA",
+      "description": "Microsoft Student Ambassadors",
+      "color": "#3B82F6",
       "width": 200,
       "height": 120
     }
