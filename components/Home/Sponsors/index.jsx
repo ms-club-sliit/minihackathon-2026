@@ -72,6 +72,7 @@ function SponsorCard({ sponsor, onImageError, hasError }) {
           className="object-contain max-h-[140px] sm:max-h-[240px] md:max-h-[270px] w-auto drop-shadow-lg"
           onError={() => onImageError(sponsor.id)}
           quality={95}
+          unoptimized={true}
         />
       </div>
 
