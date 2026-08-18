@@ -2,7 +2,7 @@
   "Printing Partner": [
     {
       "id": 1,
-      "src": "/images/home/sponsors/Anim8 transpaent logo.png",
+      "src": "/images/home/sponsors/Anim8_logo.png",
       "alt": "Anim8.LK",
       "name": "Anim8.LK",
       "description": "Anim8.LK",
@@ -26,7 +26,7 @@
   "Silver Partner": [
     {
       "id": 3,
-      "src": "/images/home/sponsors/Divolca logo.png",
+      "src": "/images/home/sponsors/Divolca_logo.png",
       "alt": "Divolca",
       "name": "Divolca",
       "description": "Divolca",
@@ -38,7 +38,7 @@
   "Bronze Partner": [
     {
       "id": 4,
-      "src": "/images/home/sponsors/dattreo logo.png",
+      "src": "/images/home/sponsors/dattreo_logo.png",
       "alt": "Dattreo",
       "name": "Dattreo",
       "description": "Dattreo",
@@ -50,7 +50,7 @@
   "Industry Partner": [
     {
       "id": 5,
-      "src": "/images/home/sponsors/Adept Tech Logo.png",
+      "src": "/images/home/sponsors/Adept_Tech_Logo.png",
       "alt": "Adept Technologies",
       "name": "Adept Technologies",
       "description": "Adept Technologies",
@@ -62,7 +62,7 @@
     "Confidence Partner": [
     {
       "id": 6,
-      "src": "/images/home/sponsors/Park Avenue Logo.png",
+      "src": "/images/home/sponsors/Park_Avenue_Logo.png",
       "alt": "Park Avenue",
       "name": "Park Avenue",
       "description": "Park Avenue",
@@ -74,7 +74,7 @@
     "Snack Partner": [
     {
       "id": 7,
-      "src": "/images/home/sponsors/Rancrisp logo.png",
+      "src": "/images/home/sponsors/Rancrisp_logo.png",
       "alt": "Rancrisp",
       "name": "Rancrisp",
       "description": "Rancrisp",
@@ -86,7 +86,7 @@
   "Media Partner": [
     {
       "id": 8,
-      "src": "/images/home/sponsors/MediaClubLogo 1.png",
+      "src": "/images/home/sponsors/MediaClub_Logo.png",
       "alt": "FCMU",
       "name": "Faculty of Computing Media Unit",
       "description": "FCMU",
@@ -98,7 +98,7 @@
   "Resource Sharing Partner": [
     {
       "id": 9,
-      "src": "/images/home/sponsors/MSA Logo.png",
+      "src": "/images/home/sponsors/MSA_Logo.png",
       "alt": "MSA",
       "name": "MSA",
       "description": "Microsoft Student Ambassadors",

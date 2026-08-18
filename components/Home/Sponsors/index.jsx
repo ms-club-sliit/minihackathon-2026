@@ -9,11 +9,15 @@ import SectionHeader from "@/components/section-header";
  * shown on each card's badge. Add new keys here as sponsors are added.
  */
 const categoryMap = {
-  "Platinum Sponsors": "Platinum Partner",
-  "Gold Partners": "Gold Partner",
-  "Knowledge Partners": "Knowledge Partner",
-  "Media Partners": "Media Partner",
+  "Printing Partners": "Printing Partner", 
+  "Knowledge Sharing Partners": "Knowledge Sharing Partner",
+  "Silver Partners": "Silver Partner",
+  "Bronze Partners": "Bronze Partner",
+  "Industry Partner": "Industry Partners",
+  "Confidence Partner":"Confidence Partners",
   "Snack Partners": "Snack Partner",
+  "Media Partners": "Media Partner",
+  "Resource Sharing Partners":  "Resource Sharing Partner"
 };
 
 /**
@@ -21,11 +25,15 @@ const categoryMap = {
  * the featured top-row slots), regardless of key order in sponsors.json.
  */
 const categoryOrder = [
-  "Platinum Sponsors",
-  "Gold Partners",
-  "Knowledge Partners",
-  "Media Partners",
-  "Snack Partners",
+  "Printing Sponsors", 
+  "Knowledge Sponsors",
+  "Silver Sponsors",
+  "Bronze Sponsors",
+  "Industry Sponsors",
+  "Confidence Sponsors",
+  "Snack Sponsors",
+  "Media Sponsors",
+  "Resource Sponsors"
 ];
 
 function SponsorCard({ sponsor, onImageError, hasError }) {
