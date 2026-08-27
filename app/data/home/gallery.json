@@ -1,19 +1,32 @@
 {
   "row1": [
-    "/images/gallery/item16.jpg",
-    "/images/gallery/item17.jpg",
-    "/images/gallery/item18.jpg",
-    "/images/gallery/item19.jpg",
-    "/images/gallery/item20.jpg",
-    "/images/gallery/item21.jpg",
-    "/images/gallery/item22.jpg"
-
-
+    "/images/gallery/item23.webp",
+    "/images/gallery/item24.webp",
+    "/images/gallery/item25.webp",
+    "/images/gallery/item26.webp",
+    "/images/gallery/item27.webp",
+    "/images/gallery/item28.webp",
+    "/images/gallery/item29.webp",
+    "/images/gallery/item30.webp",
+    "/images/gallery/item31.webp",
+    "/images/gallery/item32.webp",
+    "/images/gallery/item33.webp",
+    "/images/gallery/item34.webp",
+    "/images/gallery/item35.webp",
+    "/images/gallery/item36.webp",
+    "/images/gallery/item37.webp"
   ],
   "row2": [
-     "/images/gallery/item1.png",
-    "/images/gallery/item6.jpg",
-    "/images/gallery/item5.jpg",
+    "/images/gallery/item38.webp",
+    "/images/gallery/item39.webp",
+    "/images/gallery/item40.webp",
+    "/images/gallery/item41.webp",
+    "/images/gallery/item11.jpg",
+    "/images/gallery/item7.jpg",
+    "/images/gallery/item9.jpg",
+    "/images/gallery/item14.jpg",
+    "/images/gallery/item3.jpg",
+    "/images/gallery/item15.jpg",
     "/images/gallery/item12.jpg",
     "/images/gallery/item2.jpg",
     "/images/gallery/item8.jpg",
@@ -21,12 +34,20 @@
     "/images/gallery/item13.jpg"
   ],
   "row3": [
-     "/images/gallery/item11.jpg",
-    "/images/gallery/item7.jpg",
-    "/images/gallery/item9.jpg",
-    "/images/gallery/item14.jpg",
-    "/images/gallery/item3.jpg",
-    "/images/gallery/item15.jpg",
+    "/images/gallery/item42.webp",
+    "/images/gallery/item43.webp",
+    "/images/gallery/item44.webp",
+    "/images/gallery/item45.webp",
+    "/images/gallery/item16.jpg",
+    "/images/gallery/item17.jpg",
+    "/images/gallery/item18.jpg",
+    "/images/gallery/item19.jpg",
+    "/images/gallery/item20.jpg",
+    "/images/gallery/item21.jpg",
+    "/images/gallery/item22.jpg",
+    "/images/gallery/item1.png",
+    "/images/gallery/item6.jpg",
+    "/images/gallery/item5.jpg",
     "/images/gallery/item10.jpg"
   ]
 }
