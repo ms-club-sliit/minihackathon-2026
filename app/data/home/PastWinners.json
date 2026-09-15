@@ -1,6 +1,30 @@
 {
 	"data": [
 		{
+			"id": -2,
+			"position": "Winner of 2026",
+			"description": "Mini Hackathon '26 was Team NovaX's first hackathon experience and an unforgettable journey. Competing with talented peers pushed us to adapt under pressure. A huge thank you to the organizers, mentors, and judges for an inspiring experience!",
+			"imageUrl": "images/home/pastWinners2026/winner.jpg",
+			"name": "Team NovaX",
+			"year": "2026"
+		},
+		{
+			"id": -1,
+			"position": "1st Runners up of 2026",
+			"description": "The MiniHackathon was one of the highlights of our year.. Navigating the 5-hour on-campus round to build and pitch a working prototype under tight deadlines pushed us to decide fast, collaborate smoothly, and perform under real pressure. It was a immensely proud moment that made us sharper builders, and we're taking that momentum forward.",
+			"imageUrl": "images/home/pastWinners2026/1st_runner_up.jpg",
+			"name": "Team NovaFodge",
+			"year": "2026"
+		},
+		{
+			"id": 0,
+			"position": "2nd Runners up of 2026",
+			"description": "The hackathon was a very valuable experience. Each round taught us something new. It strengthened our teamwork, communication, time management, ability to work under pressure, and presentation skills.",
+			"imageUrl": "images/home/pastWinners2026/2nd_runner_up.jpg",
+			"name": "Pocket Rockets",
+			"year": "2026"
+		},
+		{
 			"id": 1,
 			"position": "Winner of 2025",
 			"description": "Winning the Mini Hackathon stands as proof of our teamwork, determination, and innovative mindset. This milestone not only expands our opportunities but also strengthens our reputation in the tech circle.",
