@@ -1,34 +1,25 @@
 "use client";
-import Image from "next/image";
 import sections from "@/app/data/rules/rules";
-
-// Import the same images used in Timeline
-const elementImages = [
-  "/assets/1.png",
-  "/assets/2.png",
-  "/assets/3.png",
-  "/assets/4.png",
-];
 
 export default function Content() {
 
   const Table = ({ head, body }) => (
-    <div className="overflow-x-auto">
-      <table className="min-w-full divide-y divide-gray-200 ml-0 lg:ml-20">
-        <thead className="bg-gray-50">
+    <div className="overflow-x-auto lg:ml-20">
+      <table className="min-w-full overflow-hidden rounded-[20px] border border-white/40 bg-white/20 backdrop-blur-2xl">
+        <thead className="bg-[#2E47FF]/10">
           <tr>
             {head.map((header, index) => (
-              <th key={`header-${index}`} className="px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+              <th key={`header-${index}`} className="px-6 py-3 text-left text-sm font-bold text-[#2E47FF] uppercase tracking-wider">
                 {header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="divide-y divide-white/40">
           {body.map((row, rowIndex) => (
             <tr key={`row-${rowIndex}`}>
               {row.map((cell, cellIndex) => (
-                <td key={`cell-${rowIndex}-${cellIndex}`} className="px-6 py-4 whitespace-nowrap text-md text-gray-500">
+                <td key={`cell-${rowIndex}-${cellIndex}`} className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-950">
                   {cell}
                 </td>
               ))}
@@ -41,25 +32,25 @@ export default function Content() {
 
   const NestedTable = ({ head, body }) => (
     <div className="overflow-x-auto">
-      <div className="inline-block min-w-full">
-        <table className="min-w-full divide-y divide-gray-200 ml-0 lg:ml-20">
-          <thead className="bg-gray-50">
+      <div className="inline-block min-w-full lg:ml-20">
+        <table className="min-w-full overflow-hidden rounded-[20px] border border-white/40 bg-white/20 backdrop-blur-2xl">
+          <thead className="bg-[#2E47FF]/10">
             <tr>
               {head.map((header, index) => (
                 <th
                   key={`header-${index}`}
-                  className="px-4 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider"
+                  className="px-4 py-2 text-left text-sm font-bold text-[#2E47FF] uppercase tracking-wider"
                 >
                   {header}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="divide-y divide-white/40">
             {body.map((row, rowIndex) => (
               <tr key={`row-${rowIndex}`}>
-                <td className="px-4 py-2 text-sm text-gray-500 font-semibold">{row.criteria}</td>
-                <td className="px-4 py-2 text-md text-gray-500">
+                <td className="px-4 py-2 text-sm text-gray-800 font-semibold">{row.criteria}</td>
+                <td className="px-4 py-2 text-md font-medium text-gray-950">
                   <ul className="list-disc pl-4">
                     {row.description.map((desc, descIndex) => (
                       <li key={`desc-${rowIndex}-${descIndex}`}>{desc}</li>
@@ -97,13 +88,13 @@ export default function Content() {
             {/* Category Items */}
             <div className="space-y-6">
               {categoryItems.map((category, index) => (
-                <div key={`${mainCategory}-${index}`} className="bg-white shadow-md rounded-lg p-6">
-                  <h2 className="text-xl font-bold mb-4 text-left">
+                <div key={`${mainCategory}-${index}`} className="rounded-[24px] border border-white/40 bg-white/20 p-6 shadow-[0_0_28px_rgba(0,0,0,0.08)] backdrop-blur-2xl">
+                    <h2 className="text-xl font-bold mb-4 text-left text-gray-950">
                     {index + 1}. {category.name}
                   </h2>
                   <ul className="list-disc pl-5 space-y-2 text-left">
                     {category.content.map((item, itemIndex) => (
-                      <li key={`item-${mainCategory}-${index}-${itemIndex}`} className="text-gray-700 text-base">
+                      <li key={`item-${mainCategory}-${index}-${itemIndex}`} className="text-base font-medium text-gray-950">
                         {item}
                       </li>
                     ))}
@@ -118,25 +109,18 @@ export default function Content() {
   };
 
   return (
-    <div className="w-screen relative">
-      {/* Decorative corner images like Timeline */}
-      <div aria-hidden className="pointer-events-none select-none absolute inset-0 -z-10">
-        <Image src={elementImages[0]} alt="" width={100} height={100} className="absolute top-36 left-0 w-24 md:w-36 opacity-70" priority />
-        <Image src={elementImages[1]} alt="" width={100} height={100} className="absolute bottom-0 right-0 w-28 md:w-48 opacity-70" priority />
-        <Image src={elementImages[2]} alt="" width={100} height={100} className="absolute bottom-8 left-0 w-20 md:w-48 opacity-70" priority />
-        <Image src={elementImages[3]} alt="" width={100} height={100} className="absolute top-36 right-0 w-24 md:w-40 opacity-70" priority />
-      </div>
-
-      <div className="container mx-auto text-justify text-[#161414] px-6 md:px-12 lg:px-20">
+    <div id="rules-content" className="relative w-full scroll-mt-6">
+      <div className="container mx-auto px-6 text-left text-gray-950 sm:text-justify md:px-12 lg:px-20">
         {sections && Array.isArray(sections) ? (
           sections.map((section, index) => (
-            <div key={`round-${section.title}-${index}`} className="my-10">
-              <h3 className="text-lg lg:text-2xl font-bold text-center lg:text-left uppercase mb-5">
+            <div key={`round-${section.title}-${index}`} className={index === 0 ? "mb-10 mt-3" : "my-10"}>
+              <h3 className="relative mb-6 flex items-center gap-3 pl-4 text-lg font-black uppercase tracking-[-0.02em] text-gray-950 lg:text-2xl">
+                <span className="absolute left-0 top-1/2 h-[70%] w-[5px] -translate-y-1/2 rounded-full bg-[#2E47FF]" />
                 {section.title}
               </h3>
 
               {section.content && (
-                <p className="text-[#334155] text-base lg:text-lg my-5">
+                <p className="text-base font-medium text-gray-950 lg:text-lg my-5">
                   {section.content}
                 </p>
               )}
@@ -144,12 +128,12 @@ export default function Content() {
               {section.table && <Table head={section.table.head} body={section.table.body} />}
               {section.nestedTable && <NestedTable head={section.nestedTable.head} body={section.nestedTable.body} />}
               {section.list && (
-                <ul className="list-disc text-[#334155] text-base lg:text-lg my-5 pl-5 lg:pl-10">
+                <ul className="list-disc text-base font-medium text-gray-950 lg:text-lg my-5 pl-5 lg:pl-10">
                   {section.list.map((item, index) => <li key={index}>{item}</li>)}
                 </ul>
               )}
-              {section.note && <p className="text-base lg:text-lg text-[#334155] font-semibold my-10 italic">{section.note}</p>}
-              {section.content2 && <p className="text-[#334155] text-base lg:text-lg my-5">{section.content2}</p>}
+              {section.note && <p className="text-base lg:text-lg text-gray-950 font-semibold my-10 italic">{section.note}</p>}
+              {section.content2 && <p className="text-gray-950 text-base font-medium lg:text-lg my-5">{section.content2}</p>}
 
               {/* Added rounds */}
               {section.rounds && section.rounds.map((round, rIndex) => (
@@ -157,13 +141,13 @@ export default function Content() {
                   <h3 className="text-xl lg:text-2xl font-bold my-5 text-center lg:text-left lg:pl-20">
                     {round.title}
                   </h3>
-                  <div className="text-[#334155] text-base lg:text-lg lg:pl-20 mx-10 lg:mx-0">
+                  <div className="text-base font-medium text-gray-950 lg:text-lg lg:pl-20 mx-10 lg:mx-0">
                     {round.content.map((contentItem, cIndex) => (
                       <p key={`content-${rIndex}-${cIndex}`} className="mb-2">{contentItem}</p>
                     ))}
 
                     {round.list && (
-                      <ul className="list-disc text-[#334155] text-base lg:text-lg pl-10 lg:pl-20 my-5">
+                      <ul className="list-disc text-base font-medium text-gray-950 lg:text-lg pl-10 lg:pl-20 my-5">
                         {round.list.map((listItem, lIndex) => <li key={`list-item-${rIndex}-${lIndex}`}>{listItem}</li>)}
                       </ul>
                     )}
@@ -187,7 +171,7 @@ export default function Content() {
 
               {/* Added prizes */}
               {section.prizes && section.prizes.map((prize, pIndex) => (
-                <div key={`prize-${pIndex}`} className="text-base lg:text-lg text-[#334155] lg:pl-20 mx-10 lg:mx-0">
+                <div key={`prize-${pIndex}`} className="text-base lg:text-lg font-medium text-gray-950 lg:pl-20 mx-10 lg:mx-0">
                   <p>
                     <span className="font-semibold">{prize.place}</span>:
                     <span>{prize.description}</span>{' '}
